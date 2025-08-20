@@ -20,6 +20,7 @@
 import logging
 import pathlib
 import shutil
+from typing import NamedTuple
 
 import requests
 
@@ -85,7 +86,18 @@ def upload_gtiff_to_store(
     log.info(f"Uploaded {gtiff_filepath.name} to Geoserver workspace {workspace_name}.")
 
 
-def create_layer_from_store(geoserver_url: str, layer_name: str, workspace_name: str) -> None:
+class CoverageDimension(NamedTuple):
+    band_name: str
+    unit: str
+    dimension_type: str
+
+
+def create_layer_from_store(
+    geoserver_url: str,
+    layer_name: str,
+    workspace_name: str,
+    coverage_dimensions: list[CoverageDimension] = []
+) -> None:
     """
     Create a GeoServer Layer from a GeoServer store, making it ready to serve.
 
@@ -97,12 +109,27 @@ def create_layer_from_store(geoserver_url: str, layer_name: str, workspace_name:
         Defines the name of the layer in GeoServer.
     workspace_name : str
         The name of the existing GeoServer workspace that the store is to be added to.
+    coverage_dimensions : list[CoverageDimension]
+        Information about the bands in the GeoTiff file to be served. If no information is provided, it is assumed that the
+        raster is single band and represents depth.
 
     Raises
     ----------
     HTTPError
         If geoserver responds with an error, raises it as an exception since it is unexpected.
     """
+    if len(coverage_dimensions) == 0:
+        coverage_dimensions = [CoverageDimension(layer_name, "m", "REAL_32BITS")]
+    coverage_dimensions_xml = "".join([f"""
+    <coverageDimension>    
+        <name>{band_name}</name>
+        <unit>{unit}</unit>
+        <dimensionType>
+            <name>{dimension_type}</name>
+        </dimensionType>
+    </coverageDimension>
+    """ for (band_name, unit, dimension_type) in coverage_dimensions])
+
     data = f"""
     <coverage>
         <name>{layer_name}</name>
@@ -136,13 +163,7 @@ def create_layer_from_store(geoserver_url: str, layer_name: str, workspace_name:
             <string>PNG</string>
         </supportedFormats>
         <dimensions>
-        <coverageDimension>
-          <name>{layer_name}</name>
-          <unit>m</unit>
-          <dimensionType>
-            <name>REAL_32BITS</name>
-          </dimensionType>
-        </coverageDimension>
+          {coverage_dimensions_xml}
         </dimensions>
         <requestSRS><string>EPSG:2193</string></requestSRS>
         <responseSRS><string>EPSG:2193</string></responseSRS>
@@ -162,7 +183,12 @@ def create_layer_from_store(geoserver_url: str, layer_name: str, workspace_name:
         raise requests.HTTPError(response.text, response=response)
 
 
-def add_gtiff_to_geoserver(gtiff_filepath: pathlib.Path, workspace_name: str, layer_name: str) -> None:
+def add_gtiff_to_geoserver(
+    gtiff_filepath: pathlib.Path,
+    workspace_name: str,
+    layer_name: str,
+    coverage_dimensions: list[CoverageDimension] = []
+) -> None:
     """
     Upload a GeoTiff file to GeoServer, ready for serving to clients.
 
@@ -174,6 +200,9 @@ def add_gtiff_to_geoserver(gtiff_filepath: pathlib.Path, workspace_name: str, la
         The name of the existing GeoServer workspace that the store is to be added to.
     layer_name : str
         The name of the layer being added must be unique within the workspace. #todo check uniqueness
+    coverage_dimensions : list[CoverageDimension]
+        Information about the bands in the GeoTiff file to be served. If no information is provided, it is assumed that the
+        raster is single band and represents depth.
     """
     gs_url = get_geoserver_url()
     if layer_name in get_workspace_raster_layers(workspace_name):
@@ -182,7 +211,7 @@ def add_gtiff_to_geoserver(gtiff_filepath: pathlib.Path, workspace_name: str, la
     # Upload the raster into geoserver
     upload_gtiff_to_store(gs_url, gtiff_filepath, layer_name, workspace_name)
     # Create a GIS layer from the raster file to be served from geoserver
-    create_layer_from_store(gs_url, layer_name, workspace_name)
+    create_layer_from_store(gs_url, layer_name, workspace_name, coverage_dimensions)
 
 
 def delete_style(style_name: str) -> None:
