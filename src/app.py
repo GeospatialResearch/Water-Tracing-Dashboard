@@ -24,7 +24,6 @@ from flask import Flask, jsonify, make_response, Response
 from flask_cors import CORS
 from flask_swagger_ui import get_swaggerui_blueprint
 
-from floodresilience.blueprint import flood_resilience_blueprint
 from src.check_celery_alive import check_celery_alive
 from src.geoserver import get_terria_catalog
 
@@ -38,11 +37,9 @@ API_URL = "/static/api_documentation.yml"
 swagger_ui_blueprint = get_swaggerui_blueprint(
     SWAGGER_URL,
     API_URL,
-    config={"app_name": "Flood Resilience Digital Twin (FReDT)"}
+    config={"app_name": "Porirua Explorer"}
 )
 app.register_blueprint(swagger_ui_blueprint, url_prefix=SWAGGER_URL)
-
-app.register_blueprint(flood_resilience_blueprint)
 
 
 @app.route('/')
