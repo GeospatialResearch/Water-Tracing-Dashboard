@@ -1,18 +1,11 @@
 {
   "homeCamera": {
-    "north": -43.35,
-    "east": 172.76,
-    "south": -43.42,
-    "west": 172.55
+    "north": -41.06,
+    "east": 174.9,
+    "south": -41.15,
+    "west": 174.82
   },
   "catalog": [
-    {
-      "type": "wps",
-      "name": "Model a flood scenario",
-      "description": "Model a climate scenario that will impact the flood scenario",
-      "url": "$BACKEND_URL/wps",
-      "identifier": "fredt"
-    }
   ],
   "baseMaps": {
     "items": [
