@@ -70,6 +70,8 @@ def main(
     # Set up logging with the specified log level
     setup_logging(log_level)
     upload_water_tracing_rgb_model_output(rgb_model_output_path)
+    upload_water_tracing_rgb_model_output(pathlib.Path("watertracing/static/watersource_2025_high_tide_8bit.tif"))
+    upload_water_tracing_rgb_model_output(pathlib.Path("watertracing/static/watersource_2080_high_tide_8bit.tif"))
 
 
 if __name__ == '__main__':
