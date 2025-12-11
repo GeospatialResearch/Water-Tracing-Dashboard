@@ -90,6 +90,20 @@ def terria_catalog() -> Response:
     return make_response(jsonify(catalog), OK)
 
 
+@app.route('/a-time-series-mockup')
+def a_timeseries() -> Response:
+    csv = """
+Time (UTC),Proportion of water from streams (%) 
+2023-11-22T00:00:00.000Z,0.4559512734413147
+2023-11-23T00:00:00.000Z,0.43369847536087036
+2023-11-24T00:00:00.000Z,0.4384692907333374
+2023-11-25T00:00:00.000Z,0.4204336702823639
+"""
+    response = make_response(csv, OK)
+    response.content_type = 'text/csv'
+    return response
+
+
 # Development server
 if __name__ == '__main__':
     app.run(debug=True, host='0.0.0.0')

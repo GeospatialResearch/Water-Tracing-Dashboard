@@ -31,7 +31,9 @@
             }
           ]
         }
-      ]
+      ],
+      "supportsGetTimeseries": true,
+      "getFeatureInfoUrl": "$BACKEND_URL/a-time-series-mockup"
     },
     {
       "type": "wms",
