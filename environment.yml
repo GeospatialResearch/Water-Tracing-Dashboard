@@ -46,6 +46,8 @@ dependencies:
   - botocore>=1.33.10 # Minimum version that is compatible with python >= 3.10 is botocore>=1.13.0
   - scrapy==2.11.1
   - gevent==23.9.1
+  - natsort
+  - urllib3
   - pip:
     - flask_swagger_ui==4.11.1
     - selenium==4.16.0

@@ -37,6 +37,8 @@ from sqlalchemy import text  # TIMESTAMP, Float, Integer, String
 from pathlib import Path
 from concurrent.futures import ThreadPoolExecutor
 from src.digitaltwin.setup_environment import get_database
+import csv
+from io import StringIO
 
 
 class Watersource:
@@ -652,14 +654,14 @@ class Watersource:
             raise
 
 
-@staticmethod
 def query_simple(
     longitude: float,
     latitude: float,
     variable: str,
     tolerance: float = 31,
     crs: int = 3857,
-) -> Dict[str, Any]:
+    f_response: str = "csv",
+) -> None | str | dict[str, Any]:
     """
     simple retrieve：by coordinates return all time points values for a variable
 
@@ -669,6 +671,7 @@ def query_simple(
         variable:
         tolerance:
         crs:
+        format: "csv" or "json"
 
     Returns:
         dict:
@@ -708,72 +711,95 @@ def query_simple(
     else:
         raise ValueError(f"Do not support CRS: {crs}")
 
-    with engine.connect() as conn:
-        result = (
-            conn.execute(
-                query_sql,
-                {
-                    "lon": longitude_t,
-                    "lat": latitude_t,
-                    "variable": variable,
-                    "tolerance": tolerance_t,
-                    "crs": 3857,
-                },
+    print(f"Querying: ({longitude_t}, {latitude_t}), variable: {variable}", flush=True)
+    try:
+        with engine.connect() as conn:
+            result = (
+                conn.execute(
+                    query_sql,
+                    {
+                        "lon": longitude_t,
+                        "lat": latitude_t,
+                        "variable": variable,
+                        "tolerance": tolerance_t,
+                        "crs": 3857,
+                    },
+                )
+                .fetchone()
+                ._asdict()
             )
-            .fetchone()
-            ._asdict()
-        )
 
-        if not result:
-            return None
+            print(result, flush=True)
 
-        result["values_nonan"] = [
-            v for v in result["values"] if isinstance(v, (int, float))
-        ]
+            if not result:
+                return None
 
-        # construct response
-        response = {
-            "query": {
-                "location": {"longitude": longitude, "latitude": latitude},
-                "variables": variable,
-                "tolerance": tolerance,
-                "crs": f"EPSG:{crs}",
-            },
-            "variables_data": {
-                variable: {
-                    "nearest_point": {
-                        "longitude": result["actual_lon"],
-                        "latitude": result["actual_lat"],
-                        "distance": float(result["distance"]),
-                        "pixel_position": {"row": result["row"], "col": result["col"]},
+            result["values_nonan"] = [
+                v for v in result["values"] if isinstance(v, (int, float))
+            ]
+
+            # construct response
+            if f_response == "json":
+                response = {
+                    "query": {
+                        "location": {"longitude": longitude, "latitude": latitude},
+                        "variables": variable,
+                        "tolerance": tolerance,
+                        "crs": f"EPSG:{crs}",
                     },
-                    "variable_info": {"name": result["variable"]},
-                    "variable_data": {
-                        "timestamps": [ts.isoformat() for ts in result["timestamps"]],
-                        "values": result["values"],
-                    },
-                    "statistics": {
-                        "count": len(result["values_nonan"]),
-                        "min": float(min(result["values_nonan"])),
-                        "max": float(max(result["values_nonan"])),
-                        "mean": float(
-                            sum(result["values_nonan"]) / len(result["values_nonan"])
-                        ),
-                        "std": (
-                            float(np.std(result["values_nonan"]))
-                            if len(result["values_nonan"]) > 1
-                            else 0.0
-                        ),
+                    "variables_data": {
+                        variable: {
+                            "nearest_point": {
+                                "longitude": result["actual_lon"],
+                                "latitude": result["actual_lat"],
+                                "distance": float(result["distance"]),
+                                "pixel_position": {
+                                    "row": result["row"],
+                                    "col": result["col"],
+                                },
+                            },
+                            "variable_info": {"name": result["variable"]},
+                            "variable_data": {
+                                "timestamps": [
+                                    ts.isoformat() for ts in result["timestamps"]
+                                ],
+                                "values": result["values"],
+                            },
+                            "statistics": {
+                                "count": len(result["values_nonan"]),
+                                "min": float(min(result["values_nonan"])),
+                                "max": float(max(result["values_nonan"])),
+                                "mean": float(
+                                    sum(result["values_nonan"])
+                                    / len(result["values_nonan"])
+                                ),
+                                "std": (
+                                    float(np.std(result["values_nonan"]))
+                                    if len(result["values_nonan"]) > 1
+                                    else 0.0
+                                ),
+                            },
+                        }
                     },
                 }
-            },
-        }
+            else:  # csv
+                output = StringIO()
+                csv_writer = csv.writer(output)
+                csv_writer.writerow(["timestamp", "value"])  # header row
 
+                for ts, val in zip(result["timestamps"], result["values"]):
+                    # to UTC ISO format
+                    csv_writer.writerow([ts.isoformat().replace("+00:00", "Z"), val])
+
+                response = output.getvalue()
         return response
 
+    except Exception as e:
+        print(f"Error: {str(e)}")
+        return None
 
-@staticmethod
-def tjsonquery_multiple_variables_simple(
+
+def query_multiple_variables_simple(
     longitude: float,
     latitude: float,
     variables: List[str] = None,
@@ -940,15 +966,23 @@ def gen_db(
 
 
 def query_watersource_data(
-    longitude: float, latitude: float, variable: Union[str, list], crs: int
+    longitude: float,
+    latitude: float,
+    variable: Union[str, list],
+    crs: int,
+    f_response: str = "csv",
 ) -> Dict[str, Any]:
     """Celery task：retrieve watersource data from the database based on geographic coordinates."""
     try:
         if isinstance(variable, str) and variable != "":
-            results = query_simple(longitude, latitude, variable, crs=crs)
+            results = query_simple(
+                longitude, latitude, variable, crs=crs, f_response=f_response
+            )
         elif isinstance(variable, list):
             if len(variable) == 1:
-                results = query_simple(longitude, latitude, variable[0], crs=crs)
+                results = query_simple(
+                    longitude, latitude, variable[0], crs=crs, f_response=f_response
+                )
             elif len(variable) == 2 or len(variable) == 3:
                 results = query_multiple_variables_simple(
                     longitude, latitude, variable, crs=crs
@@ -970,16 +1004,20 @@ def query_watersource_data(
                 "coordinates": {"longitude": longitude, "latitude": latitude},
             }
 
-        print(
-            f'Retrieve finished: found {len(results["variables_data"])} variables at {longitude}, {latitude}.'
-        )
-
-        return {
-            "status": "completed",
-            "data": results,
-            "count": len(results["variables_data"]),
-            "coordinates": {"longitude": longitude, "latitude": latitude},
-        }
+        if f_response == "json":
+            print(
+                f'Retrieve finished: found {len(results["variables_data"])} variables at {longitude}, {latitude}.'
+            )
+            return {
+                "status": "completed",
+                "data": results,
+                "count": len(results["variables_data"]),
+                "coordinates": {"longitude": longitude, "latitude": latitude},
+            }
+        else:
+            # for csv format
+            print(f"Retrieve finished at {longitude}, {latitude}.")
+            return results
 
     except Exception as e:
         print(f"Error: retrieve failed: {str(e)}")
