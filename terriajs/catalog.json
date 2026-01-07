@@ -31,6 +31,62 @@
             }
           ]
         }
+      ],
+      "supportsGetTimeseries": true,
+      "getFeatureInfoUrl": "$BACKEND_URL/api/query"
+    },
+    {
+      "type": "wms",
+      "name": "Water Sources 2025 High Tide",
+      "url": "$GEOSERVER_URL/geoserver/model_outputs/wms",
+      "layers": "watersource_2025_high_tide_8bit",
+      "styles": "watersource_2025_high_tide_8bit",
+      "isOpenInWorkbench": true,
+      "legends": [
+        {
+          "title": "Water Sources",
+          "items": [
+            {
+              "title": "Streams",
+              "color": "#FF0000"
+            },
+            {
+              "title": "Rain",
+              "color": "#00FF00"
+            },
+            {
+              "title": "Tide",
+              "color": "#0000FF"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "wms",
+      "name": "Water Sources 2080 High Tide",
+      "url": "$GEOSERVER_URL/geoserver/model_outputs/wms",
+      "layers": "watersource_2080_high_tide_8bit",
+      "styles": "watersource_2080_high_tide_8bit",
+      "isOpenInWorkbench": true,
+      "legends": [
+        {
+          "title": "Water Sources",
+          "items": [
+            {
+              "title": "Streams",
+              "color": "#FF0000"
+            },
+            {
+              "title": "Rain",
+              "color": "#00FF00"
+            },
+            {
+              "title": "Tide",
+              "color": "#0000FF"
+            }
+          ]
+        }
       ]
     }
   ],
