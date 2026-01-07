@@ -1038,7 +1038,7 @@ def test_query():
 
 
 if __name__ == "__main__":
-    # in_dir = Path("./stored_data/watersource")
-    # gen_db(in_dir)
+    in_dir = Path("./stored_data/watersource")
+    gen_db(in_dir)
 
     test_query()
