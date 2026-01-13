@@ -19,7 +19,17 @@
 volumes:
   postgres_db_vol_porirua:
   stored_data_porirua:
+    driver: local
+    driver_opts:
+      type: none
+      o: bind
+      device: ${LOCAL_DATA_DIR}
   geoserver_data_porirua:
+    driver: local
+    driver_opts:
+      type: none
+      o: bind
+      device: ${LOCAL_DATA_DIR_GEOSERVER}
 
 services:
   db_postgres:
@@ -27,6 +37,9 @@ services:
     image: postgis/postgis:16-3.5
     container_name: db_postgres_digital_twin
     restart: always
+    env_file:
+      - .env
+      - .env.docker-override
     ports:
       - "${POSTGRES_PORT}:5432"
     volumes:
@@ -37,6 +50,23 @@ services:
       POSTGRES_DB: ${POSTGRES_DB}
     healthcheck:
       test: pg_isready -h 127.0.0.1 -U $POSTGRES_USER -d $POSTGRES_DB
+      interval: 3s
+
+  db_setup:
+    # Set up Watersource database from source files
+    build:
+      context: .
+      dockerfile: src/watersource/docker/Dockerfile
+    container_name: db_setup_digital_twin
+    env_file:
+      - .env
+      - .env.docker-override
+    volumes:
+      - stored_data_porirua:${DATA_DIR}
+    entrypoint: ["python3", "-m", "src.watersource.gen_db"]
+    depends_on:
+      db_postgres:
+        condition: service_healthy
 
   backend:
     # Performs analysis, computation, handles web requests, facilitates database interactions
@@ -50,7 +80,7 @@ services:
       - api_keys.env
       - .env.docker-override
     volumes:
-      - stored_data_porirua:/stored_data
+      - stored_data_porirua:${DATA_DIR}
     healthcheck:
       test: curl --fail -s http://localhost:5000/ || exit 1
       interval: 10s
@@ -59,9 +89,12 @@ services:
     ports:
       - "5000:5000"
     depends_on:
-      - db_postgres
-      - message_broker
-      - geoserver
+      db_postgres:
+        condition: service_started
+      message_broker:
+        condition: service_started
+      geoserver:
+        condition: service_started
 
   celery_worker:
     # Performs tasks such as complex computation asynchronously on behalf of backend
@@ -77,8 +110,8 @@ services:
       - .env.docker-override
     volumes:
       # Bind host data directories to container, allowing different instances to share data sources.
-      - stored_data_porirua:/stored_data
-      - geoserver_data_porirua:/stored_data/geoserver
+      - stored_data_porirua:${DATA_DIR}
+      - geoserver_data_porirua:${DATA_DIR_GEOSERVER}
     ports:
       - "5001:5001"
     healthcheck:
@@ -87,9 +120,12 @@ services:
       timeout: 5s
       retries: 10
     depends_on:
-      - db_postgres
-      - message_broker
-      - geoserver
+      db_postgres:
+        condition: service_healthy
+      message_broker:
+        condition: service_started
+      geoserver:
+        condition: service_started
 
   geoserver:
     # Serves geospatial web data through interactions with files and database

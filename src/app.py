@@ -27,7 +27,7 @@ from flask_swagger_ui import get_swaggerui_blueprint
 
 from src.check_celery_alive import check_celery_alive
 from src.geoserver import get_terria_catalog
-from src.digitaltwin.setup_watersource import query_watersource_data
+from src.watersource.query_db import query_watersource_data
 
 # Initialise flask server object
 app = Flask(__name__)
@@ -124,7 +124,7 @@ def query_watersource():
         print(f"Received {request.method} request to /api/query: {data}.", flush=True)
 
         if not data:
-            return jsonify({"error": "only JSON format allowed."}), 400
+            return jsonify({"error": "No valid query request found."}), 400
 
         if (
             "bbox" not in data
@@ -135,13 +135,9 @@ def query_watersource():
         ):
             return jsonify({"error": "missing required parameters."}), 400
 
-        variable = None
-        if "variable" in data:
-            variable = data["variable"]
-            if variable in ("", "all", "none", "null"):
-                variable = None
-        else:
-            variable = "hydro"
+        variable = data.get("variable", "hydro").lower()
+        if variable in ("", "all", "none", "null"):
+            variable = None
 
         try:
             crs = data["crs"]
