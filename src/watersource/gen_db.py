@@ -36,7 +36,7 @@ from shapely.geometry import Point
 from sqlalchemy import text  # TIMESTAMP, Float, Integer, String
 from pathlib import Path
 from concurrent.futures import ThreadPoolExecutor
-from src.digitaltwin.setup_environment import get_engine
+from src.digitaltwin.setup_environment import get_engine, get_connection_from_profile
 from src.config import EnvVariable
 
 
@@ -711,6 +711,8 @@ def gen_db(
     Returns:
         None
     """
+    # Check Engine connection immediately
+    engine = get_connection_from_profile()
     data_dir = input_dir.parent / "watersource"
     data_dir.mkdir(exist_ok=True, parents=True)
 
@@ -722,14 +724,6 @@ def gen_db(
 
     # asc to geotiff
     Watersource.asc_to_geotiff(modified_dir, data_dir, start_time)
-
-    engine = get_engine(
-        "host.docker.internal",
-        EnvVariable.POSTGRES_PORT,
-        EnvVariable.POSTGRES_DB,
-        EnvVariable.POSTGRES_USER,
-        EnvVariable.POSTGRES_PASSWORD,
-    )
 
     # get crs as int
     if isinstance(crs, str):

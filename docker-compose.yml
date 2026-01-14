@@ -19,17 +19,7 @@
 volumes:
   postgres_db_vol_porirua:
   stored_data_porirua:
-    driver: local
-    driver_opts:
-      type: none
-      o: bind
-      device: ${LOCAL_DATA_DIR}
   geoserver_data_porirua:
-    driver: local
-    driver_opts:
-      type: none
-      o: bind
-      device: ${LOCAL_DATA_DIR_GEOSERVER}
 
 services:
   db_postgres:
@@ -37,9 +27,6 @@ services:
     image: postgis/postgis:16-3.5
     container_name: db_postgres_digital_twin
     restart: always
-    env_file:
-      - .env
-      - .env.docker-override
     ports:
       - "${POSTGRES_PORT}:5432"
     volumes:
@@ -62,7 +49,7 @@ services:
       - .env
       - .env.docker-override
     volumes:
-      - stored_data_porirua:${DATA_DIR}
+      - stored_data_porirua:/stored_data
     entrypoint: ["python3", "-m", "src.watersource.gen_db"]
     depends_on:
       db_postgres:
@@ -110,8 +97,8 @@ services:
       - .env.docker-override
     volumes:
       # Bind host data directories to container, allowing different instances to share data sources.
-      - stored_data_porirua:${DATA_DIR}
-      - geoserver_data_porirua:${DATA_DIR_GEOSERVER}
+      - stored_data_porirua:/stored_data
+      - geoserver_data_porirua:/stored_data/geoserver
     ports:
       - "5001:5001"
     healthcheck:
