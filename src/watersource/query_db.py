@@ -24,7 +24,7 @@ from pyproj import Transformer
 from sqlalchemy import text  # TIMESTAMP, Float, Integer, String
 import csv
 from io import StringIO
-from src.digitaltwin.setup_environment import get_engine
+from src.digitaltwin.setup_environment import get_connection_from_profile
 from src.config import EnvVariable
 
 
@@ -50,13 +50,7 @@ def query_simple(
     Returns:
         dict:
     """
-    engine = get_engine(
-        "host.docker.internal",
-        EnvVariable.POSTGRES_PORT,
-        EnvVariable.POSTGRES_DB,
-        EnvVariable.POSTGRES_USER,
-        EnvVariable.POSTGRES_PASSWORD,
-    )
+    engine = get_connection_from_profile()
     if not isinstance(variable, str):
         raise ValueError("variable must be a string.")
 
@@ -197,13 +191,7 @@ def query_multiple_variables_simple(
     Returns:
         dict:
     """
-    engine = get_engine(
-        "host.docker.internal",
-        EnvVariable.POSTGRES_PORT,
-        EnvVariable.POSTGRES_DB,
-        EnvVariable.POSTGRES_USER,
-        EnvVariable.POSTGRES_PASSWORD,
-    )
+    engine = get_connection_from_profile()
 
     if variables is None or variables == "":
         # Check existing variables in the table
