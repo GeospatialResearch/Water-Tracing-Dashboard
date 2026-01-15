@@ -36,7 +36,7 @@ RUN apt-get update && apt-get install -y git vim tzdata \
     && apt-get clean
 
 ARG user=nonroot
-ARG uid=1000
+ARG uid=101
 ARG gid=100
 RUN useradd -l -m -s /bin/bash -N -g $gid -u $uid $user
 
