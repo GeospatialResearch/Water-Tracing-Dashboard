@@ -1,7 +1,6 @@
 {
   "initializationUrls": [
-    "catalog",
-    "$BACKEND_URL/terria-catalog.json"
+    "catalog"
   ],
   "parameters": {
     "appName": "Porirua Explorer",
@@ -13,6 +12,7 @@
     "brandBarSmallElements": [
       "<div style=\"display: flex; align-items: center;\">\n  <h3 style=\"color: white;\">Porirua Explorer</h3>\n</div>"
     ],
-    "relatedMaps": []
+    "relatedMaps": [],
+    "aboutButtonHrefUrl": null
   }
 }
