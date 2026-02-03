@@ -42,7 +42,7 @@ def upload_water_tracing_rgb_model_output(rgb_model_output_path: pathlib.Path) -
     gs.add_style(rgb_model_output_path.with_suffix(".sld"), replace=True)
 
 
-def main(
+def main_a(
     _selected_polygon_gdf: gpd.GeoDataFrame | None,
     rgb_model_output_path: pathlib.Path,
     log_level: LogLevel = LogLevel.DEBUG,
@@ -71,7 +71,29 @@ def main(
     setup_logging(log_level)
     upload_water_tracing_rgb_model_output(rgb_model_output_path)
 
+def main(_sekected_polygon_gdf, rgb_model_output_path, log_level: LogLevel) -> None:
+    sample_polygon = None
+    static_dir = pathlib.Path("watertracing/static")
+    present_day_dir = static_dir / "present_day"
+    map_present_day = present_day_dir / "watersourceRGB_8bit_1m.tif"
+    rain_present_day = present_day_dir / "watersource_rain_mean.tif"
+    tide_present_day = present_day_dir / "watersource_stage_mean.tif"
+    hydros_present_day = present_day_dir / "watersource_hydros_mean.tif"
+
+    files = present_day_dir.glob("*.tif")
+    for file in files:
+        print(file)
+        main_a(None, file)
 
 if __name__ == '__main__':
     sample_polygon = None
-    main(None, pathlib.Path("watertracing/static/watersourceRGB_8bit_1m.tif"))
+    static_dir = pathlib.Path("watertracing/static")
+    present_day_dir = static_dir / "present_day"
+    map_present_day = present_day_dir / "watersourceRGB_8bit_1m.tif"
+    rain_present_day = present_day_dir / "watersource_rain_mean.tif"
+    tide_present_day = present_day_dir / "watersource_stage_mean.tif"
+    hydros_present_day = present_day_dir / "watersource_hydros_mean.tif"
+
+    files = present_day_dir.glob("*.tif")
+    for file in files:
+        main(None, file)
