@@ -52,7 +52,8 @@
               "supportsGetTimeseries": true,
               "getFeatureInfoUrl": "$BACKEND_URL/api/query",
               "getFeatureInfoParameters": {
-                "variable": "hydro"
+                  "epoch": "2020s",
+                  "variable": "hydro"
               }
             },
             {
@@ -65,6 +66,7 @@
               "supportsGetTimeseries": true,
               "getFeatureInfoUrl": "$BACKEND_URL/api/query",
               "getFeatureInfoParameters": {
+                "epoch": "2020s",
                 "variable": "rain"
               }
             },
@@ -78,6 +80,7 @@
               "supportsGetTimeseries": true,
               "getFeatureInfoUrl": "$BACKEND_URL/api/query",
               "getFeatureInfoParameters": {
+                "epoch": "2020s",
                 "variable": "stage"
               }
             },
@@ -110,6 +113,7 @@
               "supportsGetTimeseries": true,
               "getFeatureInfoUrl": "$BACKEND_URL/api/query",
               "getFeatureInfoParameters": {
+                "epoch": "2020s",
                 "variable": "velocity"
               }
             },
@@ -142,7 +146,41 @@
               "supportsGetTimeseries": true,
               "getFeatureInfoUrl": "$BACKEND_URL/api/query",
               "getFeatureInfoParameters": {
+                "epoch": "2020s",
                 "variable": "waterdepth"
+              }
+            },
+            {
+              "type": "wms",
+              "name": "Sediment Depth",
+              "url": "$GEOSERVER_URL/geoserver/model_outputs/wms",
+              "layers": "watersourceRGB_8bit_1m",
+              "styles": "watersourceRGB_8bit_1m",
+              "isOpenInWorkbench": true,
+              "legends": [
+                {
+                  "title": "Water Sources",
+                  "items": [
+                    {
+                      "title": "Streams",
+                      "color": "#FF0000"
+                    },
+                    {
+                      "title": "Rain",
+                      "color": "#00FF00"
+                    },
+                    {
+                      "title": "Tide",
+                      "color": "#0000FF"
+                    }
+                  ]
+                }
+              ],
+              "supportsGetTimeseries": true,
+              "getFeatureInfoUrl": "$BACKEND_URL/api/query",
+              "getFeatureInfoParameters": {
+                "epoch": "2020s",
+                "variable": "sedimentdepth"
               }
             }
           ]
@@ -208,6 +246,7 @@
               "supportsGetTimeseries": true,
               "getFeatureInfoUrl": "$BACKEND_URL/api/query",
               "getFeatureInfoParameters": {
+                "epoch": "2050s",
                 "variable": "hydro"
               }
             },
@@ -240,6 +279,7 @@
               "supportsGetTimeseries": true,
               "getFeatureInfoUrl": "$BACKEND_URL/api/query",
               "getFeatureInfoParameters": {
+                "epoch": "2050s",
                 "variable": "rain"
               }
             },
@@ -272,6 +312,7 @@
               "supportsGetTimeseries": true,
               "getFeatureInfoUrl": "$BACKEND_URL/api/query",
               "getFeatureInfoParameters": {
+                "epoch": "2050s",
                 "variable": "stage"
               }
             },
@@ -304,6 +345,7 @@
               "supportsGetTimeseries": true,
               "getFeatureInfoUrl": "$BACKEND_URL/api/query",
               "getFeatureInfoParameters": {
+                "epoch": "2050s",
                 "variable": "velocity"
               }
             },
@@ -336,7 +378,41 @@
               "supportsGetTimeseries": true,
               "getFeatureInfoUrl": "$BACKEND_URL/api/query",
               "getFeatureInfoParameters": {
+                "epoch": "2050s",
                 "variable": "waterdepth"
+              }
+            },
+            {
+              "type": "wms",
+              "name": "Sediment Depth",
+              "url": "$GEOSERVER_URL/geoserver/model_outputs/wms",
+              "layers": "watersourceRGB_8bit_1m",
+              "styles": "watersourceRGB_8bit_1m",
+              "isOpenInWorkbench": true,
+              "legends": [
+                {
+                  "title": "Water Sources",
+                  "items": [
+                    {
+                      "title": "Streams",
+                      "color": "#FF0000"
+                    },
+                    {
+                      "title": "Rain",
+                      "color": "#00FF00"
+                    },
+                    {
+                      "title": "Tide",
+                      "color": "#0000FF"
+                    }
+                  ]
+                }
+              ],
+              "supportsGetTimeseries": true,
+              "getFeatureInfoUrl": "$BACKEND_URL/api/query",
+              "getFeatureInfoParameters": {
+                "epoch": "2050s",
+                "variable": "sedimentdepth"
               }
             }
           ]
@@ -402,6 +478,7 @@
               "supportsGetTimeseries": true,
               "getFeatureInfoUrl": "$BACKEND_URL/api/query",
               "getFeatureInfoParameters": {
+                "epoch": "2080s",
                 "variable": "hydro"
               }
             },
@@ -434,6 +511,7 @@
               "supportsGetTimeseries": true,
               "getFeatureInfoUrl": "$BACKEND_URL/api/query",
               "getFeatureInfoParameters": {
+                "epoch": "2080s",
                 "variable": "rain"
               }
             },
@@ -466,6 +544,7 @@
               "supportsGetTimeseries": true,
               "getFeatureInfoUrl": "$BACKEND_URL/api/query",
               "getFeatureInfoParameters": {
+                "epoch": "2080s",
                 "variable": "stage"
               }
             },
@@ -498,6 +577,7 @@
               "supportsGetTimeseries": true,
               "getFeatureInfoUrl": "$BACKEND_URL/api/query",
               "getFeatureInfoParameters": {
+                "epoch": "2080s",
                 "variable": "velocity"
               }
             },
@@ -530,7 +610,41 @@
               "supportsGetTimeseries": true,
               "getFeatureInfoUrl": "$BACKEND_URL/api/query",
               "getFeatureInfoParameters": {
+                "epoch": "2080s",
                 "variable": "waterdepth"
+              }
+            },
+            {
+              "type": "wms",
+              "name": "Sediment Depth",
+              "url": "$GEOSERVER_URL/geoserver/model_outputs/wms",
+              "layers": "watersourceRGB_8bit_1m",
+              "styles": "watersourceRGB_8bit_1m",
+              "isOpenInWorkbench": true,
+              "legends": [
+                {
+                  "title": "Water Sources",
+                  "items": [
+                    {
+                      "title": "Streams",
+                      "color": "#FF0000"
+                    },
+                    {
+                      "title": "Rain",
+                      "color": "#00FF00"
+                    },
+                    {
+                      "title": "Tide",
+                      "color": "#0000FF"
+                    }
+                  ]
+                }
+              ],
+              "supportsGetTimeseries": true,
+              "getFeatureInfoUrl": "$BACKEND_URL/api/query",
+              "getFeatureInfoParameters": {
+                "epoch": "2080s",
+                "variable": "sedimentdepth"
               }
             }
           ]

@@ -36,7 +36,7 @@ from shapely.geometry import Point
 from sqlalchemy import text  # TIMESTAMP, Float, Integer, String
 from pathlib import Path
 from concurrent.futures import ThreadPoolExecutor
-from src.digitaltwin.setup_environment import get_engine, get_connection_from_profile
+from src.digitaltwin.setup_environment import get_connection_from_profile
 from src.config import EnvVariable
 
 
@@ -50,6 +50,11 @@ class Watersource:
         },
         "waterdepth": {
             "filename_pattern": "*_waterdepth_*.tif",
+            "crs": "EPSG:2193",
+            "unit": "m",
+        },
+        "sedimentdepth": {
+            "filename_pattern": "*_sedimentdepth*.tif",
             "crs": "EPSG:2193",
             "unit": "m",
         },
@@ -152,6 +157,9 @@ class Watersource:
                 )
             else:
                 file_name = Path(file.stem).stem.lower()
+                # for sediment depth, rename d50top to sedimentdepth for consistency
+                if "d50top" in file_name:
+                    file_name = file_name.replace("d50top", "sedimentdepth")
                 file_extension = Path(file.stem).suffix
                 variable_name = "".join([x for x in file_name if x.isalpha()])
                 serial_number = str(
@@ -167,21 +175,22 @@ class Watersource:
             print(f"Error processing {file}: {e}")
 
     @staticmethod
-    def modify_asc_line_parallel(path: Path, output_dir: Path) -> None:
+    def modify_asc_line_parallel(input_dir: Path, output_dir: Path) -> None:
         """
         Processes multiple .asc files in a directory in parallel.
         """
-        files = natsorted([f for f in Path(path).glob("*.gz")])
-        print(f"Found {len(files)} .gz files in directory: {path}", flush=True)
-        assert len(files) > 0, f"No .gz files found in directory: {path}"
+        files = natsorted([f for f in Path(input_dir).glob("*.gz")])
+        print(f"Found {len(files)} .gz files in directory: {input_dir}", flush=True)
+        assert len(files) > 0, f"No .gz files found in directory: {input_dir}"
 
-        initial_serial = int("".join([x for x in files[0].stem if x.isdigit()]))
+        initial_serial = int(re.findall(r"\d{7}", files[0].stem)[0])
+        # for debug. delete after confirm the initial serial number is correct.
         assert (
-            initial_serial == 2806560
+            initial_serial == 5389920
         ), f"First file time serial number {initial_serial} is not correct."
 
         if not files:
-            print(f"No .gz files found in directory: {path}")
+            print(f"No .gz files found in directory: {input_dir}")
             return
 
         print(f"Modify coordinates for {len(files)} .gz files in parallel...")
@@ -214,6 +223,9 @@ class Watersource:
             "velocity": sorted([f for f in input_dir.glob("watersource*_velocity*")]),
             "waterdepth": sorted(
                 [f for f in input_dir.glob("watersource*_waterdepth*")]
+            ),
+            "sedimentdepth": sorted(
+                [f for f in input_dir.glob("watersource*_sedimentdepth*")]
             ),
             "hydro": all_hydros,
             "rain": sorted([f for f in input_dir.glob("watersource*_rain*")]),
@@ -256,13 +268,13 @@ class Watersource:
 
     @staticmethod
     def load_variable_data(
-        data_directory: str, variable: str
+        data_dir: str, variable: str
     ) -> Tuple[np.ndarray, List[datetime], Dict]:
         """
         load all three water source data
 
         Args:
-            data_directory:
+            data_dir:
             variable:
 
         Returns:
@@ -273,18 +285,18 @@ class Watersource:
 
         config = Watersource.VARIABLE_CONFIG[variable]
         pattern = config["filename_pattern"]
-        tif_files = natsorted([f for f in Path(data_directory).glob(pattern)])
+        tif_files = natsorted([f for f in Path(data_dir).glob(pattern)])
 
         if not tif_files:
-            raise ValueError(f"No geotiff file in {data_directory}.")
+            raise ValueError(f"No geotiff file in {data_dir}.")
 
-        print(f"{len(tif_files)} {variable} files found in {data_directory}.")
+        print(f"{len(tif_files)} {variable} files found in {data_dir}.")
 
         # parse timestamp by file name
         timestamps = []
         for file_path in tif_files:
             filename = file_path.stem
-            # assuming format: watersource_variable_YYYYMMDDHH
+            # assuming format: watersource_variable_YYYYmdHM
             assert (
                 variable == filename.split("_")[1]
             ), f"variable {variable} does not match {filename}"
@@ -426,19 +438,22 @@ class Watersource:
     @staticmethod
     def import_all_variables(
         engine: sqlalchemy.engine.base.Engine,
-        data_directory: str | Path,
-        crs: int | str = 3857,
+        data_dir: str | Path,
         table_name: str = "watersource",
         variables: List[str] = None,
+        epoch: str | None = None,
+        crs: int | str = 3857,
     ) -> Dict[str, int]:
         """
         Import all variables from a geotiff file to database
 
         Args:
-            data_directory:
-            crs:
+            engine:
+            data_dir:
             table_name:
             variables:
+            epoch:
+            crs:
 
         Returns:
             dict:
@@ -457,7 +472,7 @@ class Watersource:
 
                 # load to array
                 all_data, timestamps, metadata = Watersource.load_variable_data(
-                    data_directory, variable
+                    data_dir, variable
                 )
 
                 # array to dataframe
@@ -475,7 +490,7 @@ class Watersource:
                 start_i = time.time()
                 # Native SQL insert, keep data types correct.
                 insert_count = Watersource.insert_with_proper_types(
-                    engine, gdf, table_name, variable, crs
+                    engine, gdf, table_name, variable, epoch, crs
                 )
 
                 import_stats[variable] = insert_count
@@ -502,7 +517,8 @@ class Watersource:
         gdf: gpd.GeoDataFrame,
         table_name: str,
         variable: str,
-        crs: int,
+        epoch: str | None = None,
+        crs: int = 3857,
     ) -> int:
         """
         Insert data with proper types using native SQL
@@ -513,11 +529,13 @@ class Watersource:
         insert_sql = text(
             f"""
             INSERT INTO {table_name}
-            (geometry, variable, timestamps, values, row, col)
+            (geometry, epoch, variable, timestamps, values, row, col)
             VALUES 
-            (ST_SetSRID(ST_GeomFromText(:geom_wkt), :crs), :variable, :timestamps, :values, :row, :col)
+            (ST_SetSRID(ST_GeomFromText(:geom_wkt), :crs), :epoch, :variable, :timestamps, :values, :row, :col)
             """
         )
+
+        epoch = epoch if epoch is not None else "present"
 
         batch_size = 1000
         total_records = len(gdf)
@@ -542,6 +560,7 @@ class Watersource:
 
                 param = {
                     "geom_wkt": row["geometry"].wkt,
+                    "epoch": epoch,
                     "variable": variable,
                     "timestamps": timestamps_array,
                     "values": value_array,
@@ -586,6 +605,7 @@ class Watersource:
             with engine.connect() as conn:
 
                 # Drop exist table. TODO: Comment out in production. It is not recommended to drop the table in production.
+                print(f"Warning: dropping {tablename} table if exists...")
                 conn.execute(text(f"""DROP TABLE IF EXISTS {tablename}"""))
                 conn.commit()
 
@@ -602,13 +622,14 @@ class Watersource:
                         id BIGSERIAL PRIMARY KEY,
                         geometry GEOMETRY(POINT, {crs}
                         ) NOT NULL,
-                        variable VARCHAR(10) NOT NULL,
+                        epoch VARCHAR(16) NOT NULL,
+                        variable VARCHAR(16) NOT NULL,
                         timestamps TIMESTAMPTZ[] NOT NULL,
                         values FLOAT[] NOT NULL,
                         row INTEGER,
                         col INTEGER,
                         created_at TIMESTAMP DEFAULT NOW()
-                        )
+                    )
                 """
 
                 conn.execute(text(create_table_sql))
@@ -618,9 +639,10 @@ class Watersource:
                 indexes = [
                     f"CREATE INDEX IF NOT EXISTS idx_{tablename}_geom ON {tablename} USING GIST(geometry)",
                     f"CREATE INDEX IF NOT EXISTS idx_{tablename}_variable ON {tablename} (variable)",
+                    f"CREATE INDEX IF NOT EXISTS idx_{tablename}_epoch ON {tablename} (epoch)",
                     f"CREATE INDEX IF NOT EXISTS idx_{tablename}_timestamps ON {tablename} USING GIN(timestamps)",
-                    f"CREATE INDEX IF NOT EXISTS idx_{tablename}_row_col ON {tablename} (row, col)",
-                    f"CREATE INDEX IF NOT EXISTS idx_{tablename}_variable_geom ON {tablename} (variable, geometry)",
+                    # f"CREATE INDEX IF NOT EXISTS idx_{tablename}_row_col ON {tablename} (row, col)",
+                    f"CREATE INDEX IF NOT EXISTS idx_{tablename}_epoch_variable_geom ON {tablename} (epoch, variable, geometry)",
                     # f"CREATE INDEX IF NOT EXISTS idx_{tablename}_variable_row_col ON {tablename} (variable, row, col)",
                 ]
 
@@ -692,9 +714,125 @@ class Watersource:
             raise
 
 
-def gen_db(
-    input_dir: Path = Path("./model_output"),
+def is_directory_empty(directory_path):
+    """Check if a directory is empty using os.scandir."""
+    with os.scandir(directory_path) as entries:
+        return next(entries, None) is None
+
+
+def gen_db_single_epoch(
+    engine: sqlalchemy.engine.base.Engine,
+    input_dir: Path,
+    root_dir: Path,
     start_time: datetime = datetime(2024, 6, 1, 0, 0, 0),
+    table_name: str = "watersource",
+    crs: int | str = 3857,
+    clean_tmp: bool = False,
+) -> None:
+    """
+    Generate watersource database for a single epoch (sub-directory)
+    ------------
+    engine: sqlalchemy.engine.base.Engine
+        database engine connection
+    input_dir: Path
+        directory containing asc/text files for a single epoch
+    root_dir: Path
+        root directory containing all epochs, used for creating modified and geotiff directories
+        if there is only one epoch, input_dir and root_dir can be the same.
+    start_time:  datetime
+        start time of the watersource model output
+    crs: int or str
+        coordinate reference system, e.g. 3857 or "EPSG:3857"
+    clean_tmp: bool
+        whether to clean temporary files after processing
+    ------------
+    Returns:
+        None
+    """
+    if input_dir.as_posix() == root_dir.as_posix():
+        final_dir = root_dir.parent / table_name
+        modified_dir = root_dir.parent / "modified"
+        epoch = None
+    else:
+        # define epoch name
+        epoch = input_dir.name
+
+        final_dir = root_dir.parent / table_name / epoch
+        modified_dir = root_dir.parent / "modified" / epoch
+
+    final_dir.mkdir(exist_ok=True, parents=True)
+    modified_dir.mkdir(exist_ok=True, parents=True)
+
+    # to save checking time. If dir is empty, run processing, else further check file number.
+    if is_directory_empty(final_dir):
+        n_final_file = 0
+    else:
+        n_final_file = sum(1 for entry in os.scandir(final_dir) if entry.is_file())
+
+    if is_directory_empty(modified_dir):
+        n_modified_file = 0
+    else:
+        n_modified_file = sum(
+            1 for entry in os.scandir(modified_dir) if entry.is_file()
+        )
+
+    if n_modified_file or n_final_file:
+        n_input_file = sum(1 for entry in os.scandir(input_dir) if entry.is_file())
+    else:
+        n_input_file = 0
+
+    if not n_modified_file and not n_final_file:
+        # round source coordinates to integer
+        Watersource.modify_asc_line_parallel(input_dir, modified_dir)
+    elif n_final_file == int(n_input_file * 20 / 6):
+        print(
+            f"""All files have been modified and converted to geotiff in directory: {final_dir}. 
+            Skipping modification and geotiff conversion."""
+        )
+    elif n_modified_file == n_input_file:
+        print(
+            f"All files have been processed in directory: {modified_dir}. Skipping modification."
+        )
+    else:
+        print(
+            f"""Warning: Found {n_modified_file} modified files 
+            but expected {n_input_file} in directory: {input_dir}. 
+            Please check the files. Skipping modification."""
+        )
+
+    if not n_final_file:
+        # convert to geotiff
+        Watersource.asc_to_geotiff(
+            modified_dir, final_dir, start_time, clean_tmp=clean_tmp
+        )
+    elif int(n_final_file * 20 / 6) != n_modified_file:
+        print(
+            f"""Warning: Found {n_final_file} geotiff files 
+            but expected {int(n_modified_file * 6 / 20)} based on modified files in directory: {modified_dir}. 
+            Please check the files. Skipping geotiff conversion."""
+        )
+
+    # get crs as int
+    if isinstance(crs, str):
+        crs = int(crs.split(":")[1])
+
+    # load file and import to table in db
+    Watersource.import_all_variables(
+        engine, final_dir, table_name, epoch=epoch, crs=crs
+    )
+
+    # clean temp dirs
+    if clean_tmp:
+        import shutil
+
+        print("Cleaning temporary files...")
+        shutil.rmtree(modified_dir)
+
+
+def gen_db(
+    input_dir: Union[str, Path],
+    start_time: datetime = datetime(2024, 6, 1, 0, 0, 0),
+    table_name: str = "watersource",
     crs: int | str = 3857,
     clean_tmp: bool = False,
 ) -> None:
@@ -707,42 +845,50 @@ def gen_db(
         start time of the watersource model output
     crs: int or str
         coordinate reference system, e.g. 3857 or "EPSG:3857"
+    clean_tmp: bool
+        whether to clean temporary files after processing
+
     ------------
     Returns:
         None
     """
+    print(
+        f"Start generating watersource database from {input_dir} {start_time}...",
+        flush=True,
+    )
+
     # Check Engine connection immediately
     engine = get_connection_from_profile()
-    data_dir = input_dir.parent / "watersource"
-    data_dir.mkdir(exist_ok=True, parents=True)
-
-    modified_dir = input_dir.parent / "modified"
-    modified_dir.mkdir(exist_ok=True, parents=True)
-
-    # round source coordinates to integer
-    Watersource.modify_asc_line_parallel(input_dir, modified_dir)
-
-    # asc to geotiff
-    Watersource.asc_to_geotiff(modified_dir, data_dir, start_time)
-
-    # get crs as int
-    if isinstance(crs, str):
-        crs = int(crs.split(":")[1])
 
     # init table
-    Watersource.init_table(engine, "watersource", crs)
+    Watersource.init_table(engine, table_name, crs)
 
-    # load file and import to table in db
-    Watersource.import_all_variables(engine, data_dir, crs)
+    # if there are multiple subdirectories in the input directory,
+    # we will process each subdirectory separately.
+    # Subdirectory name would be taken as time group name.
+    if len([d for d in input_dir.glob("*") if d.is_dir()]) > 1:
+        for sub_dir in input_dir.glob("*"):
+            if sub_dir.is_dir():
+                print(f"\n\nProcessing epoch: {sub_dir.name}")
+                gen_db_single_epoch(
+                    engine, sub_dir, input_dir, start_time, table_name, crs, clean_tmp
+                )
+            else:
+                raise ValueError(
+                    f"Unexpected file {sub_dir} in input directory {input_dir}."
+                )
+    elif not [d for d in input_dir.glob("*") if d.is_dir()]:
+        gen_db_single_epoch(
+            engine, input_dir, input_dir, start_time, table_name, crs, clean_tmp
+        )
+    else:
+        raise ValueError(f"No files found in input directory {input_dir}.")
 
-    # clean temp dirs
-    if clean_tmp:
-        import shutil
-
-        print("Cleaning temporary files...")
-        shutil.rmtree(modified_dir)
+    print("Finished generating watersource database.", flush=True)
 
 
 if __name__ == "__main__":
     in_dir = Path(EnvVariable.DATA_DIR_MODEL_OUTPUT)
-    gen_db(in_dir)
+    # in_dir = Path(r"../porirua_data/model_output")
+    in_date = datetime.fromisoformat(EnvVariable.START_TIME)
+    gen_db(in_dir, in_date)

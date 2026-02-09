@@ -139,6 +139,18 @@ def query_watersource():
         if variable in ("", "all", "none", "null"):
             variable = None
 
+        epoch = data.get("epoch", "2020s").lower()
+        # below conditions should not happen but for safety.
+        if epoch in {"current", "present", "now"}:
+            epoch = "2020s"
+        if epoch not in ("2020s", "2050s", "2080s"):
+            return (
+                jsonify(
+                    {"error": "invalid epoch. Must be one of 2020s, 2050s, 2080s."}
+                ),
+                400,
+            )
+
         try:
             crs = data["crs"]
             assert crs == "EPSG:3857", "only EPSG:3857 supported."
@@ -164,7 +176,7 @@ def query_watersource():
             flush=True,
         )
         result = query_watersource_data(
-            longitude, latitude, variable, crs, f_response=F_RESPONSE
+            longitude, latitude, epoch, variable, crs, f_response=F_RESPONSE
         )
 
         if isinstance(result, str):  # csv

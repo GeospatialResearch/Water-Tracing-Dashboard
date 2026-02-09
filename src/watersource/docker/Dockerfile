@@ -16,7 +16,7 @@
 
 # Main Dockerfile for setting up services defined in docker-compose.yml.
 
-FROM mambaorg/micromamba:git-37bfa82-jammy as build
+FROM mambaorg/micromamba:git-37bfa82-jammy AS build
 # Build stage for creating the python environment with micromamba
 
 USER root
@@ -43,8 +43,9 @@ RUN useradd -l -m -s /bin/bash -N -g $gid -u $uid $user
 # Copy python virtual environment from build layer
 COPY --chown=$uid:$gid --from=build /env /env
 
-ENV HOME=/home/$user \
-    TZ=Pacific/Auckland \
+ENV HOME=/home/$user
+
+ENV TZ=Pacific/Auckland \
     SHELL=bash \
     PROJ_LIB=/env/share/proj \
     PATH=/env/bin:$PATH \

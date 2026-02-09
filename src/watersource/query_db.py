@@ -31,6 +31,7 @@ from src.config import EnvVariable
 def query_simple(
     longitude: float,
     latitude: float,
+    epoch: str,
     variable: str,
     tolerance: float = 31,
     crs: int = 3857,
@@ -42,6 +43,7 @@ def query_simple(
     Args:
         longitude:
         latitude:
+        epoch:
         variable:
         tolerance:
         crs:
@@ -51,8 +53,6 @@ def query_simple(
         dict:
     """
     engine = get_connection_from_profile()
-    if not isinstance(variable, str):
-        raise ValueError("variable must be a string.")
 
     query_sql = text(
         """
@@ -60,6 +60,7 @@ def query_simple(
             id,
             ST_X(geometry) as actual_lon,
             ST_Y(geometry) as actual_lat,
+            epoch,
             variable,
             timestamps,
             values,
@@ -67,7 +68,8 @@ def query_simple(
             col,
             ST_Distance(geometry, ST_SetSRID(ST_MakePoint(:lon, :lat), :crs)) as distance
         FROM watersource
-        WHERE variable = :variable
+        WHERE variable = :variable 
+        AND epoch = :epoch
         AND ST_DWithin(geometry, ST_SetSRID(ST_MakePoint(:lon, :lat), :crs), :tolerance)
         ORDER BY distance
         LIMIT 1
@@ -85,7 +87,10 @@ def query_simple(
     else:
         raise ValueError(f"Do not support CRS: {crs}")
 
-    print(f"Querying: ({longitude_t}, {latitude_t}), variable: {variable}", flush=True)
+    print(
+        f"Querying: ({longitude_t}, {latitude_t}), epoch: {epoch}, variable: {variable}",
+        flush=True,
+    )
     try:
         with engine.connect() as conn:
             result = (
@@ -94,6 +99,7 @@ def query_simple(
                     {
                         "lon": longitude_t,
                         "lat": latitude_t,
+                        "epoch": epoch,
                         "variable": variable,
                         "tolerance": tolerance_t,
                         "crs": 3857,
@@ -115,12 +121,14 @@ def query_simple(
                 response = {
                     "query": {
                         "location": {"longitude": longitude, "latitude": latitude},
+                        "epoch": epoch,
                         "variables": variable,
                         "tolerance": tolerance,
                         "crs": f"EPSG:{crs}",
                     },
                     "variables_data": {
                         variable: {
+                            "epoch_info": epoch,
                             "nearest_point": {
                                 "longitude": result["actual_lon"],
                                 "latitude": result["actual_lat"],
@@ -174,6 +182,7 @@ def query_simple(
 def query_multiple_variables_simple(
     longitude: float,
     latitude: float,
+    epoch: str,
     variables: List[str] = None,
     tolerance: float = 31,
     crs: int = 3857,
@@ -184,6 +193,7 @@ def query_multiple_variables_simple(
     Args:
         longitude:
         latitude:
+        epoch:
         variables:
         tolerance:
         crs:
@@ -212,6 +222,7 @@ def query_multiple_variables_simple(
     query_sql = text(
         """
         SELECT DISTINCT ON (variable)
+            epoch,
             variable,
             ST_X(geometry) as actual_lon,
             ST_Y(geometry) as actual_lat,
@@ -222,6 +233,7 @@ def query_multiple_variables_simple(
             ST_Distance(geometry, ST_SetSRID(ST_MakePoint(:lon, :lat), :crs)) as distance
         FROM watersource
         WHERE variable = ANY(:variables)
+        AND epoch = :epoch
         AND ST_DWithin(geometry, ST_SetSRID(ST_MakePoint(:lon, :lat), :crs), :tolerance)
         ORDER BY variable, distance
         """
@@ -244,6 +256,7 @@ def query_multiple_variables_simple(
             {
                 "lon": longitude_t,
                 "lat": latitude_t,
+                "epoch": epoch,
                 "variables": variables,
                 "tolerance": tolerance_t,
                 "crs": 3857,
@@ -259,6 +272,7 @@ def query_multiple_variables_simple(
         response = {
             "query": {
                 "location": {"longitude": longitude, "latitude": latitude},
+                "epoch": epoch,
                 "variables": variables,
                 "tolerance": tolerance,
                 "crs": f"EPSG:{crs}",
@@ -275,6 +289,7 @@ def query_multiple_variables_simple(
             variable = result["variable"] if result["variable"] else "unknown"
 
             variable_data = {
+                "epoch_info": epoch,
                 "nearest_point": {
                     "longitude": result["actual_lon"],
                     "latitude": result["actual_lat"],
@@ -310,6 +325,7 @@ def query_multiple_variables_simple(
 def query_watersource_data(
     longitude: float,
     latitude: float,
+    epoch: str,
     variable: Union[str, list],
     crs: int,
     f_response: str = "csv",
@@ -318,21 +334,28 @@ def query_watersource_data(
     try:
         if isinstance(variable, str) and variable != "":
             results = query_simple(
-                longitude, latitude, variable, crs=crs, f_response=f_response
+                longitude, latitude, epoch, variable, crs=crs, f_response=f_response
             )
         elif isinstance(variable, list):
             if len(variable) == 1:
                 results = query_simple(
-                    longitude, latitude, variable[0], crs=crs, f_response=f_response
+                    longitude,
+                    latitude,
+                    epoch,
+                    variable[0],
+                    crs=crs,
+                    f_response=f_response,
                 )
             elif len(variable) == 2 or len(variable) == 3:
                 results = query_multiple_variables_simple(
-                    longitude, latitude, variable, crs=crs
+                    longitude, latitude, epoch, variable, crs=crs
                 )
             else:
                 raise Exception(f"Unknown variable list length: {len(variable)}")
         elif variable is None:
-            results = query_multiple_variables_simple(longitude, latitude, crs=crs)
+            results = query_multiple_variables_simple(
+                longitude, latitude, epoch, crs=crs
+            )
         else:
             raise Exception(f"Unknown variable: {variable}")
 
@@ -348,7 +371,8 @@ def query_watersource_data(
 
         if f_response == "json":
             print(
-                f'Retrieve finished: found {len(results["variables_data"])} variables at {longitude}, {latitude}.'
+                f'Retrieve finished: found {len(results["variables_data"])} variables at {longitude}, {latitude}.',
+                flush=True,
             )
             return {
                 "status": "completed",
@@ -358,7 +382,7 @@ def query_watersource_data(
             }
         else:
             # for csv format
-            print(f"Retrieve finished at {longitude}, {latitude}.")
+            print(f"Retrieve finished at {longitude}, {latitude}.", flush=True)
             return results
 
     except Exception as e:

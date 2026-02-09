@@ -152,3 +152,5 @@ class EnvVariable:  # pylint: disable=too-few-public-methods
     GEOSERVER_INTERNAL_PORT = _get_env_variable("GEOSERVER_INTERNAL_PORT", default=GEOSERVER_PORT)
     GEOSERVER_ADMIN_NAME = _get_env_variable("GEOSERVER_ADMIN_NAME", default="admin")
     GEOSERVER_ADMIN_PASSWORD = _get_env_variable("GEOSERVER_ADMIN_PASSWORD", default="geoserver")
+
+    START_TIME= _get_env_variable("WATERSOURCE_START_TIME", default="2020-04-01T00:00:00+13:00")
