@@ -15,12 +15,17 @@
 # You should have received a copy of the GNU Affero General Public License
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
+import logging
 import pathlib
 
 import geopandas as gpd
 
+from src.digitaltwin.data_to_db import serve_static_files
+from src.digitaltwin.setup_environment import get_database
 from src.digitaltwin.utils import LogLevel, setup_logging
 import src.geoserver as gs
+
+log = logging.getLogger(__name__)
 
 
 def upload_water_tracing_rgb_model_output(rgb_model_output_path: pathlib.Path) -> None:
@@ -68,22 +73,20 @@ def main_a(
         - LogLevel.NOTSET (0)
     """
     # Set up logging with the specified log level
-    setup_logging(log_level)
+
     upload_water_tracing_rgb_model_output(rgb_model_output_path)
 
-def main(_sekected_polygon_gdf, rgb_model_output_path, log_level: LogLevel) -> None:
-    sample_polygon = None
-    static_dir = pathlib.Path("watertracing/static")
-    present_day_dir = static_dir / "present_day"
-    map_present_day = present_day_dir / "watersourceRGB_8bit_1m.tif"
-    rain_present_day = present_day_dir / "watersource_rain_mean.tif"
-    tide_present_day = present_day_dir / "watersource_stage_mean.tif"
-    hydros_present_day = present_day_dir / "watersource_hydros_mean.tif"
 
-    files = present_day_dir.glob("*.tif")
-    for file in files:
-        print(file)
-        main_a(None, file)
+def main(_sekected_polygon_gdf, rgb_model_output_path, log_level: LogLevel) -> None:
+    setup_logging(log_level)
+    engine = get_database()
+    present_day_dir = pathlib.Path("watertracing/static/present_day")
+    serve_static_files(engine, present_day_dir)
+
+    for rgb in present_day_dir.glob("20*_watersourceRGB_1m_depth_0nan.tif"):
+        log.info(f"~~Uploading rgb {rgb.name} rgb")
+        main_a(_sekected_polygon_gdf, rgb, log_level)
+
 
 if __name__ == '__main__':
     sample_polygon = None

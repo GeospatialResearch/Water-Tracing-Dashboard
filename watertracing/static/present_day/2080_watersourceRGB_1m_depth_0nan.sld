@@ -3,9 +3,9 @@
                        xsi:schemaLocation="http://www.opengis.net/sld
 http://schemas.opengis.net/sld/1.0.0/StyledLayerDescriptor.xsd" version="1.0.0">
     <NamedLayer>
-        <Name>watersourceRGB_8bit_1m</Name>
+        <Name>2080_watersourceRGB_1m_depth_0nan</Name>
         <UserStyle>
-            <Title>watersourceRGB_8bit_1m</Title>
+            <Title>2080_watersourceRGB_1m_depth_0nan</Title>
             <FeatureTypeStyle>
                 <Rule>
                     <RasterSymbolizer>
