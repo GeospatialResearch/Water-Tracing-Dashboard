@@ -31,6 +31,7 @@ import numpy as np
 from datetime import datetime, timedelta, timezone
 from typing import Union, List, Dict, Any, Tuple
 import time
+from zoneinfo import ZoneInfo
 from tqdm import tqdm
 from shapely.geometry import Point
 from sqlalchemy import text  # TIMESTAMP, Float, Integer, String
@@ -76,9 +77,32 @@ class Watersource:
     }
 
     @staticmethod
+    def combine_hydros(
+        asc_files: list[Path], time_slice: int, output_dir: Path
+    ) -> Path:
+        """Combine multiple hydro rasters for a single time slice."""
+        with rio.open(asc_files[0]) as base:
+            base_raster = base.read(1)
+            base_raster[base_raster == -9999] = np.nan
+            base_meta = base.meta.copy()
+        for asc_file in asc_files[1:]:
+            with rio.open(asc_file) as asc:
+                asc_raster = asc.read(1)
+                asc_raster[asc_raster == -9999] = np.nan
+                mask_both_nan = np.isnan(base_raster) & np.isnan(asc_raster)
+                base_raster = np.nansum(
+                    np.dstack((base_raster, asc_raster)), 2
+                )  # add rasters while keeping nan+nan = nan
+                base_raster[mask_both_nan] = np.nan
+        output_file = output_dir / f"watersource{time_slice}_allhydros.asc"
+        with rio.open(output_file, "w", **base_meta) as dest:
+            dest.write(base_raster, 1)
+        return output_file
+
+    @staticmethod
     def combine_all_hydros(
-        hydro_files: list[Path], export_dir: Path
-    ) -> Tuple[list[Path], Path]:
+        hydro_files: list[Path], export_dir: Path, parallel: bool = True
+    ) -> list[Path]:
         """Combine all hydro rasters for each time slice."""
         assert len(hydro_files) > 0, "No hydro files to combine."
         # Group by time slice
@@ -96,27 +120,34 @@ class Watersource:
         all_hydros_dir = export_dir / "allhydros"
         all_hydros_dir.mkdir(exist_ok=True, parents=True)
 
-        for time_slice, asc_files in tqdm(groups_list, desc="Combining all hydros"):
-            with rio.open(asc_files[0]) as base:
-                base_raster = base.read(1)
-                base_raster[base_raster == -9999] = np.nan
-                base_meta = base.meta.copy()
-            for asc_file in asc_files[1:]:
-                with rio.open(asc_file) as asc:
-                    asc_raster = asc.read(1)
-                    asc_raster[asc_raster == -9999] = np.nan
-                    mask_both_nan = np.isnan(base_raster) & np.isnan(asc_raster)
-                    base_raster = np.nansum(
-                        np.dstack((base_raster, asc_raster)), 2
-                    )  # add rasters while keeping nan+nan = nan
-                    base_raster[mask_both_nan] = np.nan
+        if parallel:
+            print(
+                f"Combining all hydros for {len(groups_list)} groups in parallel...",
+                flush=True,
+            )
+            # Use ThreadPoolExecutor for parallel execution
+            with ThreadPoolExecutor(max_workers=os.cpu_count()) as executor:
+                futures = [
+                    executor.submit(
+                        Watersource.combine_hydros,
+                        asc_files,
+                        time_slice,
+                        all_hydros_dir,
+                    )
+                    for time_slice, asc_files in groups_list
+                ]
+                # optionally iterate through futures to check for exceptions or results
+                all_hydros = natsorted(
+                    [future.result() for future in futures]
+                )  # This will re-raise any exceptions that occurred in the threads
+        else:
+            for time_slice, asc_files in tqdm(groups_list, desc="Combining all hydros"):
+                output_file = Watersource.combine_hydros(
+                    asc_files, time_slice, all_hydros_dir
+                )
+                all_hydros.append(output_file)
 
-            output_file = all_hydros_dir / f"watersource{time_slice}_allhydros.asc"
-            with rio.open(output_file, "w", **base_meta) as dest:
-                dest.write(base_raster, 1)
-            all_hydros.append(output_file)
-
-        return all_hydros, all_hydros_dir
+        return all_hydros
 
     @staticmethod
     def modify_asc_line(file: Path, output_dir: Path, initial_serial: int) -> None:
@@ -190,10 +221,12 @@ class Watersource:
         ), f"First file time serial number {initial_serial} is not correct."
 
         if not files:
-            print(f"No .gz files found in directory: {input_dir}")
+            print(f"No .gz files found in directory: {input_dir}", flush=True)
             return
 
-        print(f"Modify coordinates for {len(files)} .gz files in parallel...")
+        print(
+            f"Modify coordinates for {len(files)} .gz files in parallel...", flush=True
+        )
         # Use ThreadPoolExecutor for parallel execution
         with ThreadPoolExecutor(max_workers=os.cpu_count()) as executor:
             futures = [
@@ -207,6 +240,24 @@ class Watersource:
                 future.result()  # This will re-raise any exceptions that occurred in the threads
 
     @staticmethod
+    def asc_to_geotiff_single(
+        file: Path,
+        export_dir: Path,
+        start_time: datetime,
+        time_string: str,
+        meta: Dict,
+        variable: str,
+    ) -> None:
+        minute = int(file.stem.split("_")[0].replace("watersource", ""))
+        timestamp = (start_time + timedelta(minutes=minute)).strftime(time_string)
+        output_file = export_dir / "watersource_{}_{}.tif".format(variable, timestamp)
+
+        with rio.open(output_file, "w", **meta) as dst:
+            with rio.open(file) as src:
+                band = src.read(1, masked=True)
+                dst.write(band, 1)
+
+    @staticmethod
     def asc_to_geotiff(
         input_dir: Path,
         export_dir: Path,
@@ -214,8 +265,11 @@ class Watersource:
         time_string: str = "%Y%m%d%H%M",
         nodata: int = -9999,
         clean_tmp: bool = True,
+        parallel: bool = True,
     ) -> None:
-        all_hydros, tmp_dir = Watersource.combine_all_hydros(
+        export_dir.mkdir(exist_ok=True, parents=True)
+
+        all_hydros = Watersource.combine_all_hydros(
             natsorted([f for f in input_dir.glob("watersource*_hydro*")]),
             export_dir,
         )
@@ -232,7 +286,7 @@ class Watersource:
             "stage": sorted([f for f in input_dir.glob("watersource*_stage*")]),
         }
         for variable, files in water_source_files.items():
-            print(f"Collating {variable}")
+            print(f"Collating {variable}", flush=True)
             # get metadata
             with rio.open(files[0]) as first_file:
                 meta = first_file.meta.copy()
@@ -242,29 +296,56 @@ class Watersource:
                     "count": 1,
                     "nodata": nodata,
                     "crs": Watersource.VARIABLE_CONFIG[variable]["crs"],
+                    "compress": "lzw",
+                    "tiled": True,
+                    "blockxsize": 256,
+                    "blockysize": 256,
                 }
             )
 
-            export_dir.mkdir(exist_ok=True, parents=True)
-            for file in files:
-                minute = int(file.stem.split("_")[0].replace("watersource", ""))
-                timestamp = (start_time + timedelta(minutes=minute)).strftime(
-                    time_string
+            if parallel:
+                print(
+                    f"Converting {len(files)} {variable} files to geotiff in parallel...",
+                    flush=True,
                 )
-                output_file = export_dir / "watersource_{}_{}.tif".format(
-                    variable, timestamp
-                )
+                with ThreadPoolExecutor(max_workers=os.cpu_count()) as executor:
+                    futures = [
+                        executor.submit(
+                            Watersource.asc_to_geotiff_single,
+                            file,
+                            export_dir,
+                            start_time,
+                            time_string,
+                            meta,
+                            variable,
+                        )
+                        for file in files
+                    ]
+                    for future in futures:
+                        future.result()  # This will re-raise any exceptions that occurred in the threads
 
-                with rio.open(output_file, "w", **meta) as dst:
-                    with rio.open(file) as src:
-                        band = src.read(1, masked=True)
-                        dst.write(band, 1)
-        print(f"Finished collating temporal raster output to: {export_dir}.")
+            else:
+                print(
+                    f"Converting {len(files)} {variable} files to geotiff...",
+                    flush=True,
+                )
+                for file in files:
+                    Watersource.asc_to_geotiff_single(
+                        file, export_dir, start_time, time_string, meta, variable
+                    )
+
+        print(
+            f"Finished collating temporal raster output to: {export_dir}.", flush=True
+        )
+
         if clean_tmp:
             import shutil
 
-            print("Cleaning temporary files...")
-            shutil.rmtree(tmp_dir)
+            print(
+                f"Cleaning temporary file directory {all_hydros[0].parent}...",
+                flush=True,
+            )
+            shutil.rmtree(all_hydros[0].parent)
 
     @staticmethod
     def load_variable_data(
@@ -749,6 +830,7 @@ def gen_db_single_epoch(
     Returns:
         None
     """
+
     if input_dir.as_posix() == root_dir.as_posix():
         final_dir = root_dir.parent / table_name
         modified_dir = root_dir.parent / "modified"
@@ -793,23 +875,38 @@ def gen_db_single_epoch(
         print(
             f"All files have been processed in directory: {modified_dir}. Skipping modification."
         )
-    else:
+    elif n_modified_file != n_input_file:
         print(
             f"""Warning: Found {n_modified_file} modified files 
             but expected {n_input_file} in directory: {input_dir}. 
-            Please check the files. Skipping modification."""
+            Will overwrite exist files."""
         )
+        # round source coordinates to integer
+        Watersource.modify_asc_line_parallel(input_dir, modified_dir)
 
     if not n_final_file:
         # convert to geotiff
         Watersource.asc_to_geotiff(
             modified_dir, final_dir, start_time, clean_tmp=clean_tmp
         )
-    elif int(n_final_file * 20 / 6) != n_modified_file:
+    elif (
+        int(n_final_file * 20 / 6) != n_modified_file
+        and n_modified_file == n_input_file
+    ):
         print(
             f"""Warning: Found {n_final_file} geotiff files 
             but expected {int(n_modified_file * 6 / 20)} based on modified files in directory: {modified_dir}. 
-            Please check the files. Skipping geotiff conversion."""
+            Will overwrite exist files."""
+        )
+        # convert to geotiff
+        Watersource.asc_to_geotiff(
+            modified_dir, final_dir, start_time, clean_tmp=clean_tmp
+        )
+    elif n_modified_file != n_input_file:
+        raise ValueError(
+            f"""Error: Found {n_modified_file} modified files 
+            but expected {n_input_file} in directory: {modified_dir}. 
+            It should not happen that modified file number is different from input file number."""
         )
 
     # get crs as int
@@ -842,7 +939,7 @@ def gen_db(
     input_dir: Path
         directory containing asc/text files
     start_time:  datetime
-        start time of the watersource model output
+        start time of the watersource model output, UTC timezone.
     crs: int or str
         coordinate reference system, e.g. 3857 or "EPSG:3857"
     clean_tmp: bool
@@ -853,7 +950,7 @@ def gen_db(
         None
     """
     print(
-        f"Start generating watersource database from {input_dir} {start_time}...",
+        f"\nStart generating watersource database from {input_dir}, start in {start_time} UTC time zone...",
         flush=True,
     )
 
@@ -888,7 +985,23 @@ def gen_db(
 
 
 if __name__ == "__main__":
-    in_dir = Path(EnvVariable.DATA_DIR_MODEL_OUTPUT)
-    # in_dir = Path(r"../porirua_data/model_output")
-    in_date = datetime.fromisoformat(EnvVariable.START_TIME)
-    gen_db(in_dir, in_date)
+    # in_dir = Path(EnvVariable.DATA_DIR_MODEL_OUTPUT)
+    in_dir = Path(r"../porirua_data/model_output")
+
+    # 1. Define the NZ time (naive object)
+    # nz_time = datetime(2025, 10, 1, 12, 0, 0)  # 12:00 PM on Oct 1, 2025
+    nz_time = datetime.fromisoformat(EnvVariable.START_TIME)
+
+    # 2. Localize it to New Zealand time
+    # 'Pacific/Auckland' handles daylight saving automatically
+    nz_aware = nz_time.replace(tzinfo=ZoneInfo("Pacific/Auckland"))
+
+    # 3. Convert to UTC
+    utc_time = nz_aware.astimezone(ZoneInfo("UTC"))
+
+    _start = time.time()
+
+    gen_db(in_dir, utc_time)
+    print(
+        f"\n### Database setup processing finished in: {timedelta(seconds=int(time.time() - _start))} ###.\n"
+    )
