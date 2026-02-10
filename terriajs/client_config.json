@@ -3,14 +3,14 @@
     "catalog"
   ],
   "parameters": {
-    "appName": "Te Awarua - Kai Ora",
+    "appName": "Te Awarua Kai Ora",
     "supportEmail": "gri-enquiries+porirua_explorer@canterbury.ac.nz",
     "cesiumIonAccessToken": "$CESIUM_ACCESS_TOKEN",
     "brandBarElements": [
-      "<div style=\"display: flex; align-items: center;\">\n  <h1 style=\"color: white;\">Te Awarua - Kai Ora</h1>\n</div>"
+      "<div style=\"display: flex; align-items: center;\">\n  <h1 style=\"color: white;\">Te Awarua Kai Ora</h1>\n</div>"
     ],
     "brandBarSmallElements": [
-      "<div style=\"display: flex; align-items: center;\">\n  <h3 style=\"color: white;\">Te Awarua - Kai Ora</h3>\n</div>"
+      "<div style=\"display: flex; align-items: center;\">\n  <h3 style=\"color: white;\">Te Awarua Kai Ora</h3>\n</div>"
     ],
     "relatedMaps": [],
     "aboutButtonHrefUrl": null
