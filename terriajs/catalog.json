@@ -19,8 +19,8 @@
               "type": "wms",
               "name": "Water Source Summary Map",
               "url": "$GEOSERVER_URL/geoserver/model_outputs/wms",
-              "layers": "watersourceRGB_8bit_1m",
-              "styles": "watersourceRGB_8bit_1m",
+              "layers": "2026_watersourceRGB_1m_depth_0nan",
+              "styles": "2026_watersourceRGB_1m_depth_0nan",
               "isOpenInWorkbench": true,
               "legends": [
                 {
@@ -45,9 +45,9 @@
             {
               "type": "wms",
               "name": "Water Sources - Streams",
-              "url": "$GEOSERVER_URL/geoserver/model_outputs/wms",
-              "layers": "watersource_hydros_mean",
-              "styles": "watersource_hydros_mean",
+              "url": "$GEOSERVER_URL/geoserver/static_files/wms",
+              "layers": "2026_watersource_hydros_1m",
+              "styles": "reds_percent",
               "isOpenInWorkbench": true,
               "supportsGetTimeseries": true,
               "getFeatureInfoUrl": "$BACKEND_URL/api/query",
@@ -59,9 +59,9 @@
             {
               "type": "wms",
               "name": "Water Sources - Rain",
-              "url": "$GEOSERVER_URL/geoserver/model_outputs/wms",
-              "layers": "watersource_rain_mean",
-              "styles": "watersource_rain_mean",
+              "url": "$GEOSERVER_URL/geoserver/static_files/wms",
+              "layers": "2026_watersource_rain_1m",
+              "styles": "greens_percent",
               "isOpenInWorkbench": true,
               "supportsGetTimeseries": true,
               "getFeatureInfoUrl": "$BACKEND_URL/api/query",
@@ -73,9 +73,9 @@
             {
               "type": "wms",
               "name": "Water Sources - Tide",
-              "url": "$GEOSERVER_URL/geoserver/model_outputs/wms",
-              "layers": "watersource_stage_mean",
-              "styles": "watersource_stage_mean",
+              "url": "$GEOSERVER_URL/geoserver/static_files/wms",
+              "layers": "2026_watersource_stage_1m",
+              "styles": "blues_percent",
               "isOpenInWorkbench": true,
               "supportsGetTimeseries": true,
               "getFeatureInfoUrl": "$BACKEND_URL/api/query",
@@ -87,29 +87,9 @@
             {
               "type": "wms",
               "name": "Water Velocity",
-              "url": "$GEOSERVER_URL/geoserver/model_outputs/wms",
-              "layers": "watersourceRGB_8bit_1m",
-              "styles": "watersourceRGB_8bit_1m",
+              "url": "$GEOSERVER_URL/geoserver/static_files/wms",
+              "layers": "2026_velocity_1m",
               "isOpenInWorkbench": true,
-              "legends": [
-                {
-                  "title": "Water Sources",
-                  "items": [
-                    {
-                      "title": "Streams",
-                      "color": "#FF0000"
-                    },
-                    {
-                      "title": "Rain",
-                      "color": "#00FF00"
-                    },
-                    {
-                      "title": "Tide",
-                      "color": "#0000FF"
-                    }
-                  ]
-                }
-              ],
               "supportsGetTimeseries": true,
               "getFeatureInfoUrl": "$BACKEND_URL/api/query",
               "getFeatureInfoParameters": {
@@ -120,29 +100,9 @@
             {
               "type": "wms",
               "name": "Water Depth",
-              "url": "$GEOSERVER_URL/geoserver/model_outputs/wms",
-              "layers": "watersourceRGB_8bit_1m",
-              "styles": "watersourceRGB_8bit_1m",
+              "url": "$GEOSERVER_URL/geoserver/static_files/wms",
+              "layers": "2026_waterdepth_1m",
               "isOpenInWorkbench": true,
-              "legends": [
-                {
-                  "title": "Water Sources",
-                  "items": [
-                    {
-                      "title": "Streams",
-                      "color": "#FF0000"
-                    },
-                    {
-                      "title": "Rain",
-                      "color": "#00FF00"
-                    },
-                    {
-                      "title": "Tide",
-                      "color": "#0000FF"
-                    }
-                  ]
-                }
-              ],
               "supportsGetTimeseries": true,
               "getFeatureInfoUrl": "$BACKEND_URL/api/query",
               "getFeatureInfoParameters": {
@@ -152,30 +112,10 @@
             },
             {
               "type": "wms",
-              "name": "Sediment Depth",
-              "url": "$GEOSERVER_URL/geoserver/model_outputs/wms",
-              "layers": "watersourceRGB_8bit_1m",
-              "styles": "watersourceRGB_8bit_1m",
+              "name": "Median Sediment Size",
+              "url": "$GEOSERVER_URL/geoserver/static_files/wms",
+              "layers": "2026_d50top_1m",
               "isOpenInWorkbench": true,
-              "legends": [
-                {
-                  "title": "Water Sources",
-                  "items": [
-                    {
-                      "title": "Streams",
-                      "color": "#FF0000"
-                    },
-                    {
-                      "title": "Rain",
-                      "color": "#00FF00"
-                    },
-                    {
-                      "title": "Tide",
-                      "color": "#0000FF"
-                    }
-                  ]
-                }
-              ],
               "supportsGetTimeseries": true,
               "getFeatureInfoUrl": "$BACKEND_URL/api/query",
               "getFeatureInfoParameters": {
@@ -194,8 +134,8 @@
               "type": "wms",
               "name": "Water Source Summary Map",
               "url": "$GEOSERVER_URL/geoserver/model_outputs/wms",
-              "layers": "watersourceRGB_8bit_1m",
-              "styles": "watersourceRGB_8bit_1m",
+              "layers": "2050_watersourceRGB_1m_depth_0nan",
+              "styles": "2050_watersourceRGB_1m_depth_0nan",
               "isOpenInWorkbench": true,
               "legends": [
                 {
@@ -220,62 +160,24 @@
             {
               "type": "wms",
               "name": "Water Sources - Streams",
-              "url": "$GEOSERVER_URL/geoserver/model_outputs/wms",
-              "layers": "watersourceRGB_8bit_1m",
-              "styles": "watersourceRGB_8bit_1m",
+              "url": "$GEOSERVER_URL/geoserver/static_files/wms",
+              "layers": "2050_watersource_hydros_1m",
+              "styles": "reds_percent",
               "isOpenInWorkbench": true,
-              "legends": [
-                {
-                  "title": "Water Sources",
-                  "items": [
-                    {
-                      "title": "Streams",
-                      "color": "#FF0000"
-                    },
-                    {
-                      "title": "Rain",
-                      "color": "#00FF00"
-                    },
-                    {
-                      "title": "Tide",
-                      "color": "#0000FF"
-                    }
-                  ]
-                }
-              ],
               "supportsGetTimeseries": true,
               "getFeatureInfoUrl": "$BACKEND_URL/api/query",
               "getFeatureInfoParameters": {
-                "epoch": "2050s",
-                "variable": "hydro"
+                  "epoch": "2050s",
+                  "variable": "hydro"
               }
             },
             {
               "type": "wms",
               "name": "Water Sources - Rain",
-              "url": "$GEOSERVER_URL/geoserver/model_outputs/wms",
-              "layers": "watersourceRGB_8bit_1m",
-              "styles": "watersourceRGB_8bit_1m",
+              "url": "$GEOSERVER_URL/geoserver/static_files/wms",
+              "layers": "2050_watersource_rain_1m",
+              "styles": "greens_percent",
               "isOpenInWorkbench": true,
-              "legends": [
-                {
-                  "title": "Water Sources",
-                  "items": [
-                    {
-                      "title": "Streams",
-                      "color": "#FF0000"
-                    },
-                    {
-                      "title": "Rain",
-                      "color": "#00FF00"
-                    },
-                    {
-                      "title": "Tide",
-                      "color": "#0000FF"
-                    }
-                  ]
-                }
-              ],
               "supportsGetTimeseries": true,
               "getFeatureInfoUrl": "$BACKEND_URL/api/query",
               "getFeatureInfoParameters": {
@@ -286,29 +188,10 @@
             {
               "type": "wms",
               "name": "Water Sources - Tide",
-              "url": "$GEOSERVER_URL/geoserver/model_outputs/wms",
-              "layers": "watersourceRGB_8bit_1m",
-              "styles": "watersourceRGB_8bit_1m",
+              "url": "$GEOSERVER_URL/geoserver/static_files/wms",
+              "layers": "2050_watersource_stage_1m",
+              "styles": "blues_percent",
               "isOpenInWorkbench": true,
-              "legends": [
-                {
-                  "title": "Water Sources",
-                  "items": [
-                    {
-                      "title": "Streams",
-                      "color": "#FF0000"
-                    },
-                    {
-                      "title": "Rain",
-                      "color": "#00FF00"
-                    },
-                    {
-                      "title": "Tide",
-                      "color": "#0000FF"
-                    }
-                  ]
-                }
-              ],
               "supportsGetTimeseries": true,
               "getFeatureInfoUrl": "$BACKEND_URL/api/query",
               "getFeatureInfoParameters": {
@@ -319,29 +202,9 @@
             {
               "type": "wms",
               "name": "Water Velocity",
-              "url": "$GEOSERVER_URL/geoserver/model_outputs/wms",
-              "layers": "watersourceRGB_8bit_1m",
-              "styles": "watersourceRGB_8bit_1m",
+              "url": "$GEOSERVER_URL/geoserver/static_files/wms",
+              "layers": "2050_velocity_1m",
               "isOpenInWorkbench": true,
-              "legends": [
-                {
-                  "title": "Water Sources",
-                  "items": [
-                    {
-                      "title": "Streams",
-                      "color": "#FF0000"
-                    },
-                    {
-                      "title": "Rain",
-                      "color": "#00FF00"
-                    },
-                    {
-                      "title": "Tide",
-                      "color": "#0000FF"
-                    }
-                  ]
-                }
-              ],
               "supportsGetTimeseries": true,
               "getFeatureInfoUrl": "$BACKEND_URL/api/query",
               "getFeatureInfoParameters": {
@@ -352,29 +215,9 @@
             {
               "type": "wms",
               "name": "Water Depth",
-              "url": "$GEOSERVER_URL/geoserver/model_outputs/wms",
-              "layers": "watersourceRGB_8bit_1m",
-              "styles": "watersourceRGB_8bit_1m",
+              "url": "$GEOSERVER_URL/geoserver/static_files/wms",
+              "layers": "2050_waterdepth_1m",
               "isOpenInWorkbench": true,
-              "legends": [
-                {
-                  "title": "Water Sources",
-                  "items": [
-                    {
-                      "title": "Streams",
-                      "color": "#FF0000"
-                    },
-                    {
-                      "title": "Rain",
-                      "color": "#00FF00"
-                    },
-                    {
-                      "title": "Tide",
-                      "color": "#0000FF"
-                    }
-                  ]
-                }
-              ],
               "supportsGetTimeseries": true,
               "getFeatureInfoUrl": "$BACKEND_URL/api/query",
               "getFeatureInfoParameters": {
@@ -384,30 +227,10 @@
             },
             {
               "type": "wms",
-              "name": "Sediment Depth",
-              "url": "$GEOSERVER_URL/geoserver/model_outputs/wms",
-              "layers": "watersourceRGB_8bit_1m",
-              "styles": "watersourceRGB_8bit_1m",
+              "name": "Median Sediment Size",
+              "url": "$GEOSERVER_URL/geoserver/static_files/wms",
+              "layers": "2050_d50top_1m",
               "isOpenInWorkbench": true,
-              "legends": [
-                {
-                  "title": "Water Sources",
-                  "items": [
-                    {
-                      "title": "Streams",
-                      "color": "#FF0000"
-                    },
-                    {
-                      "title": "Rain",
-                      "color": "#00FF00"
-                    },
-                    {
-                      "title": "Tide",
-                      "color": "#0000FF"
-                    }
-                  ]
-                }
-              ],
               "supportsGetTimeseries": true,
               "getFeatureInfoUrl": "$BACKEND_URL/api/query",
               "getFeatureInfoParameters": {
@@ -426,8 +249,8 @@
               "type": "wms",
               "name": "Water Source Summary Map",
               "url": "$GEOSERVER_URL/geoserver/model_outputs/wms",
-              "layers": "watersourceRGB_8bit_1m",
-              "styles": "watersourceRGB_8bit_1m",
+              "layers": "2080_watersourceRGB_1m_depth_0nan",
+              "styles": "2080_watersourceRGB_1m_depth_0nan",
               "isOpenInWorkbench": true,
               "legends": [
                 {
@@ -452,62 +275,24 @@
             {
               "type": "wms",
               "name": "Water Sources - Streams",
-              "url": "$GEOSERVER_URL/geoserver/model_outputs/wms",
-              "layers": "watersourceRGB_8bit_1m",
-              "styles": "watersourceRGB_8bit_1m",
+              "url": "$GEOSERVER_URL/geoserver/static_files/wms",
+              "layers": "2080_watersource_hydros_1m",
+              "styles": "reds_percent",
               "isOpenInWorkbench": true,
-              "legends": [
-                {
-                  "title": "Water Sources",
-                  "items": [
-                    {
-                      "title": "Streams",
-                      "color": "#FF0000"
-                    },
-                    {
-                      "title": "Rain",
-                      "color": "#00FF00"
-                    },
-                    {
-                      "title": "Tide",
-                      "color": "#0000FF"
-                    }
-                  ]
-                }
-              ],
               "supportsGetTimeseries": true,
               "getFeatureInfoUrl": "$BACKEND_URL/api/query",
               "getFeatureInfoParameters": {
-                "epoch": "2080s",
-                "variable": "hydro"
+                  "epoch": "2080s",
+                  "variable": "hydro"
               }
             },
             {
               "type": "wms",
               "name": "Water Sources - Rain",
-              "url": "$GEOSERVER_URL/geoserver/model_outputs/wms",
-              "layers": "watersourceRGB_8bit_1m",
-              "styles": "watersourceRGB_8bit_1m",
+              "url": "$GEOSERVER_URL/geoserver/static_files/wms",
+              "layers": "2080_watersource_rain_1m",
+              "styles": "greens_percent",
               "isOpenInWorkbench": true,
-              "legends": [
-                {
-                  "title": "Water Sources",
-                  "items": [
-                    {
-                      "title": "Streams",
-                      "color": "#FF0000"
-                    },
-                    {
-                      "title": "Rain",
-                      "color": "#00FF00"
-                    },
-                    {
-                      "title": "Tide",
-                      "color": "#0000FF"
-                    }
-                  ]
-                }
-              ],
               "supportsGetTimeseries": true,
               "getFeatureInfoUrl": "$BACKEND_URL/api/query",
               "getFeatureInfoParameters": {
@@ -518,29 +303,10 @@
             {
               "type": "wms",
               "name": "Water Sources - Tide",
-              "url": "$GEOSERVER_URL/geoserver/model_outputs/wms",
-              "layers": "watersourceRGB_8bit_1m",
-              "styles": "watersourceRGB_8bit_1m",
+              "url": "$GEOSERVER_URL/geoserver/static_files/wms",
+              "layers": "2080_watersource_stage_1m",
+              "styles": "blues_percent",
               "isOpenInWorkbench": true,
-              "legends": [
-                {
-                  "title": "Water Sources",
-                  "items": [
-                    {
-                      "title": "Streams",
-                      "color": "#FF0000"
-                    },
-                    {
-                      "title": "Rain",
-                      "color": "#00FF00"
-                    },
-                    {
-                      "title": "Tide",
-                      "color": "#0000FF"
-                    }
-                  ]
-                }
-              ],
               "supportsGetTimeseries": true,
               "getFeatureInfoUrl": "$BACKEND_URL/api/query",
               "getFeatureInfoParameters": {
@@ -551,29 +317,9 @@
             {
               "type": "wms",
               "name": "Water Velocity",
-              "url": "$GEOSERVER_URL/geoserver/model_outputs/wms",
-              "layers": "watersourceRGB_8bit_1m",
-              "styles": "watersourceRGB_8bit_1m",
+              "url": "$GEOSERVER_URL/geoserver/static_files/wms",
+              "layers": "2080_velocity_1m",
               "isOpenInWorkbench": true,
-              "legends": [
-                {
-                  "title": "Water Sources",
-                  "items": [
-                    {
-                      "title": "Streams",
-                      "color": "#FF0000"
-                    },
-                    {
-                      "title": "Rain",
-                      "color": "#00FF00"
-                    },
-                    {
-                      "title": "Tide",
-                      "color": "#0000FF"
-                    }
-                  ]
-                }
-              ],
               "supportsGetTimeseries": true,
               "getFeatureInfoUrl": "$BACKEND_URL/api/query",
               "getFeatureInfoParameters": {
@@ -584,29 +330,9 @@
             {
               "type": "wms",
               "name": "Water Depth",
-              "url": "$GEOSERVER_URL/geoserver/model_outputs/wms",
-              "layers": "watersourceRGB_8bit_1m",
-              "styles": "watersourceRGB_8bit_1m",
+              "url": "$GEOSERVER_URL/geoserver/static_files/wms",
+              "layers": "2050_waterdepth_1m",
               "isOpenInWorkbench": true,
-              "legends": [
-                {
-                  "title": "Water Sources",
-                  "items": [
-                    {
-                      "title": "Streams",
-                      "color": "#FF0000"
-                    },
-                    {
-                      "title": "Rain",
-                      "color": "#00FF00"
-                    },
-                    {
-                      "title": "Tide",
-                      "color": "#0000FF"
-                    }
-                  ]
-                }
-              ],
               "supportsGetTimeseries": true,
               "getFeatureInfoUrl": "$BACKEND_URL/api/query",
               "getFeatureInfoParameters": {
@@ -616,30 +342,10 @@
             },
             {
               "type": "wms",
-              "name": "Sediment Depth",
-              "url": "$GEOSERVER_URL/geoserver/model_outputs/wms",
-              "layers": "watersourceRGB_8bit_1m",
-              "styles": "watersourceRGB_8bit_1m",
+              "name": "Median Sediment Size",
+              "url": "$GEOSERVER_URL/geoserver/static_files/wms",
+              "layers": "2080_d50top_1m",
               "isOpenInWorkbench": true,
-              "legends": [
-                {
-                  "title": "Water Sources",
-                  "items": [
-                    {
-                      "title": "Streams",
-                      "color": "#FF0000"
-                    },
-                    {
-                      "title": "Rain",
-                      "color": "#00FF00"
-                    },
-                    {
-                      "title": "Tide",
-                      "color": "#0000FF"
-                    }
-                  ]
-                }
-              ],
               "supportsGetTimeseries": true,
               "getFeatureInfoUrl": "$BACKEND_URL/api/query",
               "getFeatureInfoParameters": {

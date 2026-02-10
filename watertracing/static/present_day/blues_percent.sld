@@ -3,19 +3,19 @@
                        xsi:schemaLocation="http://www.opengis.net/sld
 http://schemas.opengis.net/sld/1.0.0/StyledLayerDescriptor.xsd" version="1.0.0">
     <NamedLayer>
-        <Name>watersource_stage_mean</Name>
+        <Name>reds_percent</Name>
         <UserStyle>
-            <Title>watersource_stage_mean</Title>
+            <Title>reds_percent</Title>
             <FeatureTypeStyle>
                 <Rule>
                     <RasterSymbolizer>
                         <ColorMap>
-                            <ColorMapEntry color="#440154" quantity="0" label="0%"/>
-                            <ColorMapEntry color="#414487" quantity="51" label="20%"/>
-                            <ColorMapEntry color="#2a788e" quantity="102" label="40%"/>
-                            <ColorMapEntry color="#22a884" quantity="153" label="60%"/>
-                            <ColorMapEntry color="#7ad151" quantity="204" label="80%"/>
-                            <ColorMapEntry color="#fde725" quantity="255" label="100%"/>
+                            <ColorMapEntry color="#f7fbff" quantity="0.0" label="0%"/>
+                            <ColorMapEntry color="#d1e2f3" quantity="0.2" label="20%"/>
+                            <ColorMapEntry color="#9ac8e0" quantity="0.4" label="40%"/>
+                            <ColorMapEntry color="#529dcc" quantity="0.6" label="60%"/>
+                            <ColorMapEntry color="#1d6cb1" quantity="0.8" label="80%"/>
+                            <ColorMapEntry color="#08306b" quantity="1.0" label="100%"/>
                         </ColorMap>
                         <Opacity>1.0</Opacity>
                     </RasterSymbolizer>
