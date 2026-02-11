@@ -52,8 +52,8 @@
               "supportsGetTimeseries": true,
               "getFeatureInfoUrl": "$BACKEND_URL/api/query",
               "getFeatureInfoParameters": {
-                  "epoch": "2020s",
-                  "variable": "hydro"
+                "epoch": "2020s",
+                "variable": "hydro"
               }
             },
             {
@@ -167,8 +167,8 @@
               "supportsGetTimeseries": true,
               "getFeatureInfoUrl": "$BACKEND_URL/api/query",
               "getFeatureInfoParameters": {
-                  "epoch": "2050s",
-                  "variable": "hydro"
+                "epoch": "2050s",
+                "variable": "hydro"
               }
             },
             {
@@ -282,8 +282,8 @@
               "supportsGetTimeseries": true,
               "getFeatureInfoUrl": "$BACKEND_URL/api/query",
               "getFeatureInfoParameters": {
-                  "epoch": "2080s",
-                  "variable": "hydro"
+                "epoch": "2080s",
+                "variable": "hydro"
               }
             },
             {
@@ -364,7 +364,7 @@
       "members": [
         {
           "type": "wfs",
-          "name": "Fecal Sampling - February 2023",
+          "name": "Fecal Source Tracing - February 2023",
           "url": "$GEOSERVER_URL/geoserver/static_files/ows",
           "typeNames": "static_files:fecal_sampling",
           "styles": [
@@ -527,7 +527,16 @@
               }
             }
           ],
-          "activeStyle": "General GenBac / 100 ml"
+          "activeStyle": "General GenBac / 100 ml",
+          "dataCustodian": "PHF Science"
+        },
+        {
+          "type": "wfs",
+          "name":  "Investigating the Presence of Microplastics in Te Awarua o Porirua - October 2024",
+          "url": "$GEOSERVER_URL/geoserver/static_files/ows",
+          "typeNames": "static_files:Microplastics_2023_alldata_cleaned",
+          "description": "<h1>Executive Summary</h1><p>The aim of this study was to investigate the presence and types of microplastics in Te Awarua o Porirua. This study was conducted as part of a broad collaboration between Ngāti Toa Rangatira and ESR Māori Impact Team to understand and enhance the mauri of Te Awarua o Porirua, particularly focused on the ongoing issue of human faecal contamination.</p><p>nMicroplastics pieces of plastic which are less than 5 mm in size and have a broad range of negative environmental and health impacts. Wastewater treatment plants are considered “hotspots” of microplastics pollution due to the large number of microplastics which enter through household and industrial waste and the inability of treatment plants to completely remove microplastics. In New Zealand wastewater treatment plants have been shown to be a key way that microplastics enter the ocean. Microplastics are lightweight and subject to tidal movements, meaning they can be found in the surface waters and also wash up on the shore.</p><p>Sampling for microplastics was carried out at sites of significance around the harbour.  These sites were chosen due to a combination of factors including cultural and historical significance, proximity to urban and/or industrial activities, and observation of visible plastic pollution. Site types included beach sand, freshwater (streams), and a waka trawl of Porirua Harbour.</p><p>Some key findings from the study were as follows:<ul><li>Microplastics were identified in beach sand at all sites, with the highest concentrations of plastics at Titahi Bay Beach surf club, Kaiaua and Te Neke</li><li>The majority (63%) of microplastics were fibres, meaning that <strong>fabrics (e.g. clothing) may be a key contributor of plastics</strong></li><li>Most microplastics found were <strong>less than 1 mm</strong> in length</li><li>The concentration, types, and sizes of microplastics found were similar to those found in other studies of microplastics in New Zealand.</li></ul></p><p>This project was the first to document microplastics pollution in Te Awarua o Porirua. Our results confirmed the knowledge of Ngāti Toa Rangatira and the Porirua community that plastics pollution is a key issue, and provides the quantitative evidence to support community action to reduce plastics pollution in Porirua.</p>",
+          "dataCustodian": "PHF Science - Grace Feltham"
         }
       ]
     },
@@ -556,5 +565,303 @@
     ],
     "defaultBaseMapId": "basemap-linz-aerial",
     "previewBaseMapId": "basemap-openstreetmap"
-  }
+  },
+  "stories": [
+    {
+      "title": "Stream+Water+Accumulation",
+      "text": "<p>At+Te+Hiko+Street+and+Porirua+Stream,+stream+water+flows+into+the+harbour+but+does+not+mix+well,+and+any+pollutants+they+carry+may+settle+around+the+harbour+banks.+Stream+water+is+shown+in+red+here.</p>",
+      "id": "007d5d84-5ba3-4c96-8e54-336f2a0943a0",
+      "shareData": {
+        "version": "8.0.0",
+        "initSources": [
+          {
+            "stratum": "user",
+            "models": {
+              "//Flow+models/Present+Day": {
+                "isOpen": true,
+                "knownContainerUniqueIds": [
+                  "//Flow+models"
+                ],
+                "type": "group"
+              },
+              "//Flow+models/Present+Day/Water+Source+Summary+Map+(Present)": {
+                "opacity": 0.86,
+                "knownContainerUniqueIds": [
+                  "//Flow+models/Present+Day"
+                ],
+                "type": "wms"
+              },
+              "/": {
+                "type": "group"
+              },
+              "//Flow+models": {
+                "knownContainerUniqueIds": [
+                  "/"
+                ],
+                "type": "group"
+              }
+            },
+            "workbench": [
+              "//Flow+models/Present+Day/Water+Source+Summary+Map+(Present)"
+            ],
+            "timeline": [
+              "//Flow+models/Present+Day/Water+Source+Summary+Map+(Present)"
+            ],
+            "initialCamera": {
+              "west": 174.81463561234335,
+              "south": -41.13429630787758,
+              "east": 174.86142060294972,
+              "north": -41.1139796219469,
+              "position": {
+                "x": -4793693.013685546,
+                "y": 433529.17658145213,
+                "z": -4175730.086011481
+              },
+              "direction": {
+                "x": 0.48817779511507925,
+                "y": -0.1842380829941121,
+                "z": 0.8530760629224304
+              },
+              "up": {
+                "x": -0.8528205071953969,
+                "y": -0.30836820787382013,
+                "z": 0.42143354266084987
+              }
+            },
+            "homeCamera": {
+              "west": 174.82,
+              "south": -41.15,
+              "east": 174.9,
+              "north": -41.06
+            },
+            "viewerMode": "3d",
+            "showSplitter": false,
+            "splitPosition": 0.5,
+            "settings": {
+              "baseMaximumScreenSpaceError": 2,
+              "useNativeResolution": false,
+              "alwaysShowTimeline": false,
+              "baseMapId": "basemap-linz-aerial",
+              "terrainSplitDirection": 0,
+              "depthTestAgainstTerrainEnabled": false
+            }
+          }
+        ]
+      }
+    },
+    {
+      "title": "A+surprising+change",
+      "text": "<p>Suprisingly,+as+sea+level+rises+later+in+the+century,+more+sea+water+will+mean+better+flushing+at+Te+Hiko+Street,+mixing+more+ocean+and+rain+water+with+the+stream+water.+<br><br>-+Move+the+slider+to+see+the+changes.<br>2020+-+Left<br>2080+-+Right</p>",
+      "id": "4c877f36-82a7-4c53-be2a-b30a7f1dad82",
+      "shareData": {
+        "version": "8.0.0",
+        "initSources": [
+          {
+            "stratum": "user",
+            "models": {
+              "//Flow+models/Present+Day": {
+                "isOpen": true,
+                "knownContainerUniqueIds": [
+                  "//Flow+models"
+                ],
+                "type": "group"
+              },
+              "//Flow+models/Present+Day/Water+Source+Summary+Map+(Present)": {
+                "splitDirection": -1,
+                "opacity": 0.86,
+                "knownContainerUniqueIds": [
+                  "//Flow+models/Present+Day"
+                ],
+                "type": "wms"
+              },
+              "//Flow+models/Sea+Level+Rise+2050": {
+                "isOpen": true,
+                "knownContainerUniqueIds": [
+                  "//Flow+models"
+                ],
+                "type": "group"
+              },
+              "//Flow+models/Sea+Level+Rise+2080": {
+                "isOpen": true,
+                "knownContainerUniqueIds": [
+                  "//Flow+models"
+                ],
+                "type": "group"
+              },
+              "//Flow+models/Sea+Level+Rise+2080/Water+Source+Summary+Map+(2080)": {
+                "splitDirection": 1,
+                "opacity": 1,
+                "knownContainerUniqueIds": [
+                  "//Flow+models/Sea+Level+Rise+2080"
+                ],
+                "type": "wms"
+              },
+              "/": {
+                "type": "group"
+              },
+              "//Flow+models": {
+                "knownContainerUniqueIds": [
+                  "/"
+                ],
+                "type": "group"
+              }
+            },
+            "workbench": [
+              "//Flow+models/Sea+Level+Rise+2080/Water+Source+Summary+Map+(2080)",
+              "//Flow+models/Present+Day/Water+Source+Summary+Map+(Present)"
+            ],
+            "timeline": [
+              "//Flow+models/Sea+Level+Rise+2080/Water+Source+Summary+Map+(2080)",
+              "//Flow+models/Present+Day/Water+Source+Summary+Map+(Present)"
+            ],
+            "initialCamera": {
+              "west": 174.82282778084124,
+              "south": -41.13286927235527,
+              "east": 174.85748427157537,
+              "north": -41.11781914286633,
+              "position": {
+                "x": -4793497.623903233,
+                "y": 432918.1995627459,
+                "z": -4174915.5681460225
+              },
+              "direction": {
+                "x": 0.6099188504054793,
+                "y": -0.08003405598108133,
+                "z": 0.7884120406255067
+              },
+              "up": {
+                "x": -0.792455029830195,
+                "y": -0.05689639180725134,
+                "z": 0.6072708014519885
+              }
+            },
+            "homeCamera": {
+              "west": 174.82,
+              "south": -41.15,
+              "east": 174.9,
+              "north": -41.06
+            },
+            "viewerMode": "3d",
+            "showSplitter": true,
+            "splitPosition": 0.5705250000000001,
+            "settings": {
+              "baseMaximumScreenSpaceError": 2,
+              "useNativeResolution": false,
+              "alwaysShowTimeline": false,
+              "baseMapId": "basemap-linz-aerial",
+              "terrainSplitDirection": 0,
+              "depthTestAgainstTerrainEnabled": false
+            }
+          }
+        ]
+      }
+    },
+    {
+      "title": "Increased+flooding",
+      "text": "<p>However,+increased+sea+level+will+expand+the+harbour,+flooding+the+Pauatahanui+Wildlife+Reserve+wetlands.</p><p>-+Move+the+slider+to+see+the+changes.<br>2020+-+Left<br>2080+-+Right</p>",
+      "id": "7af9b7a0-c2ca-4596-bee0-743f21bab4eb",
+      "shareData": {
+        "version": "8.0.0",
+        "initSources": [
+          {
+            "stratum": "user",
+            "models": {
+              "//Flow+models/Present+Day": {
+                "isOpen": true,
+                "knownContainerUniqueIds": [
+                  "//Flow+models"
+                ],
+                "type": "group"
+              },
+              "//Flow+models/Present+Day/Water+Source+Summary+Map+(Present)": {
+                "splitDirection": -1,
+                "opacity": 0.86,
+                "knownContainerUniqueIds": [
+                  "//Flow+models/Present+Day"
+                ],
+                "type": "wms"
+              },
+              "//Flow+models/Sea+Level+Rise+2050": {
+                "isOpen": true,
+                "knownContainerUniqueIds": [
+                  "//Flow+models"
+                ],
+                "type": "group"
+              },
+              "//Flow+models/Sea+Level+Rise+2080": {
+                "isOpen": true,
+                "knownContainerUniqueIds": [
+                  "//Flow+models"
+                ],
+                "type": "group"
+              },
+              "//Flow+models/Sea+Level+Rise+2080/Water+Source+Summary+Map+(2080)": {
+                "splitDirection": 1,
+                "opacity": 1,
+                "knownContainerUniqueIds": [
+                  "//Flow+models/Sea+Level+Rise+2080"
+                ],
+                "type": "wms"
+              },
+              "/": {
+                "type": "group"
+              },
+              "//Flow+models": {
+                "knownContainerUniqueIds": [
+                  "/"
+                ],
+                "type": "group"
+              }
+            },
+            "workbench": [
+              "//Flow+models/Sea+Level+Rise+2080/Water+Source+Summary+Map+(2080)",
+              "//Flow+models/Present+Day/Water+Source+Summary+Map+(Present)"
+            ],
+            "timeline": [
+              "//Flow+models/Sea+Level+Rise+2080/Water+Source+Summary+Map+(2080)",
+              "//Flow+models/Present+Day/Water+Source+Summary+Map+(Present)"
+            ],
+            "initialCamera": {
+              "west": 174.88802071009044,
+              "south": -41.11315278927184,
+              "east": 174.92635695611318,
+              "north": -41.09649962511522,
+              "position": {
+                "x": -4795529.833119684,
+                "y": 426896.94934975787,
+                "z": -4173495.9747831593
+              },
+              "direction": {
+                "x": 0.5625081448884376,
+                "y": 0.12422976301957737,
+                "z": 0.8174053785694514
+              },
+              "up": {
+                "x": -0.6987788730847311,
+                "y": 0.5998644069626146,
+                "z": 0.38970601713320274
+              }
+            },
+            "homeCamera": {
+              "west": 174.82,
+              "south": -41.15,
+              "east": 174.9,
+              "north": -41.06
+            },
+            "viewerMode": "3d",
+            "showSplitter": true,
+            "splitPosition": 0.7049,
+            "settings": {
+              "baseMaximumScreenSpaceError": 2,
+              "useNativeResolution": false,
+              "alwaysShowTimeline": false,
+              "baseMapId": "basemap-linz-aerial",
+              "terrainSplitDirection": 0,
+              "depthTestAgainstTerrainEnabled": false
+            }
+          }
+        ]
+      }
+    }
+  ]
 }
