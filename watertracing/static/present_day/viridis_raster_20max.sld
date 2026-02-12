@@ -10,12 +10,12 @@ http://schemas.opengis.net/sld/1.0.0/StyledLayerDescriptor.xsd" version="1.0.0">
                 <Rule>
                     <RasterSymbolizer>
                         <ColorMap>
-                            <ColorMapEntry color="#440154" quantity="0" label="0m"/>
-                            <ColorMapEntry color="#414487" quantity="4" label="3m"/>
-                            <ColorMapEntry color="#2a788e" quantity="8" label="8m"/>
-                            <ColorMapEntry color="#22a884" quantity="12" label="12m"/>
-                            <ColorMapEntry color="#7ad151" quantity="16" label="16m"/>
-                            <ColorMapEntry color="#fde725" quantity="20" label="20m"/>
+                            <ColorMapEntry color="#440154" quantity="0" label="0 m"/>
+                            <ColorMapEntry color="#414487" quantity="4" label="3 m"/>
+                            <ColorMapEntry color="#2a788e" quantity="8" label="8 m"/>
+                            <ColorMapEntry color="#22a884" quantity="12" label="12 m"/>
+                            <ColorMapEntry color="#7ad151" quantity="16" label="16 m"/>
+                            <ColorMapEntry color="#fde725" quantity="20" label="20 m"/>
                         </ColorMap>
                         <Opacity>1.0</Opacity>
                     </RasterSymbolizer>
