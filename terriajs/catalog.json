@@ -1998,7 +1998,7 @@
     },
     {
       "title": "Microplastics",
-      "text": "",
+      "text": "<p>A survey was conducted in 2023 to collect information on microplastics (small pieces of plastic less than half a cm in size) at key sites around Te Awarua o Porirua. This was done to help support the understandings gained from the regular monitoring events.</p><h3>Why microplastics?</h3><p>The project aimed to enhance the mauri of Te Awarua o Porirua by understanding the ongoing issue of human faecal contamination in the harbour. Wastewater treatment plants are considered “hotspots” of microplastics pollution due to the large number of microplastics which enter through household and industrial waste. Therefore, microplastics can be an indicator of faecal contamination, and can add another useful layer to the data collected.</p><h3>Key findings</h3><ul><li>Microplastics were identified in beach sand at all sites, with the highest concentrations of plastics at Titahi Bay Beach surf club, Kaiaua and Te Neke.</li><li>The majority (63%) of microplastics were fibres, meaning that fabrics (e.g. clothing) may be a key contributor of plastics.</li><li>Most microplastics found were less than 1 mm in length.</li><li>The concentration, types, and sizes of microplastics found were similar to those found in other studies of microplastics in New Zealand.</li></ul>",
       "id": "1ed4f598-e2de-4317-9f83-4fcdae6f6d26",
       "shareData": {
         "version": "8.0.0",
@@ -2049,12 +2049,6 @@
                 "y": 0.26841415318583417,
                 "z": 0.07517099349404317
               }
-            },
-            "homeCamera": {
-              "west": 174.82,
-              "south": -41.15,
-              "east": 174.9,
-              "north": -41.06
             },
             "viewerMode": "3d",
             "showSplitter": true,
