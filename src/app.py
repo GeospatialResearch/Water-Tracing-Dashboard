@@ -108,7 +108,7 @@ def normalise_layer() -> Response:
     year = layer[:5]
 
     # Request the raw RGB values (not depth scaled) from geoserver
-    rgb_raw_layer = f"{year}_watersourceRGB_1m_raw"
+    rgb_raw_layer = f"{year}_watersourceRGB_10m_raw"
     query_parameters["query_layer"] = rgb_raw_layer
     geoserver_resp = requests.request(
         method=request.method,
