@@ -44,7 +44,6 @@ def upload_water_tracing_rgb_model_output(rgb_model_output_path: pathlib.Path) -
     workspace_name = gs.Workspaces.MODEL_OUTPUTS_WORKSPACE
     gs.create_workspace_if_not_exists(workspace_name)
     gs.add_gtiff_to_geoserver(rgb_model_output_path, workspace_name, rgb_model_output_path.stem, coverage_dimensions)
-    gs.add_style(rgb_model_output_path.with_suffix(".sld"), replace=True)
 
 
 def main_a(
@@ -80,12 +79,13 @@ def main_a(
 def main(_sekected_polygon_gdf, rgb_model_output_path, log_level: LogLevel) -> None:
     setup_logging(log_level)
     engine = get_database()
-    present_day_dir = pathlib.Path("watertracing/static/present_day")
-    serve_static_files(engine, present_day_dir)
-
-    for rgb in present_day_dir.glob("20*_watersourceRGB_1m_depth_0nan.tif"):
-        log.info(f"~~Uploading rgb {rgb.name} rgb")
-        main_a(_sekected_polygon_gdf, rgb, log_level)
+    static_base_dir = pathlib.Path("watertracing/static/")
+    static_dirs = [static_base_dir / sub_dir for sub_dir in (".", "present_day", "2050", "2080")]
+    for static_dir in static_dirs:
+        serve_static_files(engine, static_dir)
+        for rgb in static_dir.glob("20*_watersourceRGB_1m_depth_255nan.tif"):
+            log.info(f"~~Uploading rgb {rgb.name} rgb")
+            main_a(_sekected_polygon_gdf, rgb, log_level)
 
 
 if __name__ == '__main__':

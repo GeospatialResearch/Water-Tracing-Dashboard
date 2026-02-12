@@ -19,8 +19,8 @@
               "type": "wms",
               "name": "Flow Model (Present) - Water Source Summary Map",
               "url": "$GEOSERVER_URL/geoserver/model_outputs/wms",
-              "layers": "2026_watersourceRGB_1m_depth_0nan",
-              "styles": "2026_watersourceRGB_1m_depth_0nan",
+              "layers": "2026_watersourceRGB_1m_depth_255nan",
+              "styles": "RGB",
               "getFeatureInfoUrl": "$BACKEND_URL/api/normalise",
               "isOpenInWorkbench": true,
               "legends": [
@@ -138,8 +138,8 @@
               "type": "wms",
               "name": "Flow Model (2050) - Water Source Summary Map",
               "url": "$GEOSERVER_URL/geoserver/model_outputs/wms",
-              "layers": "2050_watersourceRGB_1m_depth_0nan",
-              "styles": "2050_watersourceRGB_1m_depth_0nan",
+              "layers": "2050_watersourceRGB_1m_depth_255nan",
+              "styles": "RGB",
               "getFeatureInfoUrl": "$BACKEND_URL/api/normalise",
               "isOpenInWorkbench": true,
               "legends": [
@@ -257,8 +257,8 @@
               "type": "wms",
               "name": "Flow Model (2080) - Water Source Summary Map",
               "url": "$GEOSERVER_URL/geoserver/model_outputs/wms",
-              "layers": "2080_watersourceRGB_1m_depth_0nan",
-              "styles": "2080_watersourceRGB_1m_depth_0nan",
+              "layers": "2080_watersourceRGB_1m_depth_255nan",
+              "styles": "RGB",
               "getFeatureInfoUrl": "$BACKEND_URL/api/normalise",
               "isOpenInWorkbench": true,
               "legends": [
