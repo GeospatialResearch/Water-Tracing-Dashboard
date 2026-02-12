@@ -23,7 +23,9 @@
         "Proportion Ruminant": "NC",
         "Dog DogBac / 100 ml": "<16",
         "Avian GFD / 100 ml": "<14",
-        "Conclusion": "Faecal source – human + low level\nruminant"
+        "Conclusion": "Faecal source – human + low level\nruminant",
+        "Cultural Health Survey Score Summary %": "67.6",
+        "Cultural Health Survey Score Description": "Ahua Pai"
       },
       "geometry": {
         "type": "Point",
@@ -48,7 +50,9 @@
         "Proportion Ruminant": "1% or less",
         "Dog DogBac / 100 ml": "<16",
         "Avian GFD / 100 ml": 2800,
-        "Conclusion": "Faecal source – human + ruminant\n(< 1%) + avian"
+        "Conclusion": "Faecal source – human + ruminant (< 1%) + avian",
+        "Cultural Health Survey Score Summary %": "27.1",
+        "Cultural Health Survey Score Description": "E Kino Ana"
       },
       "geometry": {
         "type": "Point",
@@ -62,7 +66,7 @@
       "type": "Feature",
       "properties": {
         "name": "Paremata",
-        "Description / Site ID": "Paremata\nRailway Station",
+        "Description / Site ID": "Paremata Railway Station",
         "ESR Number": "CMB230153 ",
         "Client Reference": "2/23PRS47",
         "General GenBac / 100 ml": 18000,
@@ -73,7 +77,9 @@
         "Proportion Ruminant": "1-10%",
         "Dog DogBac / 100 ml": "<16",
         "Avian GFD / 100 ml": 780,
-        "Conclusion": "Faecal source – human + ruminant\n(1-10%) + avian"
+        "Conclusion": "Faecal source – human + ruminant (1-10%) + avian",
+        "Cultural Health Survey Score Summary %": "20.9",
+        "Cultural Health Survey Score Description": "Mauri Mate"
       },
       "geometry": {
         "type": "Point",
@@ -98,7 +104,9 @@
         "Proportion Ruminant": "1-10%",
         "Dog DogBac / 100 ml": "<16",
         "Avian GFD / 100 ml": 61,
-        "Conclusion": "Faecal source – ruminant (1-10%)\n+ avian"
+        "Conclusion": "Faecal source – ruminant (1-10%) + avian",
+        "Cultural Health Survey Score Summary %": "59.0",
+        "Cultural Health Survey Score Description": "Ahua Pai"
       },
       "geometry": {
         "type": "Point",
@@ -123,7 +131,9 @@
         "Proportion Ruminant": "1-10%",
         "Dog DogBac / 100 ml": "<16",
         "Avian GFD / 100 ml": 13000,
-        "Conclusion": "Faecal source – ruminant (1-10%)\n+ avian"
+        "Conclusion": "Faecal source – ruminant (1-10%) + avian",
+        "Cultural Health Survey Score Summary %": "52.3",
+        "Cultural Health Survey Score Description": "Ahua Pai"
       },
       "geometry": {
         "type": "Point",

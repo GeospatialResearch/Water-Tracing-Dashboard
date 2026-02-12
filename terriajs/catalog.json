@@ -376,10 +376,40 @@
       "members": [
         {
           "type": "wfs",
-          "name": "Fecal Source Tracing - February 2023",
+          "name": "Faecal Source Tracking - February 2023",
           "url": "$GEOSERVER_URL/geoserver/static_files/ows",
           "typeNames": "static_files:fecal_sampling",
           "styles": [
+            {
+              "id": "name",
+              "hidden": true
+            },
+            {
+              "id": "ESR Number",
+              "hidden": true
+            },
+            {
+              "id": "Client Reference",
+              "hidden": true
+            },
+            {
+              "id": "Description / Site ID",
+              "label": {
+                "enabled": true,
+                "mapType": "constant",
+                "null": {
+                  "labelColumn": "Description / Site ID",
+                  "pixelOffset": [
+                    15,
+                    0
+                  ]
+                }
+              },
+              "pointSize": {
+                "sizeFactor": 22,
+                "sizeOffset": 8
+              }
+            },
             {
               "id": "General GenBac / 100 ml",
               "color": {
@@ -537,9 +567,45 @@
                 "sizeFactor": 22,
                 "sizeOffset": 8
               }
+            },
+            {
+              "id": "Cultural Health Survey Score Summary %",
+              "label": {
+                "enabled": true,
+                "mapType": "constant",
+                "null": {
+                  "labelColumn": "Cultural Health Survey Score Summary %",
+                  "pixelOffset": [
+                    15,
+                    0
+                  ]
+                }
+              },
+              "pointSize": {
+                "sizeFactor": 22,
+                "sizeOffset": 8
+              }
+            },
+            {
+              "id": "Cultural Health Survey Score Description",
+              "label": {
+                "enabled": true,
+                "mapType": "constant",
+                "null": {
+                  "labelColumn": "Cultural Health Survey Score Description",
+                  "pixelOffset": [
+                    15,
+                    0
+                  ]
+                }
+              },
+              "pointSize": {
+                "sizeFactor": 22,
+                "sizeOffset": 8
+              }
             }
           ],
-          "activeStyle": "General GenBac / 100 ml",
+          "activeStyle": "Human crAssphage / 100 ml",
           "dataCustodian": "PHF Science"
         },
         {
@@ -548,7 +614,7 @@
           "url": "$GEOSERVER_URL/geoserver/static_files/ows",
           "typeNames": "static_files:Microplastics_2023_alldata_cleaned",
           "description": "<h1>Executive Summary</h1><p>The aim of this study was to investigate the presence and types of microplastics in Te Awarua o Porirua. This study was conducted as part of a broad collaboration between Ngāti Toa Rangatira and ESR Māori Impact Team to understand and enhance the mauri of Te Awarua o Porirua, particularly focused on the ongoing issue of human faecal contamination.</p><p>nMicroplastics pieces of plastic which are less than 5 mm in size and have a broad range of negative environmental and health impacts. Wastewater treatment plants are considered “hotspots” of microplastics pollution due to the large number of microplastics which enter through household and industrial waste and the inability of treatment plants to completely remove microplastics. In New Zealand wastewater treatment plants have been shown to be a key way that microplastics enter the ocean. Microplastics are lightweight and subject to tidal movements, meaning they can be found in the surface waters and also wash up on the shore.</p><p>Sampling for microplastics was carried out at sites of significance around the harbour.  These sites were chosen due to a combination of factors including cultural and historical significance, proximity to urban and/or industrial activities, and observation of visible plastic pollution. Site types included beach sand, freshwater (streams), and a waka trawl of Porirua Harbour.</p><p>Some key findings from the study were as follows:<ul><li>Microplastics were identified in beach sand at all sites, with the highest concentrations of plastics at Titahi Bay Beach surf club, Kaiaua and Te Neke</li><li>The majority (63%) of microplastics were fibres, meaning that <strong>fabrics (e.g. clothing) may be a key contributor of plastics</strong></li><li>Most microplastics found were <strong>less than 1 mm</strong> in length</li><li>The concentration, types, and sizes of microplastics found were similar to those found in other studies of microplastics in New Zealand.</li></ul></p><p>This project was the first to document microplastics pollution in Te Awarua o Porirua. Our results confirmed the knowledge of Ngāti Toa Rangatira and the Porirua community that plastics pollution is a key issue, and provides the quantitative evidence to support community action to reduce plastics pollution in Porirua.</p>",
-          "dataCustodian": "PHF Science - Grace Feltham"
+          "dataCustodian": "PHF Science"
         }
       ]
     },
