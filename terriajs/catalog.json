@@ -632,6 +632,12 @@
       "type": "esri-group",
       "url": "https://mapping.gw.govt.nz/arcgis/rest/services/GW/Our_Environment_P/MapServer/",
       "isOpen": true
+    },
+    {
+      "name": "Greater Wellington Regional Council - Natural Resources Plan",
+      "type": "esri-group",
+      "url": "https://mapping.gw.govt.nz/arcgis/rest/services/GW/NRPMap_P_operative/MapServer/",
+      "isOpen": true
     }
   ],
   "baseMaps": {
