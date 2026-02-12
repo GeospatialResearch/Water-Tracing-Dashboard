@@ -24,7 +24,9 @@ from http.client import OK
 from flask import Flask, jsonify, make_response, Response, request
 from flask_cors import CORS
 from flask_swagger_ui import get_swaggerui_blueprint
+import requests
 
+from src.config import EnvVariable
 from src.check_celery_alive import check_celery_alive
 from src.geoserver import get_terria_catalog
 from src.watersource.query_db import query_watersource_data
@@ -94,6 +96,38 @@ def terria_catalog() -> Response:
     """
     catalog = get_terria_catalog()
     return make_response(jsonify(catalog), OK)
+
+
+@app.route("/api/normalise/", methods=["GET"])
+def normalise_layer() -> Response:
+    """Pass the request to geoserver but normalise it"""
+
+    # Find what year we are looking at
+    query_parameters = request.args.to_dict()
+    layer = query_parameters["layers"]
+    year = layer[:5]
+
+    # Request the raw RGB values (not depth scaled) from geoserver
+    rgb_raw_layer = f"{year}_watersourceRGB_1m_raw"
+    query_parameters["query_layer"] = rgb_raw_layer
+    geoserver_resp = requests.request(
+        method=request.method,
+        url=f"{EnvVariable.GEOSERVER_INTERNAL_HOST}:{EnvVariable.GEOSERVER_INTERNAL_PORT}/geoserver/static_files/wms",
+        params=query_parameters
+    )
+    geoserver_resp.raise_for_status()
+    json = geoserver_resp.json()
+    props = json["features"][0]["properties"]
+
+    # Normalise into the range 0-100% instead of 0-255
+    rgb = ["Streams", "Rain", "Tide"]
+    new_props = {}
+    for i, (k, v) in enumerate(props.items()):
+        normalised = min(v / 2.55, 100)
+        new_props[rgb[i]] = f"{round(normalised)} %"
+    json["features"][0]["properties"] = new_props
+
+    return make_response(json, 200)
 
 
 @app.route("/api/query", methods=["GET"])

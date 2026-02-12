@@ -21,6 +21,7 @@
               "url": "$GEOSERVER_URL/geoserver/model_outputs/wms",
               "layers": "2026_watersourceRGB_1m_depth_0nan",
               "styles": "2026_watersourceRGB_1m_depth_0nan",
+              "getFeatureInfoUrl": "$BACKEND_URL/api/normalise",
               "isOpenInWorkbench": true,
               "legends": [
                 {
@@ -139,6 +140,7 @@
               "url": "$GEOSERVER_URL/geoserver/model_outputs/wms",
               "layers": "2050_watersourceRGB_1m_depth_0nan",
               "styles": "2050_watersourceRGB_1m_depth_0nan",
+              "getFeatureInfoUrl": "$BACKEND_URL/api/normalise",
               "isOpenInWorkbench": true,
               "legends": [
                 {
@@ -257,6 +259,7 @@
               "url": "$GEOSERVER_URL/geoserver/model_outputs/wms",
               "layers": "2080_watersourceRGB_1m_depth_0nan",
               "styles": "2080_watersourceRGB_1m_depth_0nan",
+              "getFeatureInfoUrl": "$BACKEND_URL/api/normalise",
               "isOpenInWorkbench": true,
               "legends": [
                 {
