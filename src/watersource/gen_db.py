@@ -866,7 +866,7 @@ def gen_db_single_epoch(
     if not n_modified_file and not n_final_file:
         # round source coordinates to integer
         Watersource.modify_asc_line_parallel(input_dir, modified_dir)
-    elif n_final_file == int(n_input_file * 20 / 6):
+    elif n_input_file == int(n_final_file * 20 / 6):
         print(
             f"""All files have been modified and converted to geotiff in directory: {final_dir}. 
             Skipping modification and geotiff conversion."""
@@ -901,6 +901,11 @@ def gen_db_single_epoch(
         # convert to geotiff
         Watersource.asc_to_geotiff(
             modified_dir, final_dir, start_time, clean_tmp=clean_tmp
+        )
+    elif int(n_final_file * 20 / 6) == n_input_file:
+        print(
+            f"""All files have been converted to geotiff in directory: {final_dir}. 
+            Skipping geotiff conversion."""
         )
     elif n_modified_file != n_input_file:
         raise ValueError(
