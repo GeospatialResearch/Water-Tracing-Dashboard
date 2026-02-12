@@ -646,301 +646,2786 @@
     "previewBaseMapId": "basemap-openstreetmap"
   },
   "stories": [
-    {
-      "title": "Stream+Water+Accumulation",
-      "text": "<p>At+Te+Hiko+Street+and+Porirua+Stream,+stream+water+flows+into+the+harbour+but+does+not+mix+well,+and+any+pollutants+they+carry+may+settle+around+the+harbour+banks.+Stream+water+is+shown+in+red+here.</p>",
-      "id": "007d5d84-5ba3-4c96-8e54-336f2a0943a0",
-      "shareData": {
-        "version": "8.0.0",
-        "initSources": [
-          {
-            "stratum": "user",
-            "models": {
-              "//Flow+models/Present+Day": {
-                "isOpen": true,
-                "knownContainerUniqueIds": [
-                  "//Flow+models"
+        {
+          "title": "Introduction to mahinga kai sites",
+          "text": "",
+          "id": "5acbc9a9-76bc-426e-a949-d87f47c57cfa",
+          "shareData": {
+            "version": "8.0.0",
+            "initSources": [
+              {
+                "stratum": "user",
+                "models": {
+                  "/": {
+                    "type": "group"
+                  },
+                  "//Greater Wellington Regional Council - Our Environment": {
+                    "knownContainerUniqueIds": [
+                      "/"
+                    ],
+                    "type": "esri-group"
+                  },
+                  "//Flow models/Present Day/Water Sources - Streams (Present):Water Sources - Streams (Present):blob:https://teawarua.app.geospatial.ac.nz/2a11d596-7b82-401b-b68f-b294f80ed2f1": {
+                    "show": false,
+                    "name": "Water Sources - Streams (Present)",
+                    "chartPointOnMap": {
+                      "latitude": -41.12388159153871,
+                      "longitude": 174.83787986321505
+                    },
+                    "styles": [
+                      {
+                        "id": "chart"
+                      },
+                      {
+                        "id": "value",
+                        "chart": {
+                          "lines": [
+                            {
+                              "yAxisColumn": "value",
+                              "isSelectedInWorkbench": false
+                            }
+                          ]
+                        }
+                      }
+                    ],
+                    "columnTitles": [
+                      ""
+                    ],
+                    "columnUnits": [
+                      ""
+                    ],
+                    "type": "csv"
+                  },
+                  "//Flow models/Present Day/Water Sources - Rain (Present):Water Sources - Rain (Present):blob:https://teawarua.app.geospatial.ac.nz/cf766fc6-43e4-467f-902a-a685f4576cb4": {
+                    "show": false,
+                    "name": "Water Sources - Rain (Present)",
+                    "chartPointOnMap": {
+                      "latitude": -41.12390888091413,
+                      "longitude": 174.83790259556207
+                    },
+                    "styles": [
+                      {
+                        "id": "chart"
+                      },
+                      {
+                        "id": "value",
+                        "chart": {
+                          "lines": [
+                            {
+                              "yAxisColumn": "value",
+                              "isSelectedInWorkbench": false
+                            }
+                          ]
+                        }
+                      }
+                    ],
+                    "columnTitles": [
+                      ""
+                    ],
+                    "columnUnits": [
+                      ""
+                    ],
+                    "type": "csv"
+                  },
+                  "//Flow models/Sea Level Rise 2080/Water Sources - Tide (2080):Water Sources - Tide (2080):blob:https://teawarua.app.geospatial.ac.nz/20aa9d34-212d-42c5-a9fb-014fea1480a7": {
+                    "show": false,
+                    "name": "Water Sources - Tide (2080)",
+                    "chartPointOnMap": {
+                      "latitude": -41.09856976116374,
+                      "longitude": 174.86344900900534
+                    },
+                    "styles": [
+                      {
+                        "id": "chart"
+                      },
+                      {
+                        "id": "value",
+                        "chart": {
+                          "lines": [
+                            {
+                              "yAxisColumn": "value",
+                              "isSelectedInWorkbench": false
+                            }
+                          ]
+                        }
+                      }
+                    ],
+                    "columnTitles": [
+                      ""
+                    ],
+                    "columnUnits": [
+                      ""
+                    ],
+                    "type": "csv"
+                  },
+                  "//Flow models/Present Day/Water Sources - Tide (Present):Water Sources - Tide (Present):blob:https://teawarua.app.geospatial.ac.nz/bd5d0a29-4b88-47b4-ac8b-f86aad806c67": {
+                    "show": false,
+                    "name": "Water Sources - Tide (Present)",
+                    "chartPointOnMap": {
+                      "latitude": -41.09856976116374,
+                      "longitude": 174.86344900900534
+                    },
+                    "styles": [
+                      {
+                        "id": "chart"
+                      },
+                      {
+                        "id": "value",
+                        "chart": {
+                          "lines": [
+                            {
+                              "yAxisColumn": "value",
+                              "isSelectedInWorkbench": false
+                            }
+                          ]
+                        }
+                      }
+                    ],
+                    "columnTitles": [
+                      ""
+                    ],
+                    "columnUnits": [
+                      ""
+                    ],
+                    "type": "csv"
+                  },
+                  "//Flow models": {
+                    "knownContainerUniqueIds": [
+                      "/"
+                    ],
+                    "type": "group"
+                  },
+                  "//PHF Science Sampling": {
+                    "knownContainerUniqueIds": [
+                      "/"
+                    ],
+                    "type": "group"
+                  },
+                  "//Greater Wellington Regional Council - Our Environment": {
+                    "knownContainerUniqueIds": [
+                      "/"
+                    ],
+                    "type": "esri-group"
+                  },
+                  "//Greater Wellington Regional Council - Our Environment/0": {
+                    "isOpen": true,
+                    "knownContainerUniqueIds": [
+                      "//Greater Wellington Regional Council - Our Environment"
+                    ],
+                    "type": "esri-mapServer-group"
+                  },
+                  "//Greater Wellington Regional Council - Our Environment/10": {
+                    "isOpen": true,
+                    "knownContainerUniqueIds": [
+                      "//Greater Wellington Regional Council - Our Environment"
+                    ],
+                    "type": "esri-mapServer-group"
+                  },
+                  "//Greater Wellington Regional Council - Our Environment/20": {
+                    "isOpen": true,
+                    "knownContainerUniqueIds": [
+                      "//Greater Wellington Regional Council - Our Environment"
+                    ],
+                    "type": "esri-mapServer-group"
+                  },
+                  "//Greater Wellington Regional Council - Our Environment/22": {
+                    "isOpen": false,
+                    "knownContainerUniqueIds": [
+                      "//Greater Wellington Regional Council - Our Environment"
+                    ],
+                    "type": "esri-mapServer-group"
+                  },
+                  "//Greater Wellington Regional Council - Our Environment/37": {
+                    "isOpen": true,
+                    "knownContainerUniqueIds": [
+                      "//Greater Wellington Regional Council - Our Environment"
+                    ],
+                    "type": "esri-mapServer-group"
+                  },
+                  "//Flow models/Present Day": {
+                    "isOpen": true,
+                    "knownContainerUniqueIds": [
+                      "//Flow models"
+                    ],
+                    "type": "group"
+                  },
+                  "//Flow models/Sea Level Rise 2080": {
+                    "isOpen": true,
+                    "knownContainerUniqueIds": [
+                      "//Flow models"
+                    ],
+                    "type": "group"
+                  },
+                  "//PHF Science Sampling/Fecal Source Tracing - February 2023": {
+                    "show": false,
+                    "activeStyle": "Human crAssphage / 100 ml",
+                    "knownContainerUniqueIds": [
+                      "//PHF Science Sampling"
+                    ],
+                    "type": "wfs"
+                  },
+                  "//Greater Wellington Regional Council - Our Environment/0/4": {
+                    "show": true,
+                    "knownContainerUniqueIds": [
+                      "//Greater Wellington Regional Council - Our Environment/0"
+                    ],
+                    "type": "esri-mapServer"
+                  },
+                  "//Greater Wellington Regional Council - Our Environment/10/11": {
+                    "show": false,
+                    "knownContainerUniqueIds": [
+                      "//Greater Wellington Regional Council - Our Environment/10"
+                    ],
+                    "type": "esri-mapServer"
+                  },
+                  "//Greater Wellington Regional Council - Our Environment/37/39": {
+                    "show": false,
+                    "knownContainerUniqueIds": [
+                      "//Greater Wellington Regional Council - Our Environment/37"
+                    ],
+                    "type": "esri-mapServer"
+                  },
+                  "//Flow models/Present Day/Water Source Summary Map (Present)": {
+                    "opacity": 0.86,
+                    "knownContainerUniqueIds": [
+                      "//Flow models/Present Day"
+                    ],
+                    "type": "wms"
+                  },
+                  "//Flow models/Present Day/Water Sources - Streams (Present)": {
+                    "show": false,
+                    "knownContainerUniqueIds": [
+                      "//Flow models/Present Day"
+                    ],
+                    "type": "wms"
+                  },
+                  "//Flow models/Present Day/Water Sources - Rain (Present)": {
+                    "show": false,
+                    "knownContainerUniqueIds": [
+                      "//Flow models/Present Day"
+                    ],
+                    "type": "wms"
+                  },
+                  "//Flow models/Present Day/Water Sources - Tide (Present)": {
+                    "show": false,
+                    "knownContainerUniqueIds": [
+                      "//Flow models/Present Day"
+                    ],
+                    "type": "wms"
+                  },
+                  "//Flow models/Present Day/Median Sediment Size (Present)": {
+                    "show": false,
+                    "splitDirection": -1,
+                    "knownContainerUniqueIds": [
+                      "//Flow models/Present Day"
+                    ],
+                    "type": "wms"
+                  },
+                  "//Flow models/Sea Level Rise 2080/Water Source Summary Map (2080)": {
+                    "show": false,
+                    "splitDirection": 1,
+                    "knownContainerUniqueIds": [
+                      "//Flow models/Sea Level Rise 2080"
+                    ],
+                    "type": "wms"
+                  },
+                  "//Flow models/Sea Level Rise 2080/Water Sources - Rain (2080)": {
+                    "show": false,
+                    "knownContainerUniqueIds": [
+                      "//Flow models/Sea Level Rise 2080"
+                    ],
+                    "type": "wms"
+                  },
+                  "//Flow models/Sea Level Rise 2080/Water Sources - Tide (2080)": {
+                    "show": false,
+                    "knownContainerUniqueIds": [
+                      "//Flow models/Sea Level Rise 2080"
+                    ],
+                    "type": "wms"
+                  },
+                  "//Flow models/Sea Level Rise 2080/Median Sediment Size (2080)": {
+                    "show": false,
+                    "splitDirection": 1,
+                    "knownContainerUniqueIds": [
+                      "//Flow models/Sea Level Rise 2080"
+                    ],
+                    "type": "wms"
+                  },
+                  "//Greater Wellington Regional Council - Our Environment/0": {
+                    "isOpen": true,
+                    "knownContainerUniqueIds": [
+                      "//Greater Wellington Regional Council - Our Environment"
+                    ],
+                    "type": "esri-mapServer-group"
+                  },
+                  "//Greater Wellington Regional Council - Our Environment/0/4": {
+                    "opacity": 1,
+                    "knownContainerUniqueIds": [
+                      "//Greater Wellington Regional Council - Our Environment/0"
+                    ],
+                    "type": "esri-mapServer"
+                  },
+                  "//Greater Wellington Regional Council - Our Environment/10": {
+                    "isOpen": true,
+                    "knownContainerUniqueIds": [
+                      "//Greater Wellington Regional Council - Our Environment"
+                    ],
+                    "type": "esri-mapServer-group"
+                  },
+                  "//Greater Wellington Regional Council - Our Environment/20": {
+                    "isOpen": true,
+                    "knownContainerUniqueIds": [
+                      "//Greater Wellington Regional Council - Our Environment"
+                    ],
+                    "type": "esri-mapServer-group"
+                  },
+                  "//Greater Wellington Regional Council - Our Environment/22": {
+                    "isOpen": true,
+                    "knownContainerUniqueIds": [
+                      "//Greater Wellington Regional Council - Our Environment"
+                    ],
+                    "type": "esri-mapServer-group"
+                  }
+                },
+                "workbench": [
+                  "//Greater Wellington Regional Council - Our Environment/0/4"
                 ],
-                "type": "group"
-              },
-              "//Flow+models/Present+Day/Water+Source+Summary+Map+(Present)": {
-                "opacity": 0.86,
-                "knownContainerUniqueIds": [
-                  "//Flow+models/Present+Day"
+                "timeline": [
+                  "//Greater Wellington Regional Council - Our Environment/0/4"
                 ],
-                "type": "wms"
-              },
-              "/": {
-                "type": "group"
-              },
-              "//Flow+models": {
-                "knownContainerUniqueIds": [
-                  "/"
-                ],
-                "type": "group"
+                "initialCamera": {
+                  "west": 174.82340609975623,
+                  "south": -41.13784052870533,
+                  "east": 174.85765169236709,
+                  "north": -41.12296997404316,
+                  "position": {
+                    "x": -4791315.561682733,
+                    "y": 432550.8973060481,
+                    "z": -4175825.273110478
+                  },
+                  "direction": {
+                    "x": -0.11282422218076364,
+                    "y": 0.04068021843490192,
+                    "z": 0.9927818565613468
+                  },
+                  "up": {
+                    "x": -0.9870630756652541,
+                    "y": 0.10996458750618321,
+                    "z": -0.1166802217723466
+                  }
+                },
+                "homeCamera": {
+                  "west": 174.82,
+                  "south": -41.15,
+                  "east": 174.9,
+                  "north": -41.06
+                },
+                "viewerMode": "3d",
+                "showSplitter": false,
+                "splitPosition": 0.6149708333333338,
+                "settings": {
+                  "baseMaximumScreenSpaceError": 2,
+                  "useNativeResolution": false,
+                  "alwaysShowTimeline": false,
+                  "baseMapId": "basemap-linz-aerial",
+                  "terrainSplitDirection": 0,
+                  "depthTestAgainstTerrainEnabled": false
+                }
               }
-            },
-            "workbench": [
-              "//Flow+models/Present+Day/Water+Source+Summary+Map+(Present)"
-            ],
-            "timeline": [
-              "//Flow+models/Present+Day/Water+Source+Summary+Map+(Present)"
-            ],
-            "initialCamera": {
-              "west": 174.81463561234335,
-              "south": -41.13429630787758,
-              "east": 174.86142060294972,
-              "north": -41.1139796219469,
-              "position": {
-                "x": -4793693.013685546,
-                "y": 433529.17658145213,
-                "z": -4175730.086011481
-              },
-              "direction": {
-                "x": 0.48817779511507925,
-                "y": -0.1842380829941121,
-                "z": 0.8530760629224304
-              },
-              "up": {
-                "x": -0.8528205071953969,
-                "y": -0.30836820787382013,
-                "z": 0.42143354266084987
-              }
-            },
-            "homeCamera": {
-              "west": 174.82,
-              "south": -41.15,
-              "east": 174.9,
-              "north": -41.06
-            },
-            "viewerMode": "3d",
-            "showSplitter": false,
-            "splitPosition": 0.5,
-            "settings": {
-              "baseMaximumScreenSpaceError": 2,
-              "useNativeResolution": false,
-              "alwaysShowTimeline": false,
-              "baseMapId": "basemap-linz-aerial",
-              "terrainSplitDirection": 0,
-              "depthTestAgainstTerrainEnabled": false
-            }
+            ]
           }
-        ]
-      }
-    },
-    {
-      "title": "A+surprising+change",
-      "text": "<p>Suprisingly,+as+sea+level+rises+later+in+the+century,+more+sea+water+will+mean+better+flushing+at+Te+Hiko+Street,+mixing+more+ocean+and+rain+water+with+the+stream+water.+<br><br>-+Move+the+slider+to+see+the+changes.<br>2020+-+Left<br>2080+-+Right</p>",
-      "id": "4c877f36-82a7-4c53-be2a-b30a7f1dad82",
-      "shareData": {
-        "version": "8.0.0",
-        "initSources": [
-          {
-            "stratum": "user",
-            "models": {
-              "//Flow+models/Present+Day": {
-                "isOpen": true,
-                "knownContainerUniqueIds": [
-                  "//Flow+models"
+        },
+        {
+          "title": "Te Hiko St and FST",
+          "text": "",
+          "id": "36a2bb08-c64e-4aa3-b712-b754f94c949a",
+          "shareData": {
+            "version": "8.0.0",
+            "initSources": [
+              {
+                "stratum": "user",
+                "models": {
+                  "/": {
+                    "type": "group"
+                  },
+                  "//PHF Science Sampling/Faecal Source Tracking - February 2023": {
+                    "knownContainerUniqueIds": [
+                      "//PHF Science Sampling"
+                    ],
+                    "type": "wfs"
+                  },
+                  "//Greater Wellington Regional Council - Our Environment": {
+                    "knownContainerUniqueIds": [
+                      "/"
+                    ],
+                    "type": "esri-group"
+                  },
+                  "//Flow models/Present Day/Water Sources - Streams (Present):Water Sources - Streams (Present):blob:https://teawarua.app.geospatial.ac.nz/2a11d596-7b82-401b-b68f-b294f80ed2f1": {
+                    "show": false,
+                    "name": "Water Sources - Streams (Present)",
+                    "chartPointOnMap": {
+                      "latitude": -41.12388159153871,
+                      "longitude": 174.83787986321505
+                    },
+                    "styles": [
+                      {
+                        "id": "chart"
+                      },
+                      {
+                        "id": "value",
+                        "chart": {
+                          "lines": [
+                            {
+                              "yAxisColumn": "value",
+                              "isSelectedInWorkbench": false
+                            }
+                          ]
+                        }
+                      }
+                    ],
+                    "columnTitles": [
+                      ""
+                    ],
+                    "columnUnits": [
+                      ""
+                    ],
+                    "type": "csv"
+                  },
+                  "//Flow models/Present Day/Water Sources - Rain (Present):Water Sources - Rain (Present):blob:https://teawarua.app.geospatial.ac.nz/cf766fc6-43e4-467f-902a-a685f4576cb4": {
+                    "show": false,
+                    "name": "Water Sources - Rain (Present)",
+                    "chartPointOnMap": {
+                      "latitude": -41.12390888091413,
+                      "longitude": 174.83790259556207
+                    },
+                    "styles": [
+                      {
+                        "id": "chart"
+                      },
+                      {
+                        "id": "value",
+                        "chart": {
+                          "lines": [
+                            {
+                              "yAxisColumn": "value",
+                              "isSelectedInWorkbench": false
+                            }
+                          ]
+                        }
+                      }
+                    ],
+                    "columnTitles": [
+                      ""
+                    ],
+                    "columnUnits": [
+                      ""
+                    ],
+                    "type": "csv"
+                  },
+                  "//Flow models/Sea Level Rise 2080/Water Sources - Tide (2080):Water Sources - Tide (2080):blob:https://teawarua.app.geospatial.ac.nz/20aa9d34-212d-42c5-a9fb-014fea1480a7": {
+                    "show": false,
+                    "name": "Water Sources - Tide (2080)",
+                    "chartPointOnMap": {
+                      "latitude": -41.09856976116374,
+                      "longitude": 174.86344900900534
+                    },
+                    "styles": [
+                      {
+                        "id": "chart"
+                      },
+                      {
+                        "id": "value",
+                        "chart": {
+                          "lines": [
+                            {
+                              "yAxisColumn": "value",
+                              "isSelectedInWorkbench": false
+                            }
+                          ]
+                        }
+                      }
+                    ],
+                    "columnTitles": [
+                      ""
+                    ],
+                    "columnUnits": [
+                      ""
+                    ],
+                    "type": "csv"
+                  },
+                  "//Flow models/Present Day/Water Sources - Tide (Present):Water Sources - Tide (Present):blob:https://teawarua.app.geospatial.ac.nz/bd5d0a29-4b88-47b4-ac8b-f86aad806c67": {
+                    "show": false,
+                    "name": "Water Sources - Tide (Present)",
+                    "chartPointOnMap": {
+                      "latitude": -41.09856976116374,
+                      "longitude": 174.86344900900534
+                    },
+                    "styles": [
+                      {
+                        "id": "chart"
+                      },
+                      {
+                        "id": "value",
+                        "chart": {
+                          "lines": [
+                            {
+                              "yAxisColumn": "value",
+                              "isSelectedInWorkbench": false
+                            }
+                          ]
+                        }
+                      }
+                    ],
+                    "columnTitles": [
+                      ""
+                    ],
+                    "columnUnits": [
+                      ""
+                    ],
+                    "type": "csv"
+                  },
+                  "//Flow models": {
+                    "knownContainerUniqueIds": [
+                      "/"
+                    ],
+                    "type": "group"
+                  },
+                  "//PHF Science Sampling": {
+                    "knownContainerUniqueIds": [
+                      "/"
+                    ],
+                    "type": "group"
+                  },
+                  "//Greater Wellington Regional Council - Our Environment": {
+                    "knownContainerUniqueIds": [
+                      "/"
+                    ],
+                    "type": "esri-group"
+                  },
+                  "//Greater Wellington Regional Council - Our Environment/0": {
+                    "isOpen": true,
+                    "knownContainerUniqueIds": [
+                      "//Greater Wellington Regional Council - Our Environment"
+                    ],
+                    "type": "esri-mapServer-group"
+                  },
+                  "//Greater Wellington Regional Council - Our Environment/10": {
+                    "isOpen": true,
+                    "knownContainerUniqueIds": [
+                      "//Greater Wellington Regional Council - Our Environment"
+                    ],
+                    "type": "esri-mapServer-group"
+                  },
+                  "//Greater Wellington Regional Council - Our Environment/20": {
+                    "isOpen": true,
+                    "knownContainerUniqueIds": [
+                      "//Greater Wellington Regional Council - Our Environment"
+                    ],
+                    "type": "esri-mapServer-group"
+                  },
+                  "//Greater Wellington Regional Council - Our Environment/22": {
+                    "isOpen": false,
+                    "knownContainerUniqueIds": [
+                      "//Greater Wellington Regional Council - Our Environment"
+                    ],
+                    "type": "esri-mapServer-group"
+                  },
+                  "//Greater Wellington Regional Council - Our Environment/37": {
+                    "isOpen": true,
+                    "knownContainerUniqueIds": [
+                      "//Greater Wellington Regional Council - Our Environment"
+                    ],
+                    "type": "esri-mapServer-group"
+                  },
+                  "//Flow models/Present Day": {
+                    "isOpen": true,
+                    "knownContainerUniqueIds": [
+                      "//Flow models"
+                    ],
+                    "type": "group"
+                  },
+                  "//Flow models/Sea Level Rise 2080": {
+                    "isOpen": true,
+                    "knownContainerUniqueIds": [
+                      "//Flow models"
+                    ],
+                    "type": "group"
+                  },
+                  "//PHF Science Sampling/Fecal Source Tracing - February 2023": {
+                    "show": true,
+                    "activeStyle": "Human crAssphage / 100 ml",
+                    "knownContainerUniqueIds": [
+                      "//PHF Science Sampling"
+                    ],
+                    "type": "wfs"
+                  },
+                  "//Greater Wellington Regional Council - Our Environment/0/4": {
+                    "show": true,
+                    "knownContainerUniqueIds": [
+                      "//Greater Wellington Regional Council - Our Environment/0"
+                    ],
+                    "type": "esri-mapServer"
+                  },
+                  "//Greater Wellington Regional Council - Our Environment/10/11": {
+                    "show": false,
+                    "knownContainerUniqueIds": [
+                      "//Greater Wellington Regional Council - Our Environment/10"
+                    ],
+                    "type": "esri-mapServer"
+                  },
+                  "//Greater Wellington Regional Council - Our Environment/37/39": {
+                    "show": false,
+                    "knownContainerUniqueIds": [
+                      "//Greater Wellington Regional Council - Our Environment/37"
+                    ],
+                    "type": "esri-mapServer"
+                  },
+                  "//Flow models/Present Day/Water Source Summary Map (Present)": {
+                    "opacity": 0.86,
+                    "knownContainerUniqueIds": [
+                      "//Flow models/Present Day"
+                    ],
+                    "type": "wms"
+                  },
+                  "//Flow models/Present Day/Water Sources - Streams (Present)": {
+                    "show": false,
+                    "knownContainerUniqueIds": [
+                      "//Flow models/Present Day"
+                    ],
+                    "type": "wms"
+                  },
+                  "//Flow models/Present Day/Water Sources - Rain (Present)": {
+                    "show": false,
+                    "knownContainerUniqueIds": [
+                      "//Flow models/Present Day"
+                    ],
+                    "type": "wms"
+                  },
+                  "//Flow models/Present Day/Water Sources - Tide (Present)": {
+                    "show": false,
+                    "knownContainerUniqueIds": [
+                      "//Flow models/Present Day"
+                    ],
+                    "type": "wms"
+                  },
+                  "//Flow models/Present Day/Median Sediment Size (Present)": {
+                    "show": false,
+                    "splitDirection": -1,
+                    "knownContainerUniqueIds": [
+                      "//Flow models/Present Day"
+                    ],
+                    "type": "wms"
+                  },
+                  "//Flow models/Sea Level Rise 2080/Water Source Summary Map (2080)": {
+                    "show": false,
+                    "splitDirection": 1,
+                    "knownContainerUniqueIds": [
+                      "//Flow models/Sea Level Rise 2080"
+                    ],
+                    "type": "wms"
+                  },
+                  "//Flow models/Sea Level Rise 2080/Water Sources - Rain (2080)": {
+                    "show": false,
+                    "knownContainerUniqueIds": [
+                      "//Flow models/Sea Level Rise 2080"
+                    ],
+                    "type": "wms"
+                  },
+                  "//Flow models/Sea Level Rise 2080/Water Sources - Tide (2080)": {
+                    "show": false,
+                    "knownContainerUniqueIds": [
+                      "//Flow models/Sea Level Rise 2080"
+                    ],
+                    "type": "wms"
+                  },
+                  "//Flow models/Sea Level Rise 2080/Median Sediment Size (2080)": {
+                    "show": false,
+                    "splitDirection": 1,
+                    "knownContainerUniqueIds": [
+                      "//Flow models/Sea Level Rise 2080"
+                    ],
+                    "type": "wms"
+                  },
+                  "//Greater Wellington Regional Council - Our Environment/0": {
+                    "isOpen": true,
+                    "knownContainerUniqueIds": [
+                      "//Greater Wellington Regional Council - Our Environment"
+                    ],
+                    "type": "esri-mapServer-group"
+                  },
+                  "//Greater Wellington Regional Council - Our Environment/0/4": {
+                    "opacity": 1,
+                    "knownContainerUniqueIds": [
+                      "//Greater Wellington Regional Council - Our Environment/0"
+                    ],
+                    "type": "esri-mapServer"
+                  },
+                  "//Greater Wellington Regional Council - Our Environment/10": {
+                    "isOpen": true,
+                    "knownContainerUniqueIds": [
+                      "//Greater Wellington Regional Council - Our Environment"
+                    ],
+                    "type": "esri-mapServer-group"
+                  },
+                  "//Greater Wellington Regional Council - Our Environment/20": {
+                    "isOpen": true,
+                    "knownContainerUniqueIds": [
+                      "//Greater Wellington Regional Council - Our Environment"
+                    ],
+                    "type": "esri-mapServer-group"
+                  },
+                  "//Greater Wellington Regional Council - Our Environment/22": {
+                    "isOpen": true,
+                    "knownContainerUniqueIds": [
+                      "//Greater Wellington Regional Council - Our Environment"
+                    ],
+                    "type": "esri-mapServer-group"
+                  },
+                  "//PHF Science Sampling": {
+                    "knownContainerUniqueIds": [
+                      "/"
+                    ],
+                    "type": "group"
+                  }
+                },
+                "workbench": [
+                  "//PHF Science Sampling/Faecal Source Tracking - February 2023"
                 ],
-                "type": "group"
-              },
-              "//Flow+models/Present+Day/Water+Source+Summary+Map+(Present)": {
-                "splitDirection": -1,
-                "opacity": 0.86,
-                "knownContainerUniqueIds": [
-                  "//Flow+models/Present+Day"
+                "timeline": [
+                  "//PHF Science Sampling/Faecal Source Tracking - February 2023"
                 ],
-                "type": "wms"
-              },
-              "//Flow+models/Sea+Level+Rise+2050": {
-                "isOpen": true,
-                "knownContainerUniqueIds": [
-                  "//Flow+models"
-                ],
-                "type": "group"
-              },
-              "//Flow+models/Sea+Level+Rise+2080": {
-                "isOpen": true,
-                "knownContainerUniqueIds": [
-                  "//Flow+models"
-                ],
-                "type": "group"
-              },
-              "//Flow+models/Sea+Level+Rise+2080/Water+Source+Summary+Map+(2080)": {
-                "splitDirection": 1,
-                "opacity": 1,
-                "knownContainerUniqueIds": [
-                  "//Flow+models/Sea+Level+Rise+2080"
-                ],
-                "type": "wms"
-              },
-              "/": {
-                "type": "group"
-              },
-              "//Flow+models": {
-                "knownContainerUniqueIds": [
-                  "/"
-                ],
-                "type": "group"
+                "initialCamera": {
+                  "west": 174.8011863593205,
+                  "south": -41.136073111874715,
+                  "east": 174.87225044777594,
+                  "north": -41.10521388661897,
+                  "position": {
+                    "x": -4791452.716516837,
+                    "y": 436152.1114694373,
+                    "z": -4176582.0786920413
+                  },
+                  "direction": {
+                    "x": -0.16152340881734487,
+                    "y": -0.6030639940899236,
+                    "z": 0.7811683604936477
+                  },
+                  "up": {
+                    "x": -0.910196986624834,
+                    "y": -0.21486745816610964,
+                    "z": -0.3540810937628653
+                  }
+                },
+                "homeCamera": {
+                  "west": 174.82,
+                  "south": -41.15,
+                  "east": 174.9,
+                  "north": -41.06
+                },
+                "viewerMode": "3d",
+                "showSplitter": false,
+                "splitPosition": 0.6147708333333338,
+                "settings": {
+                  "baseMaximumScreenSpaceError": 2,
+                  "useNativeResolution": false,
+                  "alwaysShowTimeline": false,
+                  "baseMapId": "basemap-linz-aerial",
+                  "terrainSplitDirection": 0,
+                  "depthTestAgainstTerrainEnabled": false
+                }
               }
-            },
-            "workbench": [
-              "//Flow+models/Sea+Level+Rise+2080/Water+Source+Summary+Map+(2080)",
-              "//Flow+models/Present+Day/Water+Source+Summary+Map+(Present)"
-            ],
-            "timeline": [
-              "//Flow+models/Sea+Level+Rise+2080/Water+Source+Summary+Map+(2080)",
-              "//Flow+models/Present+Day/Water+Source+Summary+Map+(Present)"
-            ],
-            "initialCamera": {
-              "west": 174.82282778084124,
-              "south": -41.13286927235527,
-              "east": 174.85748427157537,
-              "north": -41.11781914286633,
-              "position": {
-                "x": -4793497.623903233,
-                "y": 432918.1995627459,
-                "z": -4174915.5681460225
-              },
-              "direction": {
-                "x": 0.6099188504054793,
-                "y": -0.08003405598108133,
-                "z": 0.7884120406255067
-              },
-              "up": {
-                "x": -0.792455029830195,
-                "y": -0.05689639180725134,
-                "z": 0.6072708014519885
-              }
-            },
-            "homeCamera": {
-              "west": 174.82,
-              "south": -41.15,
-              "east": 174.9,
-              "north": -41.06
-            },
-            "viewerMode": "3d",
-            "showSplitter": true,
-            "splitPosition": 0.5705250000000001,
-            "settings": {
-              "baseMaximumScreenSpaceError": 2,
-              "useNativeResolution": false,
-              "alwaysShowTimeline": false,
-              "baseMapId": "basemap-linz-aerial",
-              "terrainSplitDirection": 0,
-              "depthTestAgainstTerrainEnabled": false
-            }
+            ]
           }
-        ]
-      }
-    },
-    {
-      "title": "Increased+flooding",
-      "text": "<p>However,+increased+sea+level+will+expand+the+harbour,+flooding+the+Pauatahanui+Wildlife+Reserve+wetlands.</p><p>-+Move+the+slider+to+see+the+changes.<br>2020+-+Left<br>2080+-+Right</p>",
-      "id": "7af9b7a0-c2ca-4596-bee0-743f21bab4eb",
-      "shareData": {
-        "version": "8.0.0",
-        "initSources": [
-          {
-            "stratum": "user",
-            "models": {
-              "//Flow+models/Present+Day": {
-                "isOpen": true,
-                "knownContainerUniqueIds": [
-                  "//Flow+models"
+        },
+        {
+          "title": "Faecal source tracing and flow model",
+          "text": "",
+          "id": "44d7e69c-abc6-49f8-857c-a5c22f000754",
+          "shareData": {
+            "version": "8.0.0",
+            "initSources": [
+              {
+                "stratum": "user",
+                "models": {
+                  "/": {
+                    "type": "group"
+                  },
+                  "//Flow models/Present Day": {
+                    "isOpen": true,
+                    "knownContainerUniqueIds": [
+                      "//Flow models"
+                    ],
+                    "type": "group"
+                  },
+                  "//Flow models/Present Day/Flow Model (Present) - Water Source Summary Map": {
+                    "knownContainerUniqueIds": [
+                      "//Flow models/Present Day"
+                    ],
+                    "type": "wms"
+                  },
+                  "//PHF Science Sampling/Faecal Source Tracking - February 2023": {
+                    "isOpenInWorkbench": true,
+                    "knownContainerUniqueIds": [
+                      "//PHF Science Sampling"
+                    ],
+                    "type": "wfs"
+                  },
+                  "//Greater Wellington Regional Council - Our Environment": {
+                    "knownContainerUniqueIds": [
+                      "/"
+                    ],
+                    "type": "esri-group"
+                  },
+                  "//Flow models/Present Day/Water Sources - Streams (Present):Water Sources - Streams (Present):blob:https://teawarua.app.geospatial.ac.nz/2a11d596-7b82-401b-b68f-b294f80ed2f1": {
+                    "show": false,
+                    "name": "Water Sources - Streams (Present)",
+                    "chartPointOnMap": {
+                      "latitude": -41.12388159153871,
+                      "longitude": 174.83787986321505
+                    },
+                    "styles": [
+                      {
+                        "id": "chart"
+                      },
+                      {
+                        "id": "value",
+                        "chart": {
+                          "lines": [
+                            {
+                              "yAxisColumn": "value",
+                              "isSelectedInWorkbench": false
+                            }
+                          ]
+                        }
+                      }
+                    ],
+                    "columnTitles": [
+                      ""
+                    ],
+                    "columnUnits": [
+                      ""
+                    ],
+                    "type": "csv"
+                  },
+                  "//Flow models/Present Day/Water Sources - Rain (Present):Water Sources - Rain (Present):blob:https://teawarua.app.geospatial.ac.nz/cf766fc6-43e4-467f-902a-a685f4576cb4": {
+                    "show": false,
+                    "name": "Water Sources - Rain (Present)",
+                    "chartPointOnMap": {
+                      "latitude": -41.12390888091413,
+                      "longitude": 174.83790259556207
+                    },
+                    "styles": [
+                      {
+                        "id": "chart"
+                      },
+                      {
+                        "id": "value",
+                        "chart": {
+                          "lines": [
+                            {
+                              "yAxisColumn": "value",
+                              "isSelectedInWorkbench": false
+                            }
+                          ]
+                        }
+                      }
+                    ],
+                    "columnTitles": [
+                      ""
+                    ],
+                    "columnUnits": [
+                      ""
+                    ],
+                    "type": "csv"
+                  },
+                  "//Flow models/Sea Level Rise 2080/Water Sources - Tide (2080):Water Sources - Tide (2080):blob:https://teawarua.app.geospatial.ac.nz/20aa9d34-212d-42c5-a9fb-014fea1480a7": {
+                    "show": false,
+                    "name": "Water Sources - Tide (2080)",
+                    "chartPointOnMap": {
+                      "latitude": -41.09856976116374,
+                      "longitude": 174.86344900900534
+                    },
+                    "styles": [
+                      {
+                        "id": "chart"
+                      },
+                      {
+                        "id": "value",
+                        "chart": {
+                          "lines": [
+                            {
+                              "yAxisColumn": "value",
+                              "isSelectedInWorkbench": false
+                            }
+                          ]
+                        }
+                      }
+                    ],
+                    "columnTitles": [
+                      ""
+                    ],
+                    "columnUnits": [
+                      ""
+                    ],
+                    "type": "csv"
+                  },
+                  "//Flow models/Present Day/Water Sources - Tide (Present):Water Sources - Tide (Present):blob:https://teawarua.app.geospatial.ac.nz/bd5d0a29-4b88-47b4-ac8b-f86aad806c67": {
+                    "show": false,
+                    "name": "Water Sources - Tide (Present)",
+                    "chartPointOnMap": {
+                      "latitude": -41.09856976116374,
+                      "longitude": 174.86344900900534
+                    },
+                    "styles": [
+                      {
+                        "id": "chart"
+                      },
+                      {
+                        "id": "value",
+                        "chart": {
+                          "lines": [
+                            {
+                              "yAxisColumn": "value",
+                              "isSelectedInWorkbench": false
+                            }
+                          ]
+                        }
+                      }
+                    ],
+                    "columnTitles": [
+                      ""
+                    ],
+                    "columnUnits": [
+                      ""
+                    ],
+                    "type": "csv"
+                  },
+                  "//Flow models": {
+                    "knownContainerUniqueIds": [
+                      "/"
+                    ],
+                    "type": "group"
+                  },
+                  "//PHF Science Sampling": {
+                    "knownContainerUniqueIds": [
+                      "/"
+                    ],
+                    "type": "group"
+                  },
+                  "//Greater Wellington Regional Council - Our Environment": {
+                    "knownContainerUniqueIds": [
+                      "/"
+                    ],
+                    "type": "esri-group"
+                  },
+                  "//Greater Wellington Regional Council - Our Environment/0": {
+                    "isOpen": true,
+                    "knownContainerUniqueIds": [
+                      "//Greater Wellington Regional Council - Our Environment"
+                    ],
+                    "type": "esri-mapServer-group"
+                  },
+                  "//Greater Wellington Regional Council - Our Environment/10": {
+                    "isOpen": true,
+                    "knownContainerUniqueIds": [
+                      "//Greater Wellington Regional Council - Our Environment"
+                    ],
+                    "type": "esri-mapServer-group"
+                  },
+                  "//Greater Wellington Regional Council - Our Environment/20": {
+                    "isOpen": true,
+                    "knownContainerUniqueIds": [
+                      "//Greater Wellington Regional Council - Our Environment"
+                    ],
+                    "type": "esri-mapServer-group"
+                  },
+                  "//Greater Wellington Regional Council - Our Environment/22": {
+                    "isOpen": false,
+                    "knownContainerUniqueIds": [
+                      "//Greater Wellington Regional Council - Our Environment"
+                    ],
+                    "type": "esri-mapServer-group"
+                  },
+                  "//Greater Wellington Regional Council - Our Environment/37": {
+                    "isOpen": true,
+                    "knownContainerUniqueIds": [
+                      "//Greater Wellington Regional Council - Our Environment"
+                    ],
+                    "type": "esri-mapServer-group"
+                  },
+                  "//Flow models/Present Day": {
+                    "isOpen": true,
+                    "knownContainerUniqueIds": [
+                      "//Flow models"
+                    ],
+                    "type": "group"
+                  },
+                  "//Flow models/Sea Level Rise 2080": {
+                    "isOpen": true,
+                    "knownContainerUniqueIds": [
+                      "//Flow models"
+                    ],
+                    "type": "group"
+                  },
+                  "//PHF Science Sampling/Fecal Source Tracing - February 2023": {
+                    "show": true,
+                    "activeStyle": "Human crAssphage / 100 ml",
+                    "knownContainerUniqueIds": [
+                      "//PHF Science Sampling"
+                    ],
+                    "type": "wfs"
+                  },
+                  "//Greater Wellington Regional Council - Our Environment/0/4": {
+                    "show": true,
+                    "knownContainerUniqueIds": [
+                      "//Greater Wellington Regional Council - Our Environment/0"
+                    ],
+                    "type": "esri-mapServer"
+                  },
+                  "//Greater Wellington Regional Council - Our Environment/10/11": {
+                    "show": false,
+                    "knownContainerUniqueIds": [
+                      "//Greater Wellington Regional Council - Our Environment/10"
+                    ],
+                    "type": "esri-mapServer"
+                  },
+                  "//Greater Wellington Regional Council - Our Environment/37/39": {
+                    "show": false,
+                    "knownContainerUniqueIds": [
+                      "//Greater Wellington Regional Council - Our Environment/37"
+                    ],
+                    "type": "esri-mapServer"
+                  },
+                  "//Flow models/Present Day/Water Source Summary Map (Present)": {
+                    "opacity": 0.86,
+                    "knownContainerUniqueIds": [
+                      "//Flow models/Present Day"
+                    ],
+                    "type": "wms"
+                  },
+                  "//Flow models/Present Day/Water Sources - Streams (Present)": {
+                    "show": false,
+                    "knownContainerUniqueIds": [
+                      "//Flow models/Present Day"
+                    ],
+                    "type": "wms"
+                  },
+                  "//Flow models/Present Day/Water Sources - Rain (Present)": {
+                    "show": false,
+                    "knownContainerUniqueIds": [
+                      "//Flow models/Present Day"
+                    ],
+                    "type": "wms"
+                  },
+                  "//Flow models/Present Day/Water Sources - Tide (Present)": {
+                    "show": false,
+                    "knownContainerUniqueIds": [
+                      "//Flow models/Present Day"
+                    ],
+                    "type": "wms"
+                  },
+                  "//Flow models/Present Day/Median Sediment Size (Present)": {
+                    "show": false,
+                    "splitDirection": -1,
+                    "knownContainerUniqueIds": [
+                      "//Flow models/Present Day"
+                    ],
+                    "type": "wms"
+                  },
+                  "//Flow models/Sea Level Rise 2080/Water Source Summary Map (2080)": {
+                    "show": false,
+                    "splitDirection": 1,
+                    "knownContainerUniqueIds": [
+                      "//Flow models/Sea Level Rise 2080"
+                    ],
+                    "type": "wms"
+                  },
+                  "//Flow models/Sea Level Rise 2080/Water Sources - Rain (2080)": {
+                    "show": false,
+                    "knownContainerUniqueIds": [
+                      "//Flow models/Sea Level Rise 2080"
+                    ],
+                    "type": "wms"
+                  },
+                  "//Flow models/Sea Level Rise 2080/Water Sources - Tide (2080)": {
+                    "show": false,
+                    "knownContainerUniqueIds": [
+                      "//Flow models/Sea Level Rise 2080"
+                    ],
+                    "type": "wms"
+                  },
+                  "//Flow models/Sea Level Rise 2080/Median Sediment Size (2080)": {
+                    "show": false,
+                    "splitDirection": 1,
+                    "knownContainerUniqueIds": [
+                      "//Flow models/Sea Level Rise 2080"
+                    ],
+                    "type": "wms"
+                  },
+                  "//Greater Wellington Regional Council - Our Environment/0": {
+                    "isOpen": true,
+                    "knownContainerUniqueIds": [
+                      "//Greater Wellington Regional Council - Our Environment"
+                    ],
+                    "type": "esri-mapServer-group"
+                  },
+                  "//Greater Wellington Regional Council - Our Environment/0/4": {
+                    "opacity": 1,
+                    "knownContainerUniqueIds": [
+                      "//Greater Wellington Regional Council - Our Environment/0"
+                    ],
+                    "type": "esri-mapServer"
+                  },
+                  "//Greater Wellington Regional Council - Our Environment/10": {
+                    "isOpen": true,
+                    "knownContainerUniqueIds": [
+                      "//Greater Wellington Regional Council - Our Environment"
+                    ],
+                    "type": "esri-mapServer-group"
+                  },
+                  "//Greater Wellington Regional Council - Our Environment/20": {
+                    "isOpen": true,
+                    "knownContainerUniqueIds": [
+                      "//Greater Wellington Regional Council - Our Environment"
+                    ],
+                    "type": "esri-mapServer-group"
+                  },
+                  "//Greater Wellington Regional Council - Our Environment/22": {
+                    "isOpen": true,
+                    "knownContainerUniqueIds": [
+                      "//Greater Wellington Regional Council - Our Environment"
+                    ],
+                    "type": "esri-mapServer-group"
+                  },
+                  "//Flow models": {
+                    "knownContainerUniqueIds": [
+                      "/"
+                    ],
+                    "type": "group"
+                  },
+                  "//PHF Science Sampling": {
+                    "knownContainerUniqueIds": [
+                      "/"
+                    ],
+                    "type": "group"
+                  }
+                },
+                "workbench": [
+                  "//Flow models/Present Day/Flow Model (Present) - Water Source Summary Map",
+                  "//PHF Science Sampling/Faecal Source Tracking - February 2023"
                 ],
-                "type": "group"
-              },
-              "//Flow+models/Present+Day/Water+Source+Summary+Map+(Present)": {
-                "splitDirection": -1,
-                "opacity": 0.86,
-                "knownContainerUniqueIds": [
-                  "//Flow+models/Present+Day"
+                "timeline": [
+                  "//Flow models/Present Day/Flow Model (Present) - Water Source Summary Map",
+                  "//PHF Science Sampling/Faecal Source Tracking - February 2023"
                 ],
-                "type": "wms"
-              },
-              "//Flow+models/Sea+Level+Rise+2050": {
-                "isOpen": true,
-                "knownContainerUniqueIds": [
-                  "//Flow+models"
-                ],
-                "type": "group"
-              },
-              "//Flow+models/Sea+Level+Rise+2080": {
-                "isOpen": true,
-                "knownContainerUniqueIds": [
-                  "//Flow+models"
-                ],
-                "type": "group"
-              },
-              "//Flow+models/Sea+Level+Rise+2080/Water+Source+Summary+Map+(2080)": {
-                "splitDirection": 1,
-                "opacity": 1,
-                "knownContainerUniqueIds": [
-                  "//Flow+models/Sea+Level+Rise+2080"
-                ],
-                "type": "wms"
-              },
-              "/": {
-                "type": "group"
-              },
-              "//Flow+models": {
-                "knownContainerUniqueIds": [
-                  "/"
-                ],
-                "type": "group"
+                "initialCamera": {
+                  "west": 174.82038803925147,
+                  "south": -41.130988887948654,
+                  "east": 174.85260092525476,
+                  "north": -41.11699952972317,
+                  "position": {
+                    "x": -4793688.936097652,
+                    "y": 433324.28557570104,
+                    "z": -4174448.5242611724
+                  },
+                  "direction": {
+                    "x": 0.706840856244073,
+                    "y": -0.12486105026924442,
+                    "z": 0.6962655542749526
+                  },
+                  "up": {
+                    "x": -0.5621295824969162,
+                    "y": -0.6966557914461944,
+                    "z": 0.4457365149124752
+                  }
+                },
+                "homeCamera": {
+                  "west": 174.82,
+                  "south": -41.15,
+                  "east": 174.9,
+                  "north": -41.06
+                },
+                "viewerMode": "3d",
+                "showSplitter": false,
+                "splitPosition": 0.6138708333333339,
+                "settings": {
+                  "baseMaximumScreenSpaceError": 2,
+                  "useNativeResolution": false,
+                  "alwaysShowTimeline": false,
+                  "baseMapId": "basemap-linz-aerial",
+                  "terrainSplitDirection": 0,
+                  "depthTestAgainstTerrainEnabled": false
+                }
               }
-            },
-            "workbench": [
-              "//Flow+models/Sea+Level+Rise+2080/Water+Source+Summary+Map+(2080)",
-              "//Flow+models/Present+Day/Water+Source+Summary+Map+(Present)"
-            ],
-            "timeline": [
-              "//Flow+models/Sea+Level+Rise+2080/Water+Source+Summary+Map+(2080)",
-              "//Flow+models/Present+Day/Water+Source+Summary+Map+(Present)"
-            ],
-            "initialCamera": {
-              "west": 174.88802071009044,
-              "south": -41.11315278927184,
-              "east": 174.92635695611318,
-              "north": -41.09649962511522,
-              "position": {
-                "x": -4795529.833119684,
-                "y": 426896.94934975787,
-                "z": -4173495.9747831593
-              },
-              "direction": {
-                "x": 0.5625081448884376,
-                "y": 0.12422976301957737,
-                "z": 0.8174053785694514
-              },
-              "up": {
-                "x": -0.6987788730847311,
-                "y": 0.5998644069626146,
-                "z": 0.38970601713320274
-              }
-            },
-            "homeCamera": {
-              "west": 174.82,
-              "south": -41.15,
-              "east": 174.9,
-              "north": -41.06
-            },
-            "viewerMode": "3d",
-            "showSplitter": true,
-            "splitPosition": 0.7049,
-            "settings": {
-              "baseMaximumScreenSpaceError": 2,
-              "useNativeResolution": false,
-              "alwaysShowTimeline": false,
-              "baseMapId": "basemap-linz-aerial",
-              "terrainSplitDirection": 0,
-              "depthTestAgainstTerrainEnabled": false
-            }
+            ]
           }
-        ]
-      }
-    }
-  ]
+        },
+        {
+          "title": "High proportion of streamflow",
+          "text": "",
+          "id": "224841ec-2a20-4ad7-887a-9ba59b798b08",
+          "shareData": {
+            "version": "8.0.0",
+            "initSources": [
+              {
+                "stratum": "user",
+                "models": {
+                  "/": {
+                    "type": "group"
+                  },
+                  "//Flow models/Present Day": {
+                    "isOpen": true,
+                    "knownContainerUniqueIds": [
+                      "//Flow models"
+                    ],
+                    "type": "group"
+                  },
+                  "//Flow models/Present Day/Flow Model (Present) - Water Sources - Streams": {
+                    "knownContainerUniqueIds": [
+                      "//Flow models/Present Day"
+                    ],
+                    "type": "wms"
+                  },
+                  "//PHF Science Sampling/Faecal Source Tracking - February 2023": {
+                    "isOpenInWorkbench": true,
+                    "knownContainerUniqueIds": [
+                      "//PHF Science Sampling"
+                    ],
+                    "type": "wfs"
+                  },
+                  "//Greater Wellington Regional Council - Our Environment": {
+                    "knownContainerUniqueIds": [
+                      "/"
+                    ],
+                    "type": "esri-group"
+                  },
+                  "//Flow models/Present Day/Water Sources - Streams (Present):Water Sources - Streams (Present):blob:https://teawarua.app.geospatial.ac.nz/2a11d596-7b82-401b-b68f-b294f80ed2f1": {
+                    "show": false,
+                    "name": "Water Sources - Streams (Present)",
+                    "chartPointOnMap": {
+                      "latitude": -41.12388159153871,
+                      "longitude": 174.83787986321505
+                    },
+                    "styles": [
+                      {
+                        "id": "chart"
+                      },
+                      {
+                        "id": "value",
+                        "chart": {
+                          "lines": [
+                            {
+                              "yAxisColumn": "value",
+                              "isSelectedInWorkbench": false
+                            }
+                          ]
+                        }
+                      }
+                    ],
+                    "columnTitles": [
+                      ""
+                    ],
+                    "columnUnits": [
+                      ""
+                    ],
+                    "type": "csv"
+                  },
+                  "//Flow models/Present Day/Water Sources - Rain (Present):Water Sources - Rain (Present):blob:https://teawarua.app.geospatial.ac.nz/cf766fc6-43e4-467f-902a-a685f4576cb4": {
+                    "show": false,
+                    "name": "Water Sources - Rain (Present)",
+                    "chartPointOnMap": {
+                      "latitude": -41.12390888091413,
+                      "longitude": 174.83790259556207
+                    },
+                    "styles": [
+                      {
+                        "id": "chart"
+                      },
+                      {
+                        "id": "value",
+                        "chart": {
+                          "lines": [
+                            {
+                              "yAxisColumn": "value",
+                              "isSelectedInWorkbench": false
+                            }
+                          ]
+                        }
+                      }
+                    ],
+                    "columnTitles": [
+                      ""
+                    ],
+                    "columnUnits": [
+                      ""
+                    ],
+                    "type": "csv"
+                  },
+                  "//Flow models/Sea Level Rise 2080/Water Sources - Tide (2080):Water Sources - Tide (2080):blob:https://teawarua.app.geospatial.ac.nz/20aa9d34-212d-42c5-a9fb-014fea1480a7": {
+                    "show": false,
+                    "name": "Water Sources - Tide (2080)",
+                    "chartPointOnMap": {
+                      "latitude": -41.09856976116374,
+                      "longitude": 174.86344900900534
+                    },
+                    "styles": [
+                      {
+                        "id": "chart"
+                      },
+                      {
+                        "id": "value",
+                        "chart": {
+                          "lines": [
+                            {
+                              "yAxisColumn": "value",
+                              "isSelectedInWorkbench": false
+                            }
+                          ]
+                        }
+                      }
+                    ],
+                    "columnTitles": [
+                      ""
+                    ],
+                    "columnUnits": [
+                      ""
+                    ],
+                    "type": "csv"
+                  },
+                  "//Flow models/Present Day/Water Sources - Tide (Present):Water Sources - Tide (Present):blob:https://teawarua.app.geospatial.ac.nz/bd5d0a29-4b88-47b4-ac8b-f86aad806c67": {
+                    "show": false,
+                    "name": "Water Sources - Tide (Present)",
+                    "chartPointOnMap": {
+                      "latitude": -41.09856976116374,
+                      "longitude": 174.86344900900534
+                    },
+                    "styles": [
+                      {
+                        "id": "chart"
+                      },
+                      {
+                        "id": "value",
+                        "chart": {
+                          "lines": [
+                            {
+                              "yAxisColumn": "value",
+                              "isSelectedInWorkbench": false
+                            }
+                          ]
+                        }
+                      }
+                    ],
+                    "columnTitles": [
+                      ""
+                    ],
+                    "columnUnits": [
+                      ""
+                    ],
+                    "type": "csv"
+                  },
+                  "//Flow models": {
+                    "knownContainerUniqueIds": [
+                      "/"
+                    ],
+                    "type": "group"
+                  },
+                  "//PHF Science Sampling": {
+                    "knownContainerUniqueIds": [
+                      "/"
+                    ],
+                    "type": "group"
+                  },
+                  "//Greater Wellington Regional Council - Our Environment": {
+                    "knownContainerUniqueIds": [
+                      "/"
+                    ],
+                    "type": "esri-group"
+                  },
+                  "//Greater Wellington Regional Council - Our Environment/0": {
+                    "isOpen": true,
+                    "knownContainerUniqueIds": [
+                      "//Greater Wellington Regional Council - Our Environment"
+                    ],
+                    "type": "esri-mapServer-group"
+                  },
+                  "//Greater Wellington Regional Council - Our Environment/10": {
+                    "isOpen": true,
+                    "knownContainerUniqueIds": [
+                      "//Greater Wellington Regional Council - Our Environment"
+                    ],
+                    "type": "esri-mapServer-group"
+                  },
+                  "//Greater Wellington Regional Council - Our Environment/20": {
+                    "isOpen": true,
+                    "knownContainerUniqueIds": [
+                      "//Greater Wellington Regional Council - Our Environment"
+                    ],
+                    "type": "esri-mapServer-group"
+                  },
+                  "//Greater Wellington Regional Council - Our Environment/22": {
+                    "isOpen": false,
+                    "knownContainerUniqueIds": [
+                      "//Greater Wellington Regional Council - Our Environment"
+                    ],
+                    "type": "esri-mapServer-group"
+                  },
+                  "//Greater Wellington Regional Council - Our Environment/37": {
+                    "isOpen": true,
+                    "knownContainerUniqueIds": [
+                      "//Greater Wellington Regional Council - Our Environment"
+                    ],
+                    "type": "esri-mapServer-group"
+                  },
+                  "//Flow models/Present Day": {
+                    "isOpen": true,
+                    "knownContainerUniqueIds": [
+                      "//Flow models"
+                    ],
+                    "type": "group"
+                  },
+                  "//Flow models/Sea Level Rise 2080": {
+                    "isOpen": true,
+                    "knownContainerUniqueIds": [
+                      "//Flow models"
+                    ],
+                    "type": "group"
+                  },
+                  "//PHF Science Sampling/Fecal Source Tracing - February 2023": {
+                    "show": true,
+                    "activeStyle": "Human crAssphage / 100 ml",
+                    "knownContainerUniqueIds": [
+                      "//PHF Science Sampling"
+                    ],
+                    "type": "wfs"
+                  },
+                  "//Greater Wellington Regional Council - Our Environment/0/4": {
+                    "show": true,
+                    "knownContainerUniqueIds": [
+                      "//Greater Wellington Regional Council - Our Environment/0"
+                    ],
+                    "type": "esri-mapServer"
+                  },
+                  "//Greater Wellington Regional Council - Our Environment/10/11": {
+                    "show": false,
+                    "knownContainerUniqueIds": [
+                      "//Greater Wellington Regional Council - Our Environment/10"
+                    ],
+                    "type": "esri-mapServer"
+                  },
+                  "//Greater Wellington Regional Council - Our Environment/37/39": {
+                    "show": false,
+                    "knownContainerUniqueIds": [
+                      "//Greater Wellington Regional Council - Our Environment/37"
+                    ],
+                    "type": "esri-mapServer"
+                  },
+                  "//Flow models/Present Day/Water Source Summary Map (Present)": {
+                    "opacity": 0.86,
+                    "knownContainerUniqueIds": [
+                      "//Flow models/Present Day"
+                    ],
+                    "type": "wms"
+                  },
+                  "//Flow models/Present Day/Water Sources - Streams (Present)": {
+                    "show": false,
+                    "knownContainerUniqueIds": [
+                      "//Flow models/Present Day"
+                    ],
+                    "type": "wms"
+                  },
+                  "//Flow models/Present Day/Water Sources - Rain (Present)": {
+                    "show": false,
+                    "knownContainerUniqueIds": [
+                      "//Flow models/Present Day"
+                    ],
+                    "type": "wms"
+                  },
+                  "//Flow models/Present Day/Water Sources - Tide (Present)": {
+                    "show": false,
+                    "knownContainerUniqueIds": [
+                      "//Flow models/Present Day"
+                    ],
+                    "type": "wms"
+                  },
+                  "//Flow models/Present Day/Median Sediment Size (Present)": {
+                    "show": false,
+                    "splitDirection": -1,
+                    "knownContainerUniqueIds": [
+                      "//Flow models/Present Day"
+                    ],
+                    "type": "wms"
+                  },
+                  "//Flow models/Sea Level Rise 2080/Water Source Summary Map (2080)": {
+                    "show": false,
+                    "splitDirection": 1,
+                    "knownContainerUniqueIds": [
+                      "//Flow models/Sea Level Rise 2080"
+                    ],
+                    "type": "wms"
+                  },
+                  "//Flow models/Sea Level Rise 2080/Water Sources - Rain (2080)": {
+                    "show": false,
+                    "knownContainerUniqueIds": [
+                      "//Flow models/Sea Level Rise 2080"
+                    ],
+                    "type": "wms"
+                  },
+                  "//Flow models/Sea Level Rise 2080/Water Sources - Tide (2080)": {
+                    "show": false,
+                    "knownContainerUniqueIds": [
+                      "//Flow models/Sea Level Rise 2080"
+                    ],
+                    "type": "wms"
+                  },
+                  "//Flow models/Sea Level Rise 2080/Median Sediment Size (2080)": {
+                    "show": false,
+                    "splitDirection": 1,
+                    "knownContainerUniqueIds": [
+                      "//Flow models/Sea Level Rise 2080"
+                    ],
+                    "type": "wms"
+                  },
+                  "//Greater Wellington Regional Council - Our Environment/0": {
+                    "isOpen": true,
+                    "knownContainerUniqueIds": [
+                      "//Greater Wellington Regional Council - Our Environment"
+                    ],
+                    "type": "esri-mapServer-group"
+                  },
+                  "//Greater Wellington Regional Council - Our Environment/0/4": {
+                    "opacity": 1,
+                    "knownContainerUniqueIds": [
+                      "//Greater Wellington Regional Council - Our Environment/0"
+                    ],
+                    "type": "esri-mapServer"
+                  },
+                  "//Greater Wellington Regional Council - Our Environment/10": {
+                    "isOpen": true,
+                    "knownContainerUniqueIds": [
+                      "//Greater Wellington Regional Council - Our Environment"
+                    ],
+                    "type": "esri-mapServer-group"
+                  },
+                  "//Greater Wellington Regional Council - Our Environment/20": {
+                    "isOpen": true,
+                    "knownContainerUniqueIds": [
+                      "//Greater Wellington Regional Council - Our Environment"
+                    ],
+                    "type": "esri-mapServer-group"
+                  },
+                  "//Greater Wellington Regional Council - Our Environment/22": {
+                    "isOpen": true,
+                    "knownContainerUniqueIds": [
+                      "//Greater Wellington Regional Council - Our Environment"
+                    ],
+                    "type": "esri-mapServer-group"
+                  },
+                  "//Flow models": {
+                    "knownContainerUniqueIds": [
+                      "/"
+                    ],
+                    "type": "group"
+                  },
+                  "//PHF Science Sampling": {
+                    "knownContainerUniqueIds": [
+                      "/"
+                    ],
+                    "type": "group"
+                  }
+                },
+                "workbench": [
+                  "//Flow models/Present Day/Flow Model (Present) - Water Sources - Streams",
+                  "//PHF Science Sampling/Faecal Source Tracking - February 2023"
+                ],
+                "timeline": [
+                  "//Flow models/Present Day/Flow Model (Present) - Water Sources - Streams",
+                  "//PHF Science Sampling/Faecal Source Tracking - February 2023"
+                ],
+                "initialCamera": {
+                  "west": 174.82038803925147,
+                  "south": -41.130988887948654,
+                  "east": 174.85260092525476,
+                  "north": -41.11699952972317,
+                  "position": {
+                    "x": -4793688.936097652,
+                    "y": 433324.28557570104,
+                    "z": -4174448.5242611724
+                  },
+                  "direction": {
+                    "x": 0.706840856244073,
+                    "y": -0.12486105026924442,
+                    "z": 0.6962655542749526
+                  },
+                  "up": {
+                    "x": -0.5621295824969162,
+                    "y": -0.6966557914461944,
+                    "z": 0.4457365149124752
+                  }
+                },
+                "homeCamera": {
+                  "west": 174.82,
+                  "south": -41.15,
+                  "east": 174.9,
+                  "north": -41.06
+                },
+                "viewerMode": "3d",
+                "showSplitter": false,
+                "splitPosition": 0.6125708333333341,
+                "settings": {
+                  "baseMaximumScreenSpaceError": 2,
+                  "useNativeResolution": false,
+                  "alwaysShowTimeline": false,
+                  "baseMapId": "basemap-linz-aerial",
+                  "terrainSplitDirection": 0,
+                  "depthTestAgainstTerrainEnabled": false
+                }
+              }
+            ]
+          }
+        },
+        {
+          "title": "Comparatively high avian fecal markers at Motu-Karaka",
+          "text": "",
+          "id": "90f3d693-9b18-42f3-814f-13e57664e74d",
+          "shareData": {
+            "version": "8.0.0",
+            "initSources": [
+              {
+                "stratum": "user",
+                "models": {
+                  "/": {
+                    "type": "group"
+                  },
+                  "//Flow models/Present Day": {
+                    "isOpen": true,
+                    "knownContainerUniqueIds": [
+                      "//Flow models"
+                    ],
+                    "type": "group"
+                  },
+                  "//Flow models/Present Day/Flow Model (Present) - Water Source Summary Map": {
+                    "splitDirection": -1,
+                    "knownContainerUniqueIds": [
+                      "//Flow models/Present Day"
+                    ],
+                    "type": "wms"
+                  },
+                  "//Flow models/Sea Level Rise 2080": {
+                    "isOpen": true,
+                    "knownContainerUniqueIds": [
+                      "//Flow models"
+                    ],
+                    "type": "group"
+                  },
+                  "//Flow models/Sea Level Rise 2080/Flow Model (2080) - Water Source Summary Map": {
+                    "splitDirection": 1,
+                    "knownContainerUniqueIds": [
+                      "//Flow models/Sea Level Rise 2080"
+                    ],
+                    "type": "wms"
+                  },
+                  "//PHF Science Sampling/Faecal Source Tracking - February 2023": {
+                    "isOpenInWorkbench": true,
+                    "activeStyle": "Avian GFD / 100 ml",
+                    "knownContainerUniqueIds": [
+                      "//PHF Science Sampling"
+                    ],
+                    "type": "wfs"
+                  },
+                  "//Greater Wellington Regional Council - Our Environment": {
+                    "knownContainerUniqueIds": [
+                      "/"
+                    ],
+                    "type": "esri-group"
+                  },
+                  "//Flow models/Present Day/Water Sources - Streams (Present):Water Sources - Streams (Present):blob:https://teawarua.app.geospatial.ac.nz/2a11d596-7b82-401b-b68f-b294f80ed2f1": {
+                    "show": false,
+                    "name": "Water Sources - Streams (Present)",
+                    "chartPointOnMap": {
+                      "latitude": -41.12388159153871,
+                      "longitude": 174.83787986321505
+                    },
+                    "styles": [
+                      {
+                        "id": "chart"
+                      },
+                      {
+                        "id": "value",
+                        "chart": {
+                          "lines": [
+                            {
+                              "yAxisColumn": "value",
+                              "isSelectedInWorkbench": false
+                            }
+                          ]
+                        }
+                      }
+                    ],
+                    "columnTitles": [
+                      ""
+                    ],
+                    "columnUnits": [
+                      ""
+                    ],
+                    "type": "csv"
+                  },
+                  "//Flow models/Present Day/Water Sources - Rain (Present):Water Sources - Rain (Present):blob:https://teawarua.app.geospatial.ac.nz/cf766fc6-43e4-467f-902a-a685f4576cb4": {
+                    "show": false,
+                    "name": "Water Sources - Rain (Present)",
+                    "chartPointOnMap": {
+                      "latitude": -41.12390888091413,
+                      "longitude": 174.83790259556207
+                    },
+                    "styles": [
+                      {
+                        "id": "chart"
+                      },
+                      {
+                        "id": "value",
+                        "chart": {
+                          "lines": [
+                            {
+                              "yAxisColumn": "value",
+                              "isSelectedInWorkbench": false
+                            }
+                          ]
+                        }
+                      }
+                    ],
+                    "columnTitles": [
+                      ""
+                    ],
+                    "columnUnits": [
+                      ""
+                    ],
+                    "type": "csv"
+                  },
+                  "//Flow models/Sea Level Rise 2080/Water Sources - Tide (2080):Water Sources - Tide (2080):blob:https://teawarua.app.geospatial.ac.nz/20aa9d34-212d-42c5-a9fb-014fea1480a7": {
+                    "show": false,
+                    "name": "Water Sources - Tide (2080)",
+                    "chartPointOnMap": {
+                      "latitude": -41.09856976116374,
+                      "longitude": 174.86344900900534
+                    },
+                    "styles": [
+                      {
+                        "id": "chart"
+                      },
+                      {
+                        "id": "value",
+                        "chart": {
+                          "lines": [
+                            {
+                              "yAxisColumn": "value",
+                              "isSelectedInWorkbench": false
+                            }
+                          ]
+                        }
+                      }
+                    ],
+                    "columnTitles": [
+                      ""
+                    ],
+                    "columnUnits": [
+                      ""
+                    ],
+                    "type": "csv"
+                  },
+                  "//Flow models/Present Day/Water Sources - Tide (Present):Water Sources - Tide (Present):blob:https://teawarua.app.geospatial.ac.nz/bd5d0a29-4b88-47b4-ac8b-f86aad806c67": {
+                    "show": false,
+                    "name": "Water Sources - Tide (Present)",
+                    "chartPointOnMap": {
+                      "latitude": -41.09856976116374,
+                      "longitude": 174.86344900900534
+                    },
+                    "styles": [
+                      {
+                        "id": "chart"
+                      },
+                      {
+                        "id": "value",
+                        "chart": {
+                          "lines": [
+                            {
+                              "yAxisColumn": "value",
+                              "isSelectedInWorkbench": false
+                            }
+                          ]
+                        }
+                      }
+                    ],
+                    "columnTitles": [
+                      ""
+                    ],
+                    "columnUnits": [
+                      ""
+                    ],
+                    "type": "csv"
+                  },
+                  "//Flow models": {
+                    "knownContainerUniqueIds": [
+                      "/"
+                    ],
+                    "type": "group"
+                  },
+                  "//PHF Science Sampling": {
+                    "knownContainerUniqueIds": [
+                      "/"
+                    ],
+                    "type": "group"
+                  },
+                  "//Greater Wellington Regional Council - Our Environment": {
+                    "knownContainerUniqueIds": [
+                      "/"
+                    ],
+                    "type": "esri-group"
+                  },
+                  "//Greater Wellington Regional Council - Our Environment/0": {
+                    "isOpen": true,
+                    "knownContainerUniqueIds": [
+                      "//Greater Wellington Regional Council - Our Environment"
+                    ],
+                    "type": "esri-mapServer-group"
+                  },
+                  "//Greater Wellington Regional Council - Our Environment/10": {
+                    "isOpen": true,
+                    "knownContainerUniqueIds": [
+                      "//Greater Wellington Regional Council - Our Environment"
+                    ],
+                    "type": "esri-mapServer-group"
+                  },
+                  "//Greater Wellington Regional Council - Our Environment/20": {
+                    "isOpen": true,
+                    "knownContainerUniqueIds": [
+                      "//Greater Wellington Regional Council - Our Environment"
+                    ],
+                    "type": "esri-mapServer-group"
+                  },
+                  "//Greater Wellington Regional Council - Our Environment/22": {
+                    "isOpen": false,
+                    "knownContainerUniqueIds": [
+                      "//Greater Wellington Regional Council - Our Environment"
+                    ],
+                    "type": "esri-mapServer-group"
+                  },
+                  "//Greater Wellington Regional Council - Our Environment/37": {
+                    "isOpen": true,
+                    "knownContainerUniqueIds": [
+                      "//Greater Wellington Regional Council - Our Environment"
+                    ],
+                    "type": "esri-mapServer-group"
+                  },
+                  "//Flow models/Present Day": {
+                    "isOpen": true,
+                    "knownContainerUniqueIds": [
+                      "//Flow models"
+                    ],
+                    "type": "group"
+                  },
+                  "//Flow models/Sea Level Rise 2080": {
+                    "isOpen": true,
+                    "knownContainerUniqueIds": [
+                      "//Flow models"
+                    ],
+                    "type": "group"
+                  },
+                  "//PHF Science Sampling/Fecal Source Tracing - February 2023": {
+                    "show": true,
+                    "activeStyle": "Human crAssphage / 100 ml",
+                    "knownContainerUniqueIds": [
+                      "//PHF Science Sampling"
+                    ],
+                    "type": "wfs"
+                  },
+                  "//Greater Wellington Regional Council - Our Environment/0/4": {
+                    "show": true,
+                    "knownContainerUniqueIds": [
+                      "//Greater Wellington Regional Council - Our Environment/0"
+                    ],
+                    "type": "esri-mapServer"
+                  },
+                  "//Greater Wellington Regional Council - Our Environment/10/11": {
+                    "show": false,
+                    "knownContainerUniqueIds": [
+                      "//Greater Wellington Regional Council - Our Environment/10"
+                    ],
+                    "type": "esri-mapServer"
+                  },
+                  "//Greater Wellington Regional Council - Our Environment/37/39": {
+                    "show": false,
+                    "knownContainerUniqueIds": [
+                      "//Greater Wellington Regional Council - Our Environment/37"
+                    ],
+                    "type": "esri-mapServer"
+                  },
+                  "//Flow models/Present Day/Water Source Summary Map (Present)": {
+                    "opacity": 0.86,
+                    "knownContainerUniqueIds": [
+                      "//Flow models/Present Day"
+                    ],
+                    "type": "wms"
+                  },
+                  "//Flow models/Present Day/Water Sources - Streams (Present)": {
+                    "show": false,
+                    "knownContainerUniqueIds": [
+                      "//Flow models/Present Day"
+                    ],
+                    "type": "wms"
+                  },
+                  "//Flow models/Present Day/Water Sources - Rain (Present)": {
+                    "show": false,
+                    "knownContainerUniqueIds": [
+                      "//Flow models/Present Day"
+                    ],
+                    "type": "wms"
+                  },
+                  "//Flow models/Present Day/Water Sources - Tide (Present)": {
+                    "show": false,
+                    "knownContainerUniqueIds": [
+                      "//Flow models/Present Day"
+                    ],
+                    "type": "wms"
+                  },
+                  "//Flow models/Present Day/Median Sediment Size (Present)": {
+                    "show": false,
+                    "splitDirection": -1,
+                    "knownContainerUniqueIds": [
+                      "//Flow models/Present Day"
+                    ],
+                    "type": "wms"
+                  },
+                  "//Flow models/Sea Level Rise 2080/Water Source Summary Map (2080)": {
+                    "show": false,
+                    "splitDirection": 1,
+                    "knownContainerUniqueIds": [
+                      "//Flow models/Sea Level Rise 2080"
+                    ],
+                    "type": "wms"
+                  },
+                  "//Flow models/Sea Level Rise 2080/Water Sources - Rain (2080)": {
+                    "show": false,
+                    "knownContainerUniqueIds": [
+                      "//Flow models/Sea Level Rise 2080"
+                    ],
+                    "type": "wms"
+                  },
+                  "//Flow models/Sea Level Rise 2080/Water Sources - Tide (2080)": {
+                    "show": false,
+                    "knownContainerUniqueIds": [
+                      "//Flow models/Sea Level Rise 2080"
+                    ],
+                    "type": "wms"
+                  },
+                  "//Flow models/Sea Level Rise 2080/Median Sediment Size (2080)": {
+                    "show": false,
+                    "splitDirection": 1,
+                    "knownContainerUniqueIds": [
+                      "//Flow models/Sea Level Rise 2080"
+                    ],
+                    "type": "wms"
+                  },
+                  "//Greater Wellington Regional Council - Our Environment/0": {
+                    "isOpen": true,
+                    "knownContainerUniqueIds": [
+                      "//Greater Wellington Regional Council - Our Environment"
+                    ],
+                    "type": "esri-mapServer-group"
+                  },
+                  "//Greater Wellington Regional Council - Our Environment/0/4": {
+                    "opacity": 1,
+                    "knownContainerUniqueIds": [
+                      "//Greater Wellington Regional Council - Our Environment/0"
+                    ],
+                    "type": "esri-mapServer"
+                  },
+                  "//Greater Wellington Regional Council - Our Environment/10": {
+                    "isOpen": true,
+                    "knownContainerUniqueIds": [
+                      "//Greater Wellington Regional Council - Our Environment"
+                    ],
+                    "type": "esri-mapServer-group"
+                  },
+                  "//Greater Wellington Regional Council - Our Environment/20": {
+                    "isOpen": true,
+                    "knownContainerUniqueIds": [
+                      "//Greater Wellington Regional Council - Our Environment"
+                    ],
+                    "type": "esri-mapServer-group"
+                  },
+                  "//Greater Wellington Regional Council - Our Environment/22": {
+                    "isOpen": true,
+                    "knownContainerUniqueIds": [
+                      "//Greater Wellington Regional Council - Our Environment"
+                    ],
+                    "type": "esri-mapServer-group"
+                  },
+                  "//Greater Wellington Regional Council - Our Environment/37": {
+                    "isOpen": true,
+                    "knownContainerUniqueIds": [
+                      "//Greater Wellington Regional Council - Our Environment"
+                    ],
+                    "type": "esri-mapServer-group"
+                  },
+                  "//Flow models": {
+                    "knownContainerUniqueIds": [
+                      "/"
+                    ],
+                    "type": "group"
+                  },
+                  "//PHF Science Sampling": {
+                    "knownContainerUniqueIds": [
+                      "/"
+                    ],
+                    "type": "group"
+                  }
+                },
+                "workbench": [
+                  "//PHF Science Sampling/Faecal Source Tracking - February 2023"
+                ],
+                "timeline": [
+                  "//PHF Science Sampling/Faecal Source Tracking - February 2023"
+                ],
+                "initialCamera": {
+                  "west": 174.80151199175722,
+                  "south": -41.13363221828541,
+                  "east": 174.92672177416716,
+                  "north": -41.07925836108302,
+                  "position": {
+                    "x": -4791189.042575178,
+                    "y": 432517.2076053785,
+                    "z": -4179988.547604616
+                  },
+                  "direction": {
+                    "x": -0.2552575768546467,
+                    "y": -0.18467323842681377,
+                    "z": 0.9490728973410038
+                  },
+                  "up": {
+                    "x": -0.9647306819655614,
+                    "y": -0.016662340913459556,
+                    "z": -0.26271101550857445
+                  }
+                },
+                "homeCamera": {
+                  "west": 174.82,
+                  "south": -41.15,
+                  "east": 174.9,
+                  "north": -41.06
+                },
+                "viewerMode": "3d",
+                "showSplitter": false,
+                "splitPosition": 0.7320250000000004,
+                "settings": {
+                  "baseMaximumScreenSpaceError": 2,
+                  "useNativeResolution": false,
+                  "alwaysShowTimeline": false,
+                  "baseMapId": "basemap-linz-aerial",
+                  "terrainSplitDirection": 0,
+                  "depthTestAgainstTerrainEnabled": false
+                }
+              }
+            ]
+          }
+        },
+        {
+          "title": "Comparision to 2080",
+          "text": "",
+          "id": "c6d59356-262b-452d-be49-5cc5bd74112f",
+          "shareData": {
+            "version": "8.0.0",
+            "initSources": [
+              {
+                "stratum": "user",
+                "models": {
+                  "/": {
+                    "type": "group"
+                  },
+                  "//Flow models/Present Day": {
+                    "isOpen": true,
+                    "knownContainerUniqueIds": [
+                      "//Flow models"
+                    ],
+                    "type": "group"
+                  },
+                  "//Flow models/Present Day/Flow Model (Present) - Water Source Summary Map": {
+                    "splitDirection": -1,
+                    "knownContainerUniqueIds": [
+                      "//Flow models/Present Day"
+                    ],
+                    "type": "wms"
+                  },
+                  "//Flow models/Sea Level Rise 2080": {
+                    "isOpen": true,
+                    "knownContainerUniqueIds": [
+                      "//Flow models"
+                    ],
+                    "type": "group"
+                  },
+                  "//Flow models/Sea Level Rise 2080/Flow Model (2080) - Water Source Summary Map": {
+                    "splitDirection": 1,
+                    "knownContainerUniqueIds": [
+                      "//Flow models/Sea Level Rise 2080"
+                    ],
+                    "type": "wms"
+                  },
+                  "//PHF Science Sampling/Faecal Source Tracking - February 2023": {
+                    "isOpenInWorkbench": true,
+                    "knownContainerUniqueIds": [
+                      "//PHF Science Sampling"
+                    ],
+                    "type": "wfs"
+                  },
+                  "//Greater Wellington Regional Council - Our Environment": {
+                    "knownContainerUniqueIds": [
+                      "/"
+                    ],
+                    "type": "esri-group"
+                  },
+                  "//Flow models/Present Day/Water Sources - Streams (Present):Water Sources - Streams (Present):blob:https://teawarua.app.geospatial.ac.nz/2a11d596-7b82-401b-b68f-b294f80ed2f1": {
+                    "show": false,
+                    "name": "Water Sources - Streams (Present)",
+                    "chartPointOnMap": {
+                      "latitude": -41.12388159153871,
+                      "longitude": 174.83787986321505
+                    },
+                    "styles": [
+                      {
+                        "id": "chart"
+                      },
+                      {
+                        "id": "value",
+                        "chart": {
+                          "lines": [
+                            {
+                              "yAxisColumn": "value",
+                              "isSelectedInWorkbench": false
+                            }
+                          ]
+                        }
+                      }
+                    ],
+                    "columnTitles": [
+                      ""
+                    ],
+                    "columnUnits": [
+                      ""
+                    ],
+                    "type": "csv"
+                  },
+                  "//Flow models/Present Day/Water Sources - Rain (Present):Water Sources - Rain (Present):blob:https://teawarua.app.geospatial.ac.nz/cf766fc6-43e4-467f-902a-a685f4576cb4": {
+                    "show": false,
+                    "name": "Water Sources - Rain (Present)",
+                    "chartPointOnMap": {
+                      "latitude": -41.12390888091413,
+                      "longitude": 174.83790259556207
+                    },
+                    "styles": [
+                      {
+                        "id": "chart"
+                      },
+                      {
+                        "id": "value",
+                        "chart": {
+                          "lines": [
+                            {
+                              "yAxisColumn": "value",
+                              "isSelectedInWorkbench": false
+                            }
+                          ]
+                        }
+                      }
+                    ],
+                    "columnTitles": [
+                      ""
+                    ],
+                    "columnUnits": [
+                      ""
+                    ],
+                    "type": "csv"
+                  },
+                  "//Flow models/Sea Level Rise 2080/Water Sources - Tide (2080):Water Sources - Tide (2080):blob:https://teawarua.app.geospatial.ac.nz/20aa9d34-212d-42c5-a9fb-014fea1480a7": {
+                    "show": false,
+                    "name": "Water Sources - Tide (2080)",
+                    "chartPointOnMap": {
+                      "latitude": -41.09856976116374,
+                      "longitude": 174.86344900900534
+                    },
+                    "styles": [
+                      {
+                        "id": "chart"
+                      },
+                      {
+                        "id": "value",
+                        "chart": {
+                          "lines": [
+                            {
+                              "yAxisColumn": "value",
+                              "isSelectedInWorkbench": false
+                            }
+                          ]
+                        }
+                      }
+                    ],
+                    "columnTitles": [
+                      ""
+                    ],
+                    "columnUnits": [
+                      ""
+                    ],
+                    "type": "csv"
+                  },
+                  "//Flow models/Present Day/Water Sources - Tide (Present):Water Sources - Tide (Present):blob:https://teawarua.app.geospatial.ac.nz/bd5d0a29-4b88-47b4-ac8b-f86aad806c67": {
+                    "show": false,
+                    "name": "Water Sources - Tide (Present)",
+                    "chartPointOnMap": {
+                      "latitude": -41.09856976116374,
+                      "longitude": 174.86344900900534
+                    },
+                    "styles": [
+                      {
+                        "id": "chart"
+                      },
+                      {
+                        "id": "value",
+                        "chart": {
+                          "lines": [
+                            {
+                              "yAxisColumn": "value",
+                              "isSelectedInWorkbench": false
+                            }
+                          ]
+                        }
+                      }
+                    ],
+                    "columnTitles": [
+                      ""
+                    ],
+                    "columnUnits": [
+                      ""
+                    ],
+                    "type": "csv"
+                  },
+                  "//Flow models": {
+                    "knownContainerUniqueIds": [
+                      "/"
+                    ],
+                    "type": "group"
+                  },
+                  "//PHF Science Sampling": {
+                    "knownContainerUniqueIds": [
+                      "/"
+                    ],
+                    "type": "group"
+                  },
+                  "//Greater Wellington Regional Council - Our Environment": {
+                    "knownContainerUniqueIds": [
+                      "/"
+                    ],
+                    "type": "esri-group"
+                  },
+                  "//Greater Wellington Regional Council - Our Environment/0": {
+                    "isOpen": true,
+                    "knownContainerUniqueIds": [
+                      "//Greater Wellington Regional Council - Our Environment"
+                    ],
+                    "type": "esri-mapServer-group"
+                  },
+                  "//Greater Wellington Regional Council - Our Environment/10": {
+                    "isOpen": true,
+                    "knownContainerUniqueIds": [
+                      "//Greater Wellington Regional Council - Our Environment"
+                    ],
+                    "type": "esri-mapServer-group"
+                  },
+                  "//Greater Wellington Regional Council - Our Environment/20": {
+                    "isOpen": true,
+                    "knownContainerUniqueIds": [
+                      "//Greater Wellington Regional Council - Our Environment"
+                    ],
+                    "type": "esri-mapServer-group"
+                  },
+                  "//Greater Wellington Regional Council - Our Environment/22": {
+                    "isOpen": false,
+                    "knownContainerUniqueIds": [
+                      "//Greater Wellington Regional Council - Our Environment"
+                    ],
+                    "type": "esri-mapServer-group"
+                  },
+                  "//Greater Wellington Regional Council - Our Environment/37": {
+                    "isOpen": true,
+                    "knownContainerUniqueIds": [
+                      "//Greater Wellington Regional Council - Our Environment"
+                    ],
+                    "type": "esri-mapServer-group"
+                  },
+                  "//Flow models/Present Day": {
+                    "isOpen": true,
+                    "knownContainerUniqueIds": [
+                      "//Flow models"
+                    ],
+                    "type": "group"
+                  },
+                  "//Flow models/Sea Level Rise 2080": {
+                    "isOpen": true,
+                    "knownContainerUniqueIds": [
+                      "//Flow models"
+                    ],
+                    "type": "group"
+                  },
+                  "//PHF Science Sampling/Fecal Source Tracing - February 2023": {
+                    "show": true,
+                    "activeStyle": "Human crAssphage / 100 ml",
+                    "knownContainerUniqueIds": [
+                      "//PHF Science Sampling"
+                    ],
+                    "type": "wfs"
+                  },
+                  "//Greater Wellington Regional Council - Our Environment/0/4": {
+                    "show": true,
+                    "knownContainerUniqueIds": [
+                      "//Greater Wellington Regional Council - Our Environment/0"
+                    ],
+                    "type": "esri-mapServer"
+                  },
+                  "//Greater Wellington Regional Council - Our Environment/10/11": {
+                    "show": false,
+                    "knownContainerUniqueIds": [
+                      "//Greater Wellington Regional Council - Our Environment/10"
+                    ],
+                    "type": "esri-mapServer"
+                  },
+                  "//Greater Wellington Regional Council - Our Environment/37/39": {
+                    "show": false,
+                    "knownContainerUniqueIds": [
+                      "//Greater Wellington Regional Council - Our Environment/37"
+                    ],
+                    "type": "esri-mapServer"
+                  },
+                  "//Flow models/Present Day/Water Source Summary Map (Present)": {
+                    "opacity": 0.86,
+                    "knownContainerUniqueIds": [
+                      "//Flow models/Present Day"
+                    ],
+                    "type": "wms"
+                  },
+                  "//Flow models/Present Day/Water Sources - Streams (Present)": {
+                    "show": false,
+                    "knownContainerUniqueIds": [
+                      "//Flow models/Present Day"
+                    ],
+                    "type": "wms"
+                  },
+                  "//Flow models/Present Day/Water Sources - Rain (Present)": {
+                    "show": false,
+                    "knownContainerUniqueIds": [
+                      "//Flow models/Present Day"
+                    ],
+                    "type": "wms"
+                  },
+                  "//Flow models/Present Day/Water Sources - Tide (Present)": {
+                    "show": false,
+                    "knownContainerUniqueIds": [
+                      "//Flow models/Present Day"
+                    ],
+                    "type": "wms"
+                  },
+                  "//Flow models/Present Day/Median Sediment Size (Present)": {
+                    "show": false,
+                    "splitDirection": -1,
+                    "knownContainerUniqueIds": [
+                      "//Flow models/Present Day"
+                    ],
+                    "type": "wms"
+                  },
+                  "//Flow models/Sea Level Rise 2080/Water Source Summary Map (2080)": {
+                    "show": false,
+                    "splitDirection": 1,
+                    "knownContainerUniqueIds": [
+                      "//Flow models/Sea Level Rise 2080"
+                    ],
+                    "type": "wms"
+                  },
+                  "//Flow models/Sea Level Rise 2080/Water Sources - Rain (2080)": {
+                    "show": false,
+                    "knownContainerUniqueIds": [
+                      "//Flow models/Sea Level Rise 2080"
+                    ],
+                    "type": "wms"
+                  },
+                  "//Flow models/Sea Level Rise 2080/Water Sources - Tide (2080)": {
+                    "show": false,
+                    "knownContainerUniqueIds": [
+                      "//Flow models/Sea Level Rise 2080"
+                    ],
+                    "type": "wms"
+                  },
+                  "//Flow models/Sea Level Rise 2080/Median Sediment Size (2080)": {
+                    "show": false,
+                    "splitDirection": 1,
+                    "knownContainerUniqueIds": [
+                      "//Flow models/Sea Level Rise 2080"
+                    ],
+                    "type": "wms"
+                  },
+                  "//Greater Wellington Regional Council - Our Environment/0": {
+                    "isOpen": true,
+                    "knownContainerUniqueIds": [
+                      "//Greater Wellington Regional Council - Our Environment"
+                    ],
+                    "type": "esri-mapServer-group"
+                  },
+                  "//Greater Wellington Regional Council - Our Environment/0/4": {
+                    "opacity": 1,
+                    "knownContainerUniqueIds": [
+                      "//Greater Wellington Regional Council - Our Environment/0"
+                    ],
+                    "type": "esri-mapServer"
+                  },
+                  "//Greater Wellington Regional Council - Our Environment/10": {
+                    "isOpen": true,
+                    "knownContainerUniqueIds": [
+                      "//Greater Wellington Regional Council - Our Environment"
+                    ],
+                    "type": "esri-mapServer-group"
+                  },
+                  "//Greater Wellington Regional Council - Our Environment/20": {
+                    "isOpen": true,
+                    "knownContainerUniqueIds": [
+                      "//Greater Wellington Regional Council - Our Environment"
+                    ],
+                    "type": "esri-mapServer-group"
+                  },
+                  "//Greater Wellington Regional Council - Our Environment/22": {
+                    "isOpen": true,
+                    "knownContainerUniqueIds": [
+                      "//Greater Wellington Regional Council - Our Environment"
+                    ],
+                    "type": "esri-mapServer-group"
+                  },
+                  "//Flow models": {
+                    "knownContainerUniqueIds": [
+                      "/"
+                    ],
+                    "type": "group"
+                  },
+                  "//PHF Science Sampling": {
+                    "knownContainerUniqueIds": [
+                      "/"
+                    ],
+                    "type": "group"
+                  }
+                },
+                "workbench": [
+                  "//Flow models/Present Day/Flow Model (Present) - Water Source Summary Map",
+                  "//Flow models/Sea Level Rise 2080/Flow Model (2080) - Water Source Summary Map"
+                ],
+                "timeline": [
+                  "//Flow models/Sea Level Rise 2080/Flow Model (2080) - Water Source Summary Map",
+                  "//Flow models/Present Day/Flow Model (Present) - Water Source Summary Map"
+                ],
+                "initialCamera": {
+                  "west": 174.85072526133305,
+                  "south": -41.11902826152341,
+                  "east": 174.92747649023266,
+                  "north": -41.08569069236584,
+                  "position": {
+                    "x": -4798373.944966515,
+                    "y": 429151.97599216795,
+                    "z": -4174454.5490860175
+                  },
+                  "direction": {
+                    "x": 0.7834714338787544,
+                    "y": -0.068004251052397,
+                    "z": 0.6176956646559625
+                  },
+                  "up": {
+                    "x": -0.6179224905559559,
+                    "y": 0.020173967937627466,
+                    "z": 0.7859801566724037
+                  }
+                },
+                "homeCamera": {
+                  "west": 174.82,
+                  "south": -41.15,
+                  "east": 174.9,
+                  "north": -41.06
+                },
+                "viewerMode": "3d",
+                "showSplitter": true,
+                "splitPosition": 0.735525,
+                "settings": {
+                  "baseMaximumScreenSpaceError": 2,
+                  "useNativeResolution": false,
+                  "alwaysShowTimeline": false,
+                  "baseMapId": "basemap-linz-aerial",
+                  "terrainSplitDirection": 0,
+                  "depthTestAgainstTerrainEnabled": false
+                }
+              }
+            ]
+          }
+        },
+        {
+          "title": "Microplastics",
+          "text": "",
+          "id": "1ed4f598-e2de-4317-9f83-4fcdae6f6d26",
+          "shareData": {
+            "version": "8.0.0",
+            "initSources": [
+              {
+                "stratum": "user",
+                "models": {
+                  "/": {
+                    "type": "group"
+                  },
+                  "//Flow models/Present Day": {
+                    "isOpen": true,
+                    "knownContainerUniqueIds": [
+                      "//Flow models"
+                    ],
+                    "type": "group"
+                  },
+                  "//Flow models/Present Day/Water Source Summary Map (Present)": {
+                    "opacity": 0.86,
+                    "knownContainerUniqueIds": [
+                      "//Flow models/Present Day"
+                    ],
+                    "type": "wms"
+                  },
+                  "//Flow models/Present Day/Water Sources - Streams (Present)": {
+                    "show": false,
+                    "knownContainerUniqueIds": [
+                      "//Flow models/Present Day"
+                    ],
+                    "type": "wms"
+                  },
+                  "//Flow models/Present Day/Water Sources - Rain (Present)": {
+                    "show": false,
+                    "knownContainerUniqueIds": [
+                      "//Flow models/Present Day"
+                    ],
+                    "type": "wms"
+                  },
+                  "//Flow models/Present Day/Median Sediment Size (Present)": {
+                    "show": false,
+                    "splitDirection": -1,
+                    "knownContainerUniqueIds": [
+                      "//Flow models/Present Day"
+                    ],
+                    "type": "wms"
+                  },
+                  "//Flow models/Sea Level Rise 2080": {
+                    "isOpen": true,
+                    "knownContainerUniqueIds": [
+                      "//Flow models"
+                    ],
+                    "type": "group"
+                  },
+                  "//Flow models/Sea Level Rise 2080/Water Source Summary Map (2080)": {
+                    "show": false,
+                    "splitDirection": 1,
+                    "opacity": 1,
+                    "knownContainerUniqueIds": [
+                      "//Flow models/Sea Level Rise 2080"
+                    ],
+                    "type": "wms"
+                  },
+                  "//Flow models/Sea Level Rise 2080/Water Sources - Rain (2080)": {
+                    "show": false,
+                    "knownContainerUniqueIds": [
+                      "//Flow models/Sea Level Rise 2080"
+                    ],
+                    "type": "wms"
+                  },
+                  "//Flow models/Sea Level Rise 2080/Median Sediment Size (2080)": {
+                    "show": false,
+                    "splitDirection": 1,
+                    "knownContainerUniqueIds": [
+                      "//Flow models/Sea Level Rise 2080"
+                    ],
+                    "type": "wms"
+                  },
+                  "//PHF Science Sampling/Fecal Source Tracing - February 2023": {
+                    "show": true,
+                    "activeStyle": "Avian GFD / 100 ml",
+                    "knownContainerUniqueIds": [
+                      "//PHF Science Sampling"
+                    ],
+                    "type": "wfs"
+                  },
+                  "//Greater Wellington Regional Council - Our Environment/0": {
+                    "isOpen": true,
+                    "knownContainerUniqueIds": [
+                      "//Greater Wellington Regional Council - Our Environment"
+                    ],
+                    "type": "esri-mapServer-group"
+                  },
+                  "//Greater Wellington Regional Council - Our Environment/0/4": {
+                    "show": false,
+                    "knownContainerUniqueIds": [
+                      "//Greater Wellington Regional Council - Our Environment/0"
+                    ],
+                    "type": "esri-mapServer"
+                  },
+                  "//Greater Wellington Regional Council - Our Environment/10": {
+                    "isOpen": true,
+                    "knownContainerUniqueIds": [
+                      "//Greater Wellington Regional Council - Our Environment"
+                    ],
+                    "type": "esri-mapServer-group"
+                  },
+                  "//Greater Wellington Regional Council - Our Environment/10/11": {
+                    "show": false,
+                    "knownContainerUniqueIds": [
+                      "//Greater Wellington Regional Council - Our Environment/10"
+                    ],
+                    "type": "esri-mapServer"
+                  },
+                  "//Flow models": {
+                    "knownContainerUniqueIds": [
+                      "/"
+                    ],
+                    "type": "group"
+                  },
+                  "//Flow models/Present Day/Water Sources - Streams (Present):Water Sources - Streams (Present):blob:https://teawarua.app.geospatial.ac.nz/2a11d596-7b82-401b-b68f-b294f80ed2f1": {
+                    "show": false,
+                    "name": "Water Sources - Streams (Present)",
+                    "chartPointOnMap": {
+                      "latitude": -41.12388159153871,
+                      "longitude": 174.83787986321505
+                    },
+                    "styles": [
+                      {
+                        "id": "chart"
+                      },
+                      {
+                        "id": "value",
+                        "chart": {
+                          "lines": [
+                            {
+                              "yAxisColumn": "value",
+                              "isSelectedInWorkbench": false
+                            }
+                          ]
+                        }
+                      }
+                    ],
+                    "columnTitles": [
+                      ""
+                    ],
+                    "columnUnits": [
+                      ""
+                    ],
+                    "type": "csv"
+                  },
+                  "//Flow models/Present Day/Water Sources - Rain (Present):Water Sources - Rain (Present):blob:https://teawarua.app.geospatial.ac.nz/cf766fc6-43e4-467f-902a-a685f4576cb4": {
+                    "show": false,
+                    "name": "Water Sources - Rain (Present)",
+                    "chartPointOnMap": {
+                      "latitude": -41.12390888091413,
+                      "longitude": 174.83790259556207
+                    },
+                    "styles": [
+                      {
+                        "id": "chart"
+                      },
+                      {
+                        "id": "value",
+                        "chart": {
+                          "lines": [
+                            {
+                              "yAxisColumn": "value",
+                              "isSelectedInWorkbench": false
+                            }
+                          ]
+                        }
+                      }
+                    ],
+                    "columnTitles": [
+                      ""
+                    ],
+                    "columnUnits": [
+                      ""
+                    ],
+                    "type": "csv"
+                  },
+                  "//PHF Science Sampling": {
+                    "knownContainerUniqueIds": [
+                      "/"
+                    ],
+                    "type": "group"
+                  },
+                  "//Greater Wellington Regional Council - Our Environment": {
+                    "knownContainerUniqueIds": [
+                      "/"
+                    ],
+                    "type": "esri-group"
+                  }
+                },
+                "workbench": [
+                  "//Greater Wellington Regional Council - Our Environment/0/4",
+                  "//Greater Wellington Regional Council - Our Environment/10/11",
+                  "//Flow models/Sea Level Rise 2080/Median Sediment Size (2080)",
+                  "//Flow models/Present Day/Median Sediment Size (Present)",
+                  "//Flow models/Sea Level Rise 2080/Water Source Summary Map (2080)",
+                  "//Flow models/Present Day/Water Sources - Rain (Present):Water Sources - Rain (Present):blob:https://teawarua.app.geospatial.ac.nz/cf766fc6-43e4-467f-902a-a685f4576cb4",
+                  "//Flow models/Present Day/Water Sources - Rain (Present)",
+                  "//Flow models/Present Day/Water Sources - Streams (Present):Water Sources - Streams (Present):blob:https://teawarua.app.geospatial.ac.nz/2a11d596-7b82-401b-b68f-b294f80ed2f1",
+                  "//Flow models/Present Day/Water Sources - Streams (Present)",
+                  "//Flow models/Present Day/Water Source Summary Map (Present)",
+                  "//PHF Science Sampling/Fecal Source Tracing - February 2023"
+                ],
+                "timeline": [
+                  "//Greater Wellington Regional Council - Our Environment/0/4",
+                  "//Greater Wellington Regional Council - Our Environment/10/11",
+                  "//Flow models/Sea Level Rise 2080/Median Sediment Size (2080)",
+                  "//Flow models/Present Day/Median Sediment Size (Present)",
+                  "//Flow models/Sea Level Rise 2080/Water Source Summary Map (2080)",
+                  "//Flow models/Present Day/Water Sources - Rain (Present)",
+                  "//Flow models/Present Day/Water Sources - Streams (Present)",
+                  "//PHF Science Sampling/Fecal Source Tracing - February 2023",
+                  "//Flow models/Present Day/Water Source Summary Map (Present)"
+                ],
+                "initialCamera": {
+                  "west": 174.745636913746,
+                  "south": -41.14447361861654,
+                  "east": 174.96956261699248,
+                  "north": -41.03021377568578,
+                  "position": {
+                    "x": -4796836.555474604,
+                    "y": 428862.84457756765,
+                    "z": -4185693.0006106365
+                  },
+                  "direction": {
+                    "x": 0.12201459230652106,
+                    "y": 0.1623390386691025,
+                    "z": 0.9791621294700205
+                  },
+                  "up": {
+                    "x": -0.9603661614752209,
+                    "y": 0.26841415318583417,
+                    "z": 0.07517099349404317
+                  }
+                },
+                "homeCamera": {
+                  "west": 174.82,
+                  "south": -41.15,
+                  "east": 174.9,
+                  "north": -41.06
+                },
+                "viewerMode": "3d",
+                "showSplitter": true,
+                "splitPosition": 0.9336000000000004,
+                "settings": {
+                  "baseMaximumScreenSpaceError": 2,
+                  "useNativeResolution": false,
+                  "alwaysShowTimeline": false,
+                  "baseMapId": "basemap-linz-aerial",
+                  "terrainSplitDirection": 0,
+                  "depthTestAgainstTerrainEnabled": false
+                }
+              }
+            ]
+          }
+        }
+      ]
 }
