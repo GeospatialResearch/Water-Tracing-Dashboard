@@ -83,7 +83,7 @@ def main(_sekected_polygon_gdf, rgb_model_output_path, log_level: LogLevel) -> N
     static_dirs = [static_base_dir / sub_dir for sub_dir in (".", "present_day", "2050", "2080")]
     for static_dir in static_dirs:
         serve_static_files(engine, static_dir)
-        for rgb in static_dir.glob("20*_watersourceRGB_1m_depth_255nan.tif"):
+        for rgb in static_dir.glob("20*_watersourceRGB_10m_depth_255nan.tif"):
             log.info(f"~~Uploading rgb {rgb.name} rgb")
             main_a(_sekected_polygon_gdf, rgb, log_level)
 
