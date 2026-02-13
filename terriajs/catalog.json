@@ -1243,6 +1243,130 @@
           }
         ]
       }
+    },
+    {
+      "title": "High proportion of streamflow",
+      "text": "According to our flow model, a large proprotion for the water near Te Hiko Street comes from streams, rather than sea water, or rain falling directly on the harbour. Please click on the red and white shading in the harbour to plot the proportion of water that comes from streams at that point. You can expand the plot to see in higher detail. All data within Te Awarua Kai Ora can be viewed in more detail by interacting like this.",
+      "id": "224841ec-2a20-4ad7-887a-9ba59b798b08",
+      "shareData": {
+        "version": "8.0.0",
+        "initSources": [
+          {
+            "stratum": "user",
+            "workbench": [
+              "//Flow models/Present Day/Flow Model (Present) - Water Sources - Streams",
+              "//PHF Science Sampling/Faecal Source Tracking - February 2023"
+            ],
+            "timeline": [
+              "//Flow models/Present Day/Flow Model (Present) - Water Sources - Streams",
+              "//PHF Science Sampling/Faecal Source Tracking - February 2023"
+            ],
+            "initialCamera": {
+              "west": 174.82038803925147,
+              "south": -41.130988887948654,
+              "east": 174.85260092525476,
+              "north": -41.11699952972317,
+              "position": {
+                "x": -4793688.936097652,
+                "y": 433324.28557570104,
+                "z": -4174448.5242611724
+              },
+              "direction": {
+                "x": 0.706840856244073,
+                "y": -0.12486105026924442,
+                "z": 0.6962655542749526
+              },
+              "up": {
+                "x": -0.5621295824969162,
+                "y": -0.6966557914461944,
+                "z": 0.4457365149124752
+              }
+            },
+            "homeCamera": {
+              "west": 174.82,
+              "south": -41.15,
+              "east": 174.9,
+              "north": -41.06
+            },
+            "viewerMode": "3d",
+            "showSplitter": false,
+            "splitPosition": 0.6125708333333341,
+            "settings": {
+              "baseMaximumScreenSpaceError": 2,
+              "useNativeResolution": false,
+              "alwaysShowTimeline": false,
+              "baseMapId": "basemap-linz-aerial",
+              "terrainSplitDirection": 0,
+              "depthTestAgainstTerrainEnabled": false
+            }
+          }
+        ]
+      }
+    },
+    {
+      "title": "Comparatively high avian fecal markers at Motukaraka",
+      "text": "There is a comparably high avian faecal presence at Motukaraka, within the Pauatahanui arm. This was once a significant mahinga kai site for both Ngāti Toa Rangatira and Iwi historical, evidenced by the visible miden layers located at this site.",
+      "id": "90f3d693-9b18-42f3-814f-13e57664e74d",
+      "shareData": {
+        "version": "8.0.0",
+        "initSources": [
+          {
+            "models": {
+                  "//PHF+Science+Sampling": {
+                    "knownContainerUniqueIds": [
+                      "/"
+                    ],
+                    "type": "group"
+                  },
+                  "//PHF+Science+Sampling/Faecal+Source+Tracking+-+February+2023": {
+                    "show": true,
+                    "activeStyle": "Avian+GFD+/+100+ml",
+                    "knownContainerUniqueIds": [
+                      "//PHF+Science+Sampling"
+                    ],
+                    "type": "wfs"
+                  },
+                  "/": {
+                    "type": "group"
+                  }
+                },
+            "stratum": "user",
+            "workbench": [
+              "//PHF Science Sampling/Faecal Source Tracking - February 2023"
+            ],
+            "timeline": [
+              "//PHF Science Sampling/Faecal Source Tracking - February 2023"
+            ],
+            "initialCamera": {
+              "west": 174.80151199175722,
+              "south": -41.13363221828541,
+              "east": 174.92672177416716,
+              "north": -41.07925836108302,
+              "position": {
+                "x": -4791189.042575178,
+                "y": 432517.2076053785,
+                "z": -4179988.547604616
+              },
+              "direction": {
+                "x": -0.2552575768546467,
+                "y": -0.18467323842681377,
+                "z": 0.9490728973410038
+              },
+              "up": {
+                "x": -0.9647306819655614,
+                "y": -0.016662340913459556,
+                "z": -0.26271101550857445
+              }
+            },
+            "viewerMode": "3d",
+            "showSplitter": false,
+            "settings": {
+              "baseMapId": "basemap-linz-aerial",
+              "depthTestAgainstTerrainEnabled": false
+            }
+          }
+        ]
+      }
     }
   ]
 }
