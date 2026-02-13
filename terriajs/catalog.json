@@ -1312,17 +1312,17 @@
         "initSources": [
           {
             "models": {
-                  "//PHF+Science+Sampling": {
+                  "//PHF Science Sampling": {
                     "knownContainerUniqueIds": [
                       "/"
                     ],
                     "type": "group"
                   },
-                  "//PHF+Science+Sampling/Faecal+Source+Tracking+-+February+2023": {
+                  "//PHF Science Sampling/Faecal Source Tracking - February 2023": {
                     "show": true,
-                    "activeStyle": "Avian+GFD+/+100+ml",
+                    "activeStyle": "Avian GFD / 100 ml",
                     "knownContainerUniqueIds": [
-                      "//PHF+Science+Sampling"
+                      "//PHF Science Sampling"
                     ],
                     "type": "wfs"
                   },
