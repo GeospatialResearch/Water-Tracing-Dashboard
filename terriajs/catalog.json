@@ -6,10 +6,10 @@
     "west": 174.82
   },
   "models": {
-    "//PHF+Science+Sampling/Faecal+Source+Tracking+-+February+2023": {
+    "//PHF Science Sampling/Faecal Source Tracking - February 2023": {
       "show": false,
       "knownContainerUniqueIds": [
-        "//PHF+Science+Sampling"
+        "//PHF Science Sampling"
       ],
       "type": "wfs"
     }
