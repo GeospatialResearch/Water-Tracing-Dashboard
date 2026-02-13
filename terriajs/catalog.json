@@ -750,6 +750,15 @@
         "version": "8.0.0",
         "initSources": [
           {
+            "models": {
+              "//PHF Science Sampling/Faecal Source Tracking - February 2023": {
+                "show": true,
+                "knownContainerUniqueIds": [
+                  "//PHF Science Sampling"
+                ],
+                "type": "wfs"
+              }
+            },
             "stratum": "user",
             "workbench": [
               "//PHF Science Sampling/Faecal Source Tracking - February 2023"
