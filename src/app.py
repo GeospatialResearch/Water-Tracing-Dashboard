@@ -123,6 +123,8 @@ def normalise_layer() -> Response:
     rgb = ["Streams", "Rain", "Tide"]
     new_props = {}
     for i, (k, v) in enumerate(props.items()):
+        if v == 255:
+            v = 0
         normalised = min(v / 2.55, 100)
         new_props[rgb[i]] = f"{round(normalised)} %"
     json["features"][0]["properties"] = new_props
