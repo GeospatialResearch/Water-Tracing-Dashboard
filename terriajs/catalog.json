@@ -697,7 +697,7 @@
   },
   "stories": [
     {
-      "title": "Introduction to mahinga kai sites",
+      "title": "Te Hiko Street Mahinga Kai",
       "text": "The Te Hiko Street monitoring site was once a traditional mahinga kai site for Ngāti Toa Rangatira, since the arrival Te Rauparaha and Iwi in the 1820's.",
       "id": "5acbc9a9-76bc-426e-a949-d87f47c57cfa",
       "shareData": {
@@ -799,8 +799,8 @@
       }
     },
     {
-      "title": "Faecal source tracking and the flow model",
-      "text": "Targeting the DNA human faecal marker, crAssphage, we see that human faecal levels recorded here both support Iwi observations and provide evidence of human faecal contamination. Compared to the other monitoring sites, human faecal levels at THS is significantly higher.",
+      "title": "Te Hiko St and Faecal Source Tracking",
+      "text": "Targeting the DNA human faecal marker, crAssphage, we see that human faecal levels recorded here both support Iwi observations and provide evidence of human faecal contamination. Compared to the other monitoring sites, human faecal levels at Te Hiko Street is significantly higher.",
       "id": "44d7e69c-abc6-49f8-857c-a5c22f000754",
       "shareData": {
         "version": "8.0.0",
