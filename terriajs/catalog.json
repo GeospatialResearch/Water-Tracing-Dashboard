@@ -27,10 +27,13 @@
       "type": "group",
       "name": "Flow models",
       "isOpen": true,
+      "description": "<h3>Introduction</h3><p>A flow model of the Porirua Harbour with water source tracing capability was developed to enable an assessment of where is likely to be most affected by pollutants being introduced by rivers, assess the tidal flushing of the harbour, and assess sediment flow (erosion, deposition). Two scenarios of sea level rise were run to assess potential future changes in tidal behaviour in the harbour. The model is available under open-source licensing (further details below).</p><h3>Key findings</h3><p>The flow model results indicate that the proportion of river water in the harbour increases at low tide and after rainfall events in the river catchments, and that water from each non-tidal source tends to accumulate in the harbour, particularly in the upper harbour inlets and along the shorelines, as it is pushed back by the incoming tide. Since the river water carries with it pollutants from the catchments, results indicate that the locations within the harbour most likely to be affected by this are the shorelines along the upper harbour inlets. The sea level rise scenarios suggest an increase in fluvial source depths in the upper reaches at both low and high tides, with higher source depths for higher increases in sea level, which would likely worsen the situation regarding pollutants.</p><h3>Model results provided</h3><p>For each scenario (present day, 2050 and 2080), the flowing layers are provided. Each represents the average (mean) value over a 6-month period between 1 April and 30 September 2020.<ul><li>Water source summary map – depth scaled: a visualisation of the combined water sources represented in the harbour, where blues represent tidal waters, reds are from river inputs and green is direct rainfall into the harbour. The mixing of the different colours indicates the mixing of each water source, in red-green-blue colour space, with darker shades indicating deeper water. See here for further information.</li><li>Water source summary map – raw: the same summary map, but without depth-scaling.</li><li>Water sources – Streams: the proportion of water from any of the 15 streams represented in the flow model.</li><li>Water sources – Rain: the proportion of water from direct rainfall into the harbour.</li><li>Water sources – Tide: the proportion of water from tidal flow into the harbour.</li><li>Water Velocity: the speed of the water flow (faster water means more erosion, slower water means more sediment deposition).</li><li>Water Depth: the total depth of the water.</li><li>Median Sediment Size: the predicted median sediment size deposited in the top (surface) layer; smaller sediment particles (silts) are deposited where water velocity is lowest (e.g., at the slack water tide interface and in the upper harbour), while larger particles (sands) are deposited in the lower harbour where there is more tidal flow.</li></ul></p><h3>Scenarios overview</h3><p>Two scenarios presenting sea level rise were run. Scenarios were created by adjusting (increasing) the downstream tide level used in the model, with all other data inputs kept the same. This means that the scenarios do not represent climate change in full (since differences to rainfall are not accounted for, for example), but that the influence of the increasing tide level is isolated from other factors.</p><p>The sea level rise scenarios were obtained from the NZ SeaRise: Te Pai Pari O Aotearoa programme, under a CC-BY-4.0 open licence.  The data are available from Takiwa’s visualisation platform. The SSP2-4.5 projection including vertical land movement (VLM) was selected, with median values (p50) of sea level rise for 2050 and 2080 used. This provided values of 0.31 m and 0.57 m of sea level rise for each scenario, respectively, which were added to the tide level data used in the flow model. It should be noted that there is uncertainty in both the level and timing of sea level rise, as indicated in the shaded area of the plot below (source: site 2567 on the Takiwa platform):</p><h3>Model setup details</h3><ul><li>The flow model was constructed using a topo-bathymetric grid created from 2023 airborne LiDAR data (Porirua City Council  and Land Information New Zealand) and 2024 surveyed bathymetry data (Greater Wellington Regional Council). These were seamlessly joined using the New Zealand Vertical Datum 2016 (NZVD2016)</li><li>The downstream boundary data (tidal) were from a gauge at Porirua Harbour at Mana Cruising Club. These were converted to NZVD2016, and for each sea level scenario adjusted by the appropriate vertical level.</li><li>Rainfall data (direct to harbour) was obtained from the Moana Backbone Model, developed in the Moana project by MetService, provided under open (CC BY-NC-SA 4.0). The 5 km model provided data consistency across the catchment (available gauge data are variable).</li><li>Flow data and sediment inflows were produced using the SWAT model of catchment hydrology, available under open licence. Modelling was used to enable a full representation of inflows into the harbour, including ungauged streams. A total of 15 rivers were represented. The model will also enable future scenarios of land management within the catchment. Alongside rainfall data across the catchment, data representing wind speed, temperature and humidity were obtained from the Moana Backbone Model. Model elevation was produced from 2013-2014 LiDAR data (Greater Wellington Regional Council and Land Information New Zealand); soils data were obtained from the DSOLMap by López-Ballesteros et al. 2023; land cover was obtained from the New Zealand Land Cover Database LCDB v5.0; ground water was represented using data provided as part of the Global HYdrogeology MaPS 2.0 (GLHYMPS 2.0) developed by Huscroft et al. 2018, and depth to bedrock provided by Soilgrids.</li><li>Model simulations were produced for an 11 year period between 1 January 2010 and 31 December 2020.</li></ul><h3>Model limitations</h3><p>All models have limitations: there is a fundamental trade-off to be made between model complexity, computational efficiency, and the utility of the model for large, long or detailed analysis. Some key limitations are:<ol>  <li>The CAESAR-Lisflood model implements the inertial diffusive hydraulic formula (developed by Bates et al. 2010). This means that it is suitable for generally shallow and sub-critical (low velocity) surface water flows, as occurs within Porirua Harbour. However, in common with many models of surface water flows, CAESAR-Lisflood represents flows in two-dimensions (i.e., it is a depth averaged model). This means that any vertical variation in the water column is not accounted for, as it is assumed to be fully mixed. Therefore, it is currently not possible to represent a saltwater wedge in the model (where river water sits top of tidal water and there is a thin mixing layer), and to do so would require a significant increase in model complexity. However, for most of Porirua Habour, the depths are generally very shallow and it is likely that this is not an issue, with the possible exception at the harbour entrance. Salinity measurements can be collected to test this assumption.</li>  <li>As discussed by Wilson & Coulthard (2023), for water tracing, the sources of water in each cell in the model are assumed to be fully mixed. This is a limitation of the model structure, but is only likely to be an issue for very small source proportions. Consequently, low source values, or small changes between scenarios, should be treated with caution.</li>  <li>The data topography and bathymetry data available for the analysis was at a high quality, but with the limitation that there is a gap between the shoreline and bathymetry observations that required interpolation, meaning that it is possible that these important areas may have lower accuracy. The accuracy of other source data (e.g., rainfall, river flows) will depend on the accuracy of the respective models used to produce them.</li></ol></p><h3>Flow model details and availability</h3><p>For detailed technical information about the flow model, please see the following scientific paper (open access):</p><p>Wilson, M. D., & Coulthard, T. J. (2023). Tracing and visualisation of contributing water sources in the LISFLOOD-FP model of flood inundation (within CAESAR-Lisflood version 1.9 j-WS). <i>Geoscientific Model Development, 16(9)</i>, 2415-2436. <a href=\"https://doi.org/10.5194/gmd-16-2415-2023\">https://doi.org/10.5194/gmd-16-2415-2023</a></p><p>The latest version of the CAESAR-Lisflood 2.0 flow model software is available under open-source licencing from:<a href=\"https://sourceforge.net/p/caesar-lisflood/wiki/Home/\">https://sourceforge.net/p/caesar-lisflood/wiki/Home/</a></p><h3>Contact</h3><p>  <strong>Data owner and custodian:</strong> Te Rūnanga O Toa Rangatira, https://www.ngatitoa.iwi.nz/. Email: communications@ngatitoa.iwi.nz.</p><p>  <strong>Model developer and technical contact:</strong> Geospatial Research Institute Toi Hangarau, University of Canterbury, https://geospatial.ac.nz/. Email: gri-enquiries@canterbury.ac.nz.</p><h3>Disclaimer</h3><p>The data provided is for informational purposes only. It is provided \"as is\" without warranty of any kind, express or implied, regarding its accuracy, completeness, or suitability for any purpose.</p>",
+      "dataCustodian": "Te Rūnanga O Toa Rangatira, https://www.ngatitoa.iwi.nz/. Email: communications@ngatitoa.iwi.nz.",
       "members": [
         {
           "type": "group",
           "name": "Present Day",
+          "description": "Please click the parent 'Flow Models' folder for a detailed description.",
           "members": [
             {
               "type": "wms",
@@ -40,6 +43,7 @@
               "styles": "RGB",
               "getFeatureInfoUrl": "$BACKEND_URL/api/normalise",
               "isOpenInWorkbench": true,
+              "description": "Please click the parent 'Flow Models' folder for a detailed description.",
               "legends": [
                 {
                   "title": "Water Sources",
@@ -68,6 +72,7 @@
               "styles": "reds_percent",
               "isOpenInWorkbench": true,
               "supportsGetTimeseries": true,
+              "description": "Please click the parent 'Flow Models' folder for a detailed description.",
               "getFeatureInfoUrl": "$BACKEND_URL/api/query",
               "getFeatureInfoParameters": {
                 "epoch": "2020s",
@@ -82,6 +87,7 @@
               "styles": "greens_percent",
               "isOpenInWorkbench": true,
               "supportsGetTimeseries": true,
+              "description": "Please click the parent 'Flow Models' folder for a detailed description.",
               "getFeatureInfoUrl": "$BACKEND_URL/api/query",
               "getFeatureInfoParameters": {
                 "epoch": "2020s",
@@ -95,6 +101,7 @@
               "layers": "2026_watersource_stage_10m",
               "styles": "blues_percent",
               "isOpenInWorkbench": true,
+              "description": "Please click the parent 'Flow Models' folder for a detailed description.",
               "supportsGetTimeseries": true,
               "getFeatureInfoUrl": "$BACKEND_URL/api/query",
               "getFeatureInfoParameters": {
@@ -109,6 +116,7 @@
               "layers": "2026_velocity_10m",
               "styles": "viridis_raster_0p5max",
               "isOpenInWorkbench": true,
+              "description": "Please click the parent 'Flow Models' folder for a detailed description.",
               "supportsGetTimeseries": true,
               "getFeatureInfoUrl": "$BACKEND_URL/api/query",
               "getFeatureInfoParameters": {
@@ -123,6 +131,7 @@
               "layers": "2026_waterdepth_10m",
               "styles": "viridis_raster_20max",
               "isOpenInWorkbench": true,
+              "description": "Please click the parent 'Flow Models' folder for a detailed description.",
               "supportsGetTimeseries": true,
               "getFeatureInfoUrl": "$BACKEND_URL/api/query",
               "getFeatureInfoParameters": {
@@ -137,6 +146,7 @@
               "layers": "2026_d50top_10m",
               "styles": "viridis_raster_0p0005max",
               "isOpenInWorkbench": true,
+              "description": "Please click the parent 'Flow Models' folder for a detailed description.",
               "supportsGetTimeseries": true,
               "getFeatureInfoUrl": "$BACKEND_URL/api/query",
               "getFeatureInfoParameters": {
@@ -150,6 +160,7 @@
           "type": "group",
           "name": "Sea Level Rise 2050",
           "isOpen": false,
+          "description": "Please click the parent 'Flow Models' folder for a detailed description.",
           "members": [
             {
               "type": "wms",
@@ -157,6 +168,7 @@
               "url": "$GEOSERVER_URL/geoserver/model_outputs/wms",
               "layers": "2050_watersourceRGB_10m_depth_255nan",
               "styles": "RGB",
+              "description": "Please click the parent 'Flow Models' folder for a detailed description.",
               "getFeatureInfoUrl": "$BACKEND_URL/api/normalise",
               "isOpenInWorkbench": true,
               "legends": [
@@ -186,6 +198,7 @@
               "layers": "2050_watersource_hydros_10m",
               "styles": "reds_percent",
               "isOpenInWorkbench": true,
+              "description": "Please click the parent 'Flow Models' folder for a detailed description.",
               "supportsGetTimeseries": true,
               "getFeatureInfoUrl": "$BACKEND_URL/api/query",
               "getFeatureInfoParameters": {
@@ -200,6 +213,7 @@
               "layers": "2050_watersource_rain_10m",
               "styles": "greens_percent",
               "isOpenInWorkbench": true,
+              "description": "Please click the parent 'Flow Models' folder for a detailed description.",
               "supportsGetTimeseries": true,
               "getFeatureInfoUrl": "$BACKEND_URL/api/query",
               "getFeatureInfoParameters": {
@@ -214,6 +228,7 @@
               "layers": "2050_watersource_stage_10m",
               "styles": "blues_percent",
               "isOpenInWorkbench": true,
+              "description": "Please click the parent 'Flow Models' folder for a detailed description.",
               "supportsGetTimeseries": true,
               "getFeatureInfoUrl": "$BACKEND_URL/api/query",
               "getFeatureInfoParameters": {
@@ -229,6 +244,7 @@
               "styles": "viridis_raster_0p5max",
               "isOpenInWorkbench": true,
               "supportsGetTimeseries": true,
+              "description": "Please click the parent 'Flow Models' folder for a detailed description.",
               "getFeatureInfoUrl": "$BACKEND_URL/api/query",
               "getFeatureInfoParameters": {
                 "epoch": "2050s",
@@ -243,6 +259,7 @@
               "styles": "viridis_raster_20max",
               "isOpenInWorkbench": true,
               "supportsGetTimeseries": true,
+              "description": "Please click the parent 'Flow Models' folder for a detailed description.",
               "getFeatureInfoUrl": "$BACKEND_URL/api/query",
               "getFeatureInfoParameters": {
                 "epoch": "2050s",
@@ -256,6 +273,7 @@
               "layers": "2050_d50top_10m",
               "styles": "viridis_raster_0p0005max",
               "isOpenInWorkbench": true,
+              "description": "Please click the parent 'Flow Models' folder for a detailed description.",
               "supportsGetTimeseries": true,
               "getFeatureInfoUrl": "$BACKEND_URL/api/query",
               "getFeatureInfoParameters": {
@@ -268,11 +286,13 @@
         {
           "type": "group",
           "name": "Sea Level Rise 2080",
+          "description": "Please click the parent 'Flow Models' folder for a detailed description.",
           "isOpen": false,
           "members": [
             {
               "type": "wms",
               "name": "Flow Model (2080) - Water Source Summary Map",
+              "description": "Please click the parent 'Flow Models' folder for a detailed description.",
               "url": "$GEOSERVER_URL/geoserver/model_outputs/wms",
               "layers": "2080_watersourceRGB_10m_depth_255nan",
               "styles": "RGB",
@@ -306,6 +326,7 @@
               "styles": "reds_percent",
               "isOpenInWorkbench": true,
               "supportsGetTimeseries": true,
+              "description": "Please click the parent 'Flow Models' folder for a detailed description.",
               "getFeatureInfoUrl": "$BACKEND_URL/api/query",
               "getFeatureInfoParameters": {
                 "epoch": "2080s",
@@ -319,6 +340,7 @@
               "layers": "2080_watersource_rain_10m",
               "styles": "greens_percent",
               "isOpenInWorkbench": true,
+              "description": "Please click the parent 'Flow Models' folder for a detailed description.",
               "supportsGetTimeseries": true,
               "getFeatureInfoUrl": "$BACKEND_URL/api/query",
               "getFeatureInfoParameters": {
@@ -335,6 +357,7 @@
               "isOpenInWorkbench": true,
               "supportsGetTimeseries": true,
               "getFeatureInfoUrl": "$BACKEND_URL/api/query",
+              "description": "Please click the parent 'Flow Models' folder for a detailed description.",
               "getFeatureInfoParameters": {
                 "epoch": "2080s",
                 "variable": "stage"
@@ -348,6 +371,7 @@
               "styles": "viridis_raster_0p5max",
               "isOpenInWorkbench": true,
               "supportsGetTimeseries": true,
+              "description": "Please click the parent 'Flow Models' folder for a detailed description.",
               "getFeatureInfoUrl": "$BACKEND_URL/api/query",
               "getFeatureInfoParameters": {
                 "epoch": "2080s",
@@ -362,6 +386,7 @@
               "styles": "viridis_raster_20max",
               "isOpenInWorkbench": true,
               "supportsGetTimeseries": true,
+              "description": "Please click the parent 'Flow Models' folder for a detailed description.",
               "getFeatureInfoUrl": "$BACKEND_URL/api/query",
               "getFeatureInfoParameters": {
                 "epoch": "2080s",
@@ -374,6 +399,7 @@
               "url": "$GEOSERVER_URL/geoserver/static_files/wms",
               "layers": "2080_d50top_10m",
               "styles": "viridis_raster_0p0005max",
+              "description": "Please click the parent 'Flow Models' folder for a detailed description.",
               "isOpenInWorkbench": true,
               "supportsGetTimeseries": true,
               "getFeatureInfoUrl": "$BACKEND_URL/api/query",
@@ -389,6 +415,7 @@
     {
       "name": "PHF Science Sampling",
       "type": "group",
+      "description": "A selection of sampling data and reports for Te Awarua o Porirua from PHF Science.",
       "isOpen": true,
       "members": [
         {
