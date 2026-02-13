@@ -657,7 +657,405 @@
           "type": "wfs",
           "name": "Investigating the Presence of Microplastics in Te Awarua o Porirua - October 2024",
           "url": "$GEOSERVER_URL/geoserver/static_files/ows",
-          "typeNames": "static_files:Microplastics_2023_alldata_cleaned",
+          "typeNames": "static_files:Microplastics_2023_by_site",
+          "styles": [
+            {
+              "id": "SITE",
+              "label": {
+                "enabled": true,
+                "mapType": "constant",
+                "null": {
+                  "labelColumn": "SITE",
+                  "pixelOffset": [
+                    15,
+                    0
+                  ]
+                }
+              },
+              "pointSize": {
+                "sizeFactor": 22,
+                "sizeOffset": 8
+              }
+            },
+            {
+              "id": "particles_per_kg",
+              "label": {
+                "enabled": true,
+                "mapType": "constant",
+                "null": {
+                  "labelColumn": "particles_per_kg",
+                  "pixelOffset": [
+                    15,
+                    0
+                  ]
+                }
+              },
+              "pointSize": {
+                "sizeFactor": 22,
+                "sizeOffset": 8
+              }
+            },
+            {
+              "id": "total_particles",
+              "label": {
+                "enabled": true,
+                "mapType": "constant",
+                "null": {
+                  "labelColumn": "total_particles",
+                  "pixelOffset": [
+                    15,
+                    0
+                  ]
+                }
+              },
+              "pointSize": {
+                "sizeFactor": 22,
+                "sizeOffset": 8
+              }
+            },
+            {
+              "id": "polyester",
+              "label": {
+                "enabled": true,
+                "mapType": "constant",
+                "null": {
+                  "labelColumn": "polyester",
+                  "pixelOffset": [
+                    15,
+                    0
+                  ]
+                }
+              },
+              "pointSize": {
+                "sizeFactor": 22,
+                "sizeOffset": 8
+              }
+            },
+            {
+              "id": "polyethylene",
+              "label": {
+                "enabled": true,
+                "mapType": "constant",
+                "null": {
+                  "labelColumn": "polyethylene",
+                  "pixelOffset": [
+                    15,
+                    0
+                  ]
+                }
+              },
+              "pointSize": {
+                "sizeFactor": 22,
+                "sizeOffset": 8
+              }
+            },
+            {
+              "id": "acrylic",
+              "label": {
+                "enabled": true,
+                "mapType": "constant",
+                "null": {
+                  "labelColumn": "acrylic",
+                  "pixelOffset": [
+                    15,
+                    0
+                  ]
+                }
+              },
+              "pointSize": {
+                "sizeFactor": 22,
+                "sizeOffset": 8
+              }
+            },
+            {
+              "id": "polypropylene",
+              "label": {
+                "enabled": true,
+                "mapType": "constant",
+                "null": {
+                  "labelColumn": "polypropylene",
+                  "pixelOffset": [
+                    15,
+                    0
+                  ]
+                }
+              },
+              "pointSize": {
+                "sizeFactor": 22,
+                "sizeOffset": 8
+              }
+            },
+            {
+              "id": "polystyrene",
+              "label": {
+                "enabled": true,
+                "mapType": "constant",
+                "null": {
+                  "labelColumn": "polystyrene",
+                  "pixelOffset": [
+                    15,
+                    0
+                  ]
+                }
+              },
+              "pointSize": {
+                "sizeFactor": 22,
+                "sizeOffset": 8
+              }
+            },
+            {
+              "id": "unknown",
+              "label": {
+                "enabled": true,
+                "mapType": "constant",
+                "null": {
+                  "labelColumn": "unknown",
+                  "pixelOffset": [
+                    15,
+                    0
+                  ]
+                }
+              },
+              "pointSize": {
+                "sizeFactor": 22,
+                "sizeOffset": 8
+              }
+            },
+            {
+              "id": "fibre",
+              "label": {
+                "enabled": true,
+                "mapType": "constant",
+                "null": {
+                  "labelColumn": "fibre",
+                  "pixelOffset": [
+                    15,
+                    0
+                  ]
+                }
+              },
+              "pointSize": {
+                "sizeFactor": 22,
+                "sizeOffset": 8
+              }
+            },
+            {
+              "id": "fragment",
+              "label": {
+                "enabled": true,
+                "mapType": "constant",
+                "null": {
+                  "labelColumn": "fragment",
+                  "pixelOffset": [
+                    15,
+                    0
+                  ]
+                }
+              },
+              "pointSize": {
+                "sizeFactor": 22,
+                "sizeOffset": 8
+              }
+            },
+            {
+              "id": "film",
+              "label": {
+                "enabled": true,
+                "mapType": "constant",
+                "null": {
+                  "labelColumn": "film",
+                  "pixelOffset": [
+                    15,
+                    0
+                  ]
+                }
+              },
+              "pointSize": {
+                "sizeFactor": 22,
+                "sizeOffset": 8
+              }
+            },
+            {
+              "id": "other",
+              "label": {
+                "enabled": true,
+                "mapType": "constant",
+                "null": {
+                  "labelColumn": "other",
+                  "pixelOffset": [
+                    15,
+                    0
+                  ]
+                }
+              },
+              "pointSize": {
+                "sizeFactor": 22,
+                "sizeOffset": 8
+              }
+            },
+            {
+              "id": "blue",
+              "label": {
+                "enabled": true,
+                "mapType": "constant",
+                "null": {
+                  "labelColumn": "blue",
+                  "pixelOffset": [
+                    15,
+                    0
+                  ]
+                }
+              },
+              "pointSize": {
+                "sizeFactor": 22,
+                "sizeOffset": 8
+              }
+            },
+            {
+              "id": "clear",
+              "label": {
+                "enabled": true,
+                "mapType": "constant",
+                "null": {
+                  "labelColumn": "clear",
+                  "pixelOffset": [
+                    15,
+                    0
+                  ]
+                }
+              },
+              "pointSize": {
+                "sizeFactor": 22,
+                "sizeOffset": 8
+              }
+            },
+            {
+              "id": "black",
+              "label": {
+                "enabled": true,
+                "mapType": "constant",
+                "null": {
+                  "labelColumn": "black",
+                  "pixelOffset": [
+                    15,
+                    0
+                  ]
+                }
+              },
+              "pointSize": {
+                "sizeFactor": 22,
+                "sizeOffset": 8
+              }
+            },
+            {
+              "id": "yellow",
+              "label": {
+                "enabled": true,
+                "mapType": "constant",
+                "null": {
+                  "labelColumn": "yellow",
+                  "pixelOffset": [
+                    15,
+                    0
+                  ]
+                }
+              },
+              "pointSize": {
+                "sizeFactor": 22,
+                "sizeOffset": 8
+              }
+            },
+            {
+              "id": "orange",
+              "label": {
+                "enabled": true,
+                "mapType": "constant",
+                "null": {
+                  "labelColumn": "orange",
+                  "pixelOffset": [
+                    15,
+                    0
+                  ]
+                }
+              },
+              "pointSize": {
+                "sizeFactor": 22,
+                "sizeOffset": 8
+              }
+            },
+            {
+              "id": "white",
+              "label": {
+                "enabled": true,
+                "mapType": "constant",
+                "null": {
+                  "labelColumn": "white",
+                  "pixelOffset": [
+                    15,
+                    0
+                  ]
+                }
+              },
+              "pointSize": {
+                "sizeFactor": 22,
+                "sizeOffset": 8
+              }
+            },
+            {
+              "id": "red",
+              "label": {
+                "enabled": true,
+                "mapType": "constant",
+                "null": {
+                  "labelColumn": "red",
+                  "pixelOffset": [
+                    15,
+                    0
+                  ]
+                }
+              },
+              "pointSize": {
+                "sizeFactor": 22,
+                "sizeOffset": 8
+              }
+            },
+            {
+              "id": "green",
+              "label": {
+                "enabled": true,
+                "mapType": "constant",
+                "null": {
+                  "labelColumn": "green",
+                  "pixelOffset": [
+                    15,
+                    0
+                  ]
+                }
+              },
+              "pointSize": {
+                "sizeFactor": 22,
+                "sizeOffset": 8
+              }
+            },
+            {
+              "id": "pink",
+              "label": {
+                "enabled": true,
+                "mapType": "constant",
+                "null": {
+                  "labelColumn": "pink",
+                  "pixelOffset": [
+                    15,
+                    0
+                  ]
+                }
+              },
+              "pointSize": {
+                "sizeFactor": 22,
+                "sizeOffset": 8
+              }
+            }
+          ],
           "description": "<h1>Executive Summary</h1><p>The aim of this study was to investigate the presence and types of microplastics in Te Awarua o Porirua. This study was conducted as part of a broad collaboration between Ngāti Toa Rangatira and ESR Māori Impact Team to understand and enhance the mauri of Te Awarua o Porirua, particularly focused on the ongoing issue of human faecal contamination.</p><p>Microplastics are pieces of plastic which are less than 5 mm in size and have a broad range of negative environmental and health impacts. Wastewater treatment plants are considered “hotspots” of microplastics pollution due to the large number of microplastics which enter through household and industrial waste and the inability of treatment plants to completely remove microplastics. In New Zealand wastewater treatment plants have been shown to be a key way that microplastics enter the ocean. Microplastics are lightweight and subject to tidal movements, meaning they can be found in the surface waters and also wash up on the shore.</p><p>Sampling for microplastics was carried out at sites of significance around the harbour.  These sites were chosen due to a combination of factors including cultural and historical significance, proximity to urban and/or industrial activities, and observation of visible plastic pollution. Site types included beach sand, freshwater (streams), and a waka trawl of Porirua Harbour.</p><p>Some key findings from the study were as follows:<ul><li>Microplastics were identified in beach sand at all sites, with the highest concentrations of plastics at Titahi Bay Beach surf club, Kaiaua and Te Neke</li><li>The majority (63%) of microplastics were fibres, meaning that <strong>fabrics (e.g. clothing) may be a key contributor of plastics</strong></li><li>Most microplastics found were <strong>less than 1 mm</strong> in length</li><li>The concentration, types, and sizes of microplastics found were similar to those found in other studies of microplastics in New Zealand.</li></ul></p><p>This project was the first to document microplastics pollution in Te Awarua o Porirua. Our results confirmed the knowledge of Ngāti Toa Rangatira and the Porirua community that plastics pollution is a key issue, and provides the quantitative evidence to support community action to reduce plastics pollution in Porirua.</p>",
           "dataCustodian": "PHF Science"
         }
@@ -712,26 +1110,26 @@
               "//Greater Wellington Regional Council - Our Environment/0/4"
             ],
             "initialCamera": {
-                  "west": 174.82314405916387,
-                  "south": -41.13083027948777,
-                  "east": 174.85048804702862,
-                  "north": -41.11895535137032,
-                  "position": {
-                    "x": -4793336.010866512,
-                    "y": 433121.9885199243,
-                    "z": -4174333.6097096577
-                  },
-                  "direction": {
-                    "x": 0.6865808940189274,
-                    "y": -0.06182744041694711,
-                    "z": 0.7244197978932239
-                  },
-                  "up": {
-                    "x": -0.72132819310031,
-                    "y": 0.06686856413244105,
-                    "z": 0.6893578410154683
-                  }
-                },
+              "west": 174.82314405916387,
+              "south": -41.13083027948777,
+              "east": 174.85048804702862,
+              "north": -41.11895535137032,
+              "position": {
+                "x": -4793336.010866512,
+                "y": 433121.9885199243,
+                "z": -4174333.6097096577
+              },
+              "direction": {
+                "x": 0.6865808940189274,
+                "y": -0.06182744041694711,
+                "z": 0.7244197978932239
+              },
+              "up": {
+                "x": -0.72132819310031,
+                "y": 0.06686856413244105,
+                "z": 0.6893578410154683
+              }
+            },
             "viewerMode": "3d",
             "showSplitter": false,
             "settings": {
