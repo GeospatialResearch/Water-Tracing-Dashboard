@@ -13,6 +13,7 @@
       "<div style=\"display: flex; align-items: center;\">\n  <h3 style=\"color: white;\">Te Awarua Kai Ora</h3>\n</div>"
     ],
     "relatedMaps": [],
-    "aboutButtonHrefUrl": null
+    "aboutButtonHrefUrl": null,
+    "extraCreditLinks": []
   }
 }

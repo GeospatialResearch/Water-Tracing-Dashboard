@@ -1081,6 +1081,7 @@
           "id": "basemap-linz-aerial",
           "type": "wmts",
           "url": "https://basemaps.linz.govt.nz/v1/tiles/aerial/WebMercatorQuad/WMTSCapabilities.xml?api=c01k0qh9ca8rae7b5wm22g5b9eg",
+          "attribution": "© <a href=\"//www.linz.govt.nz/linz-copyright\">LINZ CC BY 4.0</a> © <a href=\"//www.linz.govt.nz/data/linz-data/linz-basemaps/data-attribution\">Imagery Basemap contributors</a>",
           "layer": "aerial"
         },
         "image": "https://basemaps.linz.govt.nz/favicon-32x32.png"
