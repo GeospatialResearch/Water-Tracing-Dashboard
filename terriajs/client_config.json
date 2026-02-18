@@ -13,7 +13,10 @@
       "<div style=\"display: flex; align-items: center;\">\n  <h3 style=\"color: white;\">Te Awarua Kai Ora</h3>\n</div>"
     ],
     "relatedMaps": [],
-    "aboutButtonHrefUrl": null,
-    "extraCreditLinks": []
+    "extraCreditLinks": [{
+      "text": "Dashboard & flow model created by the Geospatial Research Institute Toi Hangarau",
+      "url": "https://geospatial.ac.nz"
+    }],
+    "keepCatalogOpen": true
   }
 }
