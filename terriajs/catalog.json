@@ -1097,7 +1097,7 @@
   "stories": [
     {
       "title": "Te Hiko Street Mahinga Kai",
-      "text": "The Te Hiko Street monitoring site was once a traditional mahinga kai site for Ngāti Toa Rangatira, since the arrival Te Rauparaha and Iwi in the 1820's.",
+      "text": "Te Hiko Street was once a traditional mahinga kai site for Ngāti Toa Rangatira following the arrival of Te Rauparaha and iwi in the 1820s. Over recent decades, manawhenua have raised concerns about wastewater overflows and ageing infrastructure affecting this wāhi tapu.",
       "id": "5acbc9a9-76bc-426e-a949-d87f47c57cfa",
       "shareData": {
         "version": "8.0.0",
@@ -1143,7 +1143,7 @@
     },
     {
       "title": "Te Hiko St and Faecal Source Tracking",
-      "text": "Over the past century, and indeed several decades, this has been a site of concern for manawhenua, who have been aware of the waste water overflow and/or infrastructure leaks seeping into this wahi tapu.",
+      "text": "Molecular analyses targeting human-associated faecal markers — crAssphage and HF183 — detected elevated human-derived signals at this site. crAssphage is widely used as a robust indicator of human wastewater contamination, while HF183 is associated with more recent human faecal inputs in water. Together, these markers support iwi observations of ongoing contamination pressure. While single-event sampling limits formal statistical comparison, human-marker levels at Te Hiko Street were higher than those recorded at other monitoring locations during the same period.",
       "id": "36a2bb08-c64e-4aa3-b712-b754f94c949a",
       "shareData": {
         "version": "8.0.0",
@@ -1160,9 +1160,11 @@
             },
             "stratum": "user",
             "workbench": [
+              "//Flow models/Present Day/Flow Model (Present) - Water Source Summary Map",
               "//PHF Science Sampling/Faecal Source Tracking - February 2023"
             ],
             "timeline": [
+              "//Flow models/Present Day/Flow Model (Present) - Water Source Summary Map",
               "//PHF Science Sampling/Faecal Source Tracking - February 2023"
             ],
             "initialCamera": {
@@ -1198,56 +1200,8 @@
       }
     },
     {
-      "title": "Te Hiko St and Faecal Source Tracking",
-      "text": "Targeting the DNA human faecal marker, crAssphage, we see that human faecal levels recorded here both support Iwi observations and provide evidence of human faecal contamination. Compared to the other monitoring sites, human faecal levels at Te Hiko Street is significantly higher.",
-      "id": "44d7e69c-abc6-49f8-857c-a5c22f000754",
-      "shareData": {
-        "version": "8.0.0",
-        "initSources": [
-          {
-            "stratum": "user",
-            "workbench": [
-              "//Flow models/Present Day/Flow Model (Present) - Water Source Summary Map",
-              "//PHF Science Sampling/Faecal Source Tracking - February 2023"
-            ],
-            "timeline": [
-              "//Flow models/Present Day/Flow Model (Present) - Water Source Summary Map",
-              "//PHF Science Sampling/Faecal Source Tracking - February 2023"
-            ],
-            "initialCamera": {
-              "west": 174.82038803925147,
-              "south": -41.130988887948654,
-              "east": 174.85260092525476,
-              "north": -41.11699952972317,
-              "position": {
-                "x": -4793688.936097652,
-                "y": 433324.28557570104,
-                "z": -4174448.5242611724
-              },
-              "direction": {
-                "x": 0.706840856244073,
-                "y": -0.12486105026924442,
-                "z": 0.6962655542749526
-              },
-              "up": {
-                "x": -0.5621295824969162,
-                "y": -0.6966557914461944,
-                "z": 0.4457365149124752
-              }
-            },
-            "viewerMode": "3d",
-            "showSplitter": false,
-            "settings": {
-              "baseMapId": "basemap-linz-aerial",
-              "depthTestAgainstTerrainEnabled": false
-            }
-          }
-        ]
-      }
-    },
-    {
-      "title": "High proportion of streamflow",
-      "text": "According to our flow model, a large proprotion for the water near Te Hiko Street comes from streams, rather than sea water, or rain falling directly on the harbour. Please click on the red and white shading in the harbour to plot the proportion of water that comes from streams at that point. You can expand the plot to see in higher detail. All data within Te Awarua Kai Ora can be viewed in more detail by interacting like this.",
+      "title": "High proportion of stream inflow",
+      "text": "Hydrodynamic modelling indicates that a substantial proportion of water near Te Hiko Street originates from stream inflows rather than open-harbour exchange. This helps explain how catchment-derived contaminants may influence local water quality. Click on the red and white shading in the harbour to explore stream water contributions in more detail.",
       "id": "224841ec-2a20-4ad7-887a-9ba59b798b08",
       "shareData": {
         "version": "8.0.0",
@@ -1291,11 +1245,7 @@
             },
             "viewerMode": "3d",
             "showSplitter": false,
-            "splitPosition": 0.6125708333333341,
             "settings": {
-              "baseMaximumScreenSpaceError": 2,
-              "useNativeResolution": false,
-              "alwaysShowTimeline": false,
               "baseMapId": "basemap-linz-aerial",
               "terrainSplitDirection": 0,
               "depthTestAgainstTerrainEnabled": false
@@ -1306,31 +1256,31 @@
     },
     {
       "title": "Comparatively high avian fecal markers at Motukaraka",
-      "text": "There is a comparably high avian faecal presence at Motukaraka, within the Pauatahanui arm. This was once a significant mahinga kai site for both Ngāti Toa Rangatira and Iwi historical, evidenced by the visible miden layers located at this site.",
+      "text": "In the Pauatahanui arm, Motukaraka shows comparatively higher avian-associated faecal signals. This area was historically an important mahinga kai site, with visible midden layers remaining today. Contemporary bird populations likely contribute to these signals, and continued monitoring will help clarify long-term patterns.",
       "id": "90f3d693-9b18-42f3-814f-13e57664e74d",
       "shareData": {
         "version": "8.0.0",
         "initSources": [
           {
             "models": {
-                  "//PHF Science Sampling": {
-                    "knownContainerUniqueIds": [
-                      "/"
-                    ],
-                    "type": "group"
-                  },
-                  "//PHF Science Sampling/Faecal Source Tracking - February 2023": {
-                    "show": true,
-                    "activeStyle": "Avian GFD / 100 ml",
-                    "knownContainerUniqueIds": [
-                      "//PHF Science Sampling"
-                    ],
-                    "type": "wfs"
-                  },
-                  "/": {
-                    "type": "group"
-                  }
-                },
+              "//PHF Science Sampling": {
+                "knownContainerUniqueIds": [
+                  "/"
+                ],
+                "type": "group"
+              },
+              "//PHF Science Sampling/Faecal Source Tracking - February 2023": {
+                "show": true,
+                "activeStyle": "Avian GFD / 100 ml",
+                "knownContainerUniqueIds": [
+                  "//PHF Science Sampling"
+                ],
+                "type": "wfs"
+              },
+              "/": {
+                "type": "group"
+              }
+            },
             "stratum": "user",
             "workbench": [
               "//PHF Science Sampling/Faecal Source Tracking - February 2023"
@@ -1363,6 +1313,55 @@
             "showSplitter": false,
             "settings": {
               "baseMapId": "basemap-linz-aerial",
+              "depthTestAgainstTerrainEnabled": false
+            }
+          }
+        ]
+      }
+    },
+    {
+      "title": "Complementary insights",
+      "text": "Together, molecular tools, modelling, and mātauranga Māori provide complementary insight into contamination pathways and harbour health.",
+      "id": "d5321084-7b54-4ecc-abd6-38172f2077cc",
+      "shareData": {
+        "version": "8.0.0",
+        "initSources": [
+          {
+            "stratum": "user",
+            "workbench": [
+              "//Flow models/Present Day/Flow Model (Present) - Water Source Summary Map",
+              "//PHF Science Sampling/Faecal Source Tracking - February 2023"
+            ],
+            "timeline": [
+              "//Flow models/Present Day/Flow Model (Present) - Water Source Summary Map",
+              "//PHF Science Sampling/Faecal Source Tracking - February 2023"
+            ],
+            "initialCamera": {
+              "west": 174.7858949822167,
+              "south": -41.14987026075068,
+              "east": 174.9470232333279,
+              "north": -41.07740455296619,
+              "position": {
+                "x": -4801814.956256786,
+                "y": 431384.0837660849,
+                "z": -4179668.781739207
+              },
+              "direction": {
+                "x": 0.7503805348325572,
+                "y": -0.06741247266783199,
+                "z": 0.6575595877737732
+              },
+              "up": {
+                "x": -0.6549220216530995,
+                "y": 0.05883669796165838,
+                "z": 0.7534025408284641
+              }
+            },
+            "viewerMode": "3d",
+            "showSpliiter": false,
+            "settings": {
+              "baseMapId": "basemap-linz-aerial",
+              "terrainSplitDirection": 0,
               "depthTestAgainstTerrainEnabled": false
             }
           }
