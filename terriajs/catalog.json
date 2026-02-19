@@ -1071,7 +1071,29 @@
       "name": "Greater Wellington Regional Council - Natural Resources Plan",
       "type": "esri-group",
       "url": "https://mapping.gw.govt.nz/arcgis/rest/services/GW/NRPMap_P_operative/MapServer/",
-      "isOpen": true
+      "isOpen": true,
+      "excludeMembers": [
+        "Ngā Hapū o Ōtaki",
+        "Taranaki Whānui ki te Upoko o te Ika a Maui",
+        "Te Ātiawa ki Whakarongotai",
+        "Wairarapa Iwi",
+        "Schedule F1c - Lakes with Significant Aquatic Plants",
+        "Castlepoint Basin Lagoon permitted driving area",
+        "Commercial Port Areas",
+        "Cable Protection Zone Coordinates",
+        "Cook Strait Cable Protection Zone",
+        "Groundwater Zones",
+        "Hutt Aquifer Protection Zone",
+        "Kapiti Airport",
+        "Category 2 Surface Waterbodies",
+        "Lowland Areas For Category 2 Surface Water Bodies",
+        "Wairarapa Water Races",
+        "Masterton urban airshed",
+        "Wellington Harbour Navigation",
+        "Wellington Airport Height Restriction Areas",
+        "Rule 202A Harbour Bathymetry",
+        "Rule 202A Harbour depth"
+      ]
     }
   ],
   "baseMaps": {
