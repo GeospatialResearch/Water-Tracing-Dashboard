@@ -12,6 +12,7 @@
     "brandBarSmallElements": [
       "<div style=\"display: flex; align-items: center;\">\n  <h3 style=\"color: white;\">Te Awarua Kai Ora</h3>\n</div>"
     ],
+    "cesiumTerrainUrl": "$BACKEND_URL/terrain",
     "relatedMaps": [],
     "extraCreditLinks": [{
       "text": "Dashboard created by the Geospatial Research Institute Toi Hangarau",

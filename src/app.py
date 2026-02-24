@@ -21,7 +21,7 @@ import logging
 from urllib.parse import urlparse, parse_qs, unquote
 from http.client import OK
 
-from flask import Flask, jsonify, make_response, Response, request
+from flask import Flask, jsonify, make_response, Response, request, send_from_directory
 from flask_cors import CORS
 from flask_swagger_ui import get_swaggerui_blueprint
 import requests
@@ -31,8 +31,14 @@ from src.check_celery_alive import check_celery_alive
 from src.geoserver import get_terria_catalog
 from src.watersource.query_db import query_watersource_data
 
+import os
+
+root_path = os.path.dirname(os.path.abspath(__file__))
+
 # Initialise flask server object
-app = Flask(__name__)
+app = Flask(
+    __name__, root_path=root_path, static_folder="static", static_url_path="/static"
+)
 CORS(app)
 
 # Serve API documentation
@@ -45,6 +51,8 @@ app.register_blueprint(swagger_ui_blueprint, url_prefix=SWAGGER_URL)
 
 # Default response format for data queries
 F_RESPONSE = "csv"
+
+TERRIAN_DIR = "static/output-terrain/"
 
 
 @app.route("/")
@@ -98,6 +106,23 @@ def terria_catalog() -> Response:
     return make_response(jsonify(catalog), OK)
 
 
+@app.route("/terrain/<path:path>")
+def serve_terrain(path):
+    response = send_from_directory(TERRIAN_DIR, path)
+
+    # Add critical headers for .terrain files
+    if path.endswith(".terrain"):
+        response.headers["Content-Encoding"] = "gzip"
+        response.headers["Content-Type"] = "application/vnd.quantized-mesh"
+
+    return response
+
+
+@app.route("/terrain/layer.json")
+def terrain_root():
+    return serve_terrain("layer.json")
+
+
 @app.route("/api/normalise/", methods=["GET"])
 def normalise_layer() -> Response:
     """Pass the request to geoserver but normalise it"""
@@ -113,7 +138,7 @@ def normalise_layer() -> Response:
     geoserver_resp = requests.request(
         method=request.method,
         url=f"{EnvVariable.GEOSERVER_INTERNAL_HOST}:{EnvVariable.GEOSERVER_INTERNAL_PORT}/geoserver/static_files/wms",
-        params=query_parameters
+        params=query_parameters,
     )
     geoserver_resp.raise_for_status()
     json = geoserver_resp.json()
@@ -281,8 +306,8 @@ def test_query_watersource():
 
 # Development server
 if __name__ == "__main__":
-    # app.run(debug=True, host="0.0.0.0")
-    test_query_watersource()
+    app.run(debug=True, host="0.0.0.0")
+    # test_query_watersource()
 
 # Production server
 if __name__ != "__main__":

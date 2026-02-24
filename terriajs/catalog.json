@@ -24,6 +24,13 @@
   ],
   "catalog": [
     {
+      "type": "cesium-terrain",
+      "name": "Quantized Mesh",
+      "url": "$BACKEND_URL/terrain/",
+      "description": "Custom quantized mesh terrain tiles generated with Cesium Terrain Builder",
+      "id": "custom-terrain-001"
+    },
+    {
       "type": "group",
       "name": "Flow models",
       "isOpen": true,
