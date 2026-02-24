@@ -22,6 +22,8 @@ import pathlib
 import shutil
 from typing import NamedTuple
 
+import rasterio as rio
+from rasterio import warp
 import requests
 
 from src.config import EnvVariable
@@ -61,8 +63,8 @@ def upload_gtiff_to_store(
     # Set file copying src and dest
     geoserver_data_root = EnvVariable.DATA_DIR_GEOSERVER
     geoserver_data_dest = pathlib.Path("data") / workspace_name / gtiff_filepath.name
-    # Copy file to geoserver data folder
-    shutil.copyfile(gtiff_filepath, geoserver_data_root / geoserver_data_dest)
+    # Copy file to geoserver data folder, reprojected to web mercator for speedy visualisation
+    reproject_raster_to_web_mercator(gtiff_filepath, geoserver_data_root / geoserver_data_dest)
     # Send request to add data
     data = f"""
     <coverageStore>
@@ -84,6 +86,40 @@ def upload_gtiff_to_store(
         # Raise error manually so we can configure the text
         raise requests.HTTPError(response.text, response=response)
     log.info(f"Uploaded {gtiff_filepath.name} to Geoserver workspace {workspace_name}.")
+
+
+def reproject_raster_to_web_mercator(src_path: pathlib.Path, dst_path: pathlib.Path) -> None:
+    web_mercator_epsg = 3857
+    dst_crs = rio.crs.CRS.from_epsg(web_mercator_epsg)
+    with rio.open(src_path, 'r') as src:
+        # Calculate the destination transform, width, and height
+        transform, width, height = warp.calculate_default_transform(
+            src.crs, dst_crs, src.width, src.height, *src.bounds
+        )
+
+        # Copy the source metadata and update it for the destination
+        dst_meta = src.profile.copy()
+        dst_meta.update({
+            'crs': dst_crs,
+            'transform': transform,
+            'width': width,
+            'height': height,
+            'driver': 'GTiff',  # Ensure output format is GeoTIFF or other compatible format
+            'nodata': src.nodata  # Set the NoData value for the output
+        })
+
+        # Open the destination file in 'write' mode and perform the reprojection
+        with rio.open(dst_path, 'w', **dst_meta) as dst:
+            for i in range(1, src.count + 1):
+                warp.reproject(
+                    source=rio.band(src, i),
+                    destination=rio.band(dst, i),
+                    src_transform=src.transform,
+                    src_crs=src.crs,
+                    dst_transform=dst.transform,
+                    dst_crs=dst.crs,
+                    resampling=warp.Resampling.bilinear
+                )
 
 
 class CoverageDimension(NamedTuple):
@@ -135,27 +171,27 @@ def create_layer_from_store(
         <name>{layer_name}</name>
         <title>{layer_name}</title>
         <nativeCRS class="projected">
-            PROJCS[&quot;NZGD2000 / New Zealand Transverse Mercator 2000&quot;,
-            GEOGCS[&quot;NZGD2000&quot;,
-              DATUM[&quot;New Zealand Geodetic Datum 2000&quot;,
-                SPHEROID[&quot;GRS 1980&quot;, 6378137.0, 298.257222101, AUTHORITY[&quot;EPSG&quot;,&quot;7019&quot;]],
-                TOWGS84[0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0],
-                AUTHORITY[&quot;EPSG&quot;,&quot;6167&quot;]],
-              PRIMEM[&quot;Greenwich&quot;, 0.0, AUTHORITY[&quot;EPSG&quot;,&quot;8901&quot;]],
-              UNIT[&quot;degree&quot;, 0.017453292519943295],
-              AXIS[&quot;Geodetic longitude&quot;, EAST],
-              AXIS[&quot;Geodetic latitude&quot;, NORTH],
-              AUTHORITY[&quot;EPSG&quot;,&quot;4167&quot;]],
-            PROJECTION[&quot;Transverse_Mercator&quot;, AUTHORITY[&quot;EPSG&quot;,&quot;9807&quot;]],
-            PARAMETER[&quot;central_meridian&quot;, 173.0],
-            PARAMETER[&quot;latitude_of_origin&quot;, 0.0],
-            PARAMETER[&quot;scale_factor&quot;, 0.9996],
-            PARAMETER[&quot;false_easting&quot;, 1600000.0],
-            PARAMETER[&quot;false_northing&quot;, 10000000.0],
-            UNIT[&quot;m&quot;, 1.0],
-            AXIS[&quot;Easting&quot;, EAST],
-            AXIS[&quot;Northing&quot;, NORTH],
-            AUTHORITY[&quot;EPSG&quot;,&quot;2193&quot;]]
+            PROJCS[&quot;WGS 84 / Pseudo-Mercator&quot;, 
+            GEOGCS[&quot;WGS 84&quot;, 
+            DATUM[&quot;World Geodetic System 1984&quot;, 
+              SPHEROID[&quot;WGS 84&quot;, 6378137.0, 298.257223563, AUTHORITY[&quot;EPSG&quot;,&quot;7030&quot;]], 
+              AUTHORITY[&quot;EPSG&quot;,&quot;6326&quot;]], 
+            PRIMEM[&quot;Greenwich&quot;, 0.0, AUTHORITY[&quot;EPSG&quot;,&quot;8901&quot;]], 
+            UNIT[&quot;degree&quot;, 0.017453292519943295], 
+            AXIS[&quot;Geodetic longitude&quot;, EAST], 
+            AXIS[&quot;Geodetic latitude&quot;, NORTH], 
+            AUTHORITY[&quot;EPSG&quot;,&quot;4326&quot;]], 
+            PROJECTION[&quot;Popular Visualisation Pseudo Mercator&quot;, AUTHORITY[&quot;EPSG&quot;,&quot;1024&quot;]], 
+            PARAMETER[&quot;semi_minor&quot;, 6378137.0], 
+            PARAMETER[&quot;latitude_of_origin&quot;, 0.0], 
+            PARAMETER[&quot;central_meridian&quot;, 0.0], 
+            PARAMETER[&quot;scale_factor&quot;, 1.0], 
+            PARAMETER[&quot;false_easting&quot;, 0.0], 
+            PARAMETER[&quot;false_northing&quot;, 0.0], 
+            UNIT[&quot;m&quot;, 1.0], 
+            AXIS[&quot;Easting&quot;, EAST], 
+            AXIS[&quot;Northing&quot;, NORTH], 
+            AUTHORITY[&quot;EPSG&quot;,&quot;3857&quot;]]
         </nativeCRS>
         <supportedFormats>
             <string>GEOTIFF</string>
@@ -165,8 +201,8 @@ def create_layer_from_store(
         <dimensions>
           {coverage_dimensions_xml}
         </dimensions>
-        <requestSRS><string>EPSG:2193</string></requestSRS>
-        <responseSRS><string>EPSG:2193</string></responseSRS>
+        <requestSRS><string>EPSG:3857</string></requestSRS>
+        <responseSRS><string>EPSG:3857</string></responseSRS>
         <srs>EPSG:2193</srs>
     </coverage>
     """
