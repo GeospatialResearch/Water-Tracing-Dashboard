@@ -46,6 +46,28 @@ def upload_water_tracing_rgb_model_output(rgb_model_output_path: pathlib.Path) -
     gs.add_gtiff_to_geoserver(rgb_model_output_path, workspace_name, rgb_model_output_path.stem, coverage_dimensions)
 
 
+def add_default_styles() -> None:
+    layer_styles = {
+        "255nan": "RGB",
+        "hydros": "reds_percent",
+        "rain": "greens_percent",
+        "stage": "blues_percent",
+        "velocity": "viridis_raster_0p5max",
+        "waterdepth": "viridis_raster_20max",
+        "d50top": "viridis_raster_0p0005max"
+    }
+    for workspace in [gs.Workspaces.STATIC_FILES_WORKSPACE, gs.Workspaces.MODEL_OUTPUTS_WORKSPACE]:
+        for layer in gs.terria_catalogs.get_workspace_raster_layers(workspace):
+            default_style = None
+            for layer_key, style in layer_styles.items():
+                if layer_key in layer:
+                    default_style = style
+                    break
+            if default_style is None:
+                continue
+            gs.geoserver_common.set_default_layer_style(workspace, layer, default_style)
+
+
 def main_a(
     _selected_polygon_gdf: gpd.GeoDataFrame | None,
     rgb_model_output_path: pathlib.Path,
@@ -86,6 +108,7 @@ def main(_sekected_polygon_gdf, rgb_model_output_path, log_level: LogLevel) -> N
         for rgb in static_dir.glob("20*_watersourceRGB_10m_depth_255nan.tif"):
             log.info(f"~~Uploading rgb {rgb.name} rgb")
             main_a(_sekected_polygon_gdf, rgb, log_level)
+    add_default_styles()
 
 
 if __name__ == '__main__':

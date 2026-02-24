@@ -526,7 +526,7 @@ def serve_static_files(engine: Engine, vector_file_directory: pathlib.Path) -> N
                 case ".tif" | ".tiff" | ".geotiff":
                     gs.add_gtiff_to_geoserver(file, workspace_name, file.stem)
                 case ".sld":
-                    gs.add_style(file, replace=True)
+                    gs.add_style(file)
     # If no models have been run we may still want to serve the non-static datasets, so create the stores.
     for workspace_name in non_statics:
         # These stores also should be initialised.

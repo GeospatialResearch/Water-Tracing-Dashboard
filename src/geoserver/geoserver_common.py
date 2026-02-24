@@ -113,3 +113,27 @@ def style_exists(style_name: str) -> bool:
     # If it does not meet the expected results then raise an error
     # Raise error manually, so we can configure the text
     raise requests.HTTPError(response.text, response=response)
+
+
+def set_default_layer_style(workspace_name: str, layer_name: str, default_style_name: str) -> None:
+    log.info(f"Setting default style for '{workspace_name}:{layer_name}' to '{default_style_name}'")
+    layer_json_url = f'{get_geoserver_url()}/workspaces/{workspace_name}/layers/{layer_name}.json'
+    get_layer_request = requests.get(
+        layer_json_url,
+        auth=(EnvVariable.GEOSERVER_ADMIN_NAME, EnvVariable.GEOSERVER_ADMIN_PASSWORD)
+    )
+    get_layer_request.raise_for_status()
+    response_data = get_layer_request.json()
+
+    external_gs_url = f"{EnvVariable.GEOSERVER_HOST}:{EnvVariable.GEOSERVER_PORT}/geoserver/rest"
+    response_data["layer"]["defaultStyle"] = {
+        "name": default_style_name,
+        "href": f"{external_gs_url}/styles/{default_style_name}.json"
+    }
+
+    set_default_style_request = requests.put(
+        layer_json_url,
+        auth=(EnvVariable.GEOSERVER_ADMIN_NAME, EnvVariable.GEOSERVER_ADMIN_PASSWORD),
+        json=response_data
+    )
+    set_default_style_request.raise_for_status()
