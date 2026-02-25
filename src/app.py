@@ -33,12 +33,9 @@ from src.watersource.query_db import query_watersource_data
 
 import os
 
-root_path = os.path.dirname(os.path.abspath(__file__))
 
 # Initialise flask server object
-app = Flask(
-    __name__, root_path=root_path, static_folder="static", static_url_path="/static"
-)
+app = Flask(__name__)
 CORS(app)
 
 # Serve API documentation
@@ -52,7 +49,7 @@ app.register_blueprint(swagger_ui_blueprint, url_prefix=SWAGGER_URL)
 # Default response format for data queries
 F_RESPONSE = "csv"
 
-TERRIAN_DIR = "static/output-terrain/"
+TERRAIN_DIR = "static/output-terrain/"
 
 
 @app.route("/")
@@ -108,7 +105,7 @@ def terria_catalog() -> Response:
 
 @app.route("/terrain/<path:path>")
 def serve_terrain(path):
-    response = send_from_directory(TERRIAN_DIR, path)
+    response = send_from_directory(TERRAIN_DIR, path)
 
     # Add critical headers for .terrain files
     if path.endswith(".terrain"):
