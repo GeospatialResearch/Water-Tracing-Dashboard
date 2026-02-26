@@ -18,6 +18,7 @@
       "text": "Dashboard created by the Geospatial Research Institute Toi Hangarau",
       "url": "https://geospatial.ac.nz"
     }],
-    "keepCatalogOpen": true
+    "keepCatalogOpen": true,
+    "aboutButtonHrefUrl": null
   }
 }
