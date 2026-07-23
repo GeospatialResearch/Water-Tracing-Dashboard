@@ -3,15 +3,22 @@
     "catalog"
   ],
   "parameters": {
-    "appName": "Flood Resilience Digital Twin (FReDT)",
-    "supportEmail": "gri-enquiries+fredt@canterbury.ac.nz",
+    "appName": "Te Awarua Kai Ora",
+    "supportEmail": "gri-enquiries+porirua_explorer@canterbury.ac.nz",
     "cesiumIonAccessToken": "$CESIUM_ACCESS_TOKEN",
     "brandBarElements": [
-      "<div style=\"display: flex; align-items: center;\">\n  <h1 style=\"color: white;\">Flood Resilience Digital Twin (FReDT)</h1>\n</div>"
+      "<div style=\"display: flex; align-items: center;\">\n  <h1 style=\"color: white;\">Te Awarua Kai Ora</h1>\n</div>"
     ],
     "brandBarSmallElements": [
-      "<div style=\"display: flex; align-items: center;\">\n  <h3 style=\"color: white;\">Flood Resilience Digital Twin (FReDT)</h3>\n</div>"
+      "<div style=\"display: flex; align-items: center;\">\n  <h3 style=\"color: white;\">Te Awarua Kai Ora</h3>\n</div>"
     ],
-    "relatedMaps": []
+    "cesiumTerrainUrl": "$BACKEND_URL/terrain",
+    "relatedMaps": [],
+    "extraCreditLinks": [{
+      "text": "Dashboard created by the Geospatial Research Institute Toi Hangarau",
+      "url": "https://geospatial.ac.nz"
+    }],
+    "keepCatalogOpen": true,
+    "aboutButtonHrefUrl": null
   }
 }

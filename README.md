@@ -1,21 +1,11 @@
 Copyright © 2021-2025 Geospatial Research Institute Toi Hangarau
-# Flood Resilience Digital Twin (FReDT)
-![image](paper/Capture2024.PNG)
+# Water Tracing Dashboard
+![image](https://geospatial.ac.nz/wp-content/uploads/2025/03/Poriruahabour.jpg)
 
 
 ## Introduction
 
-According to the National Emergency Management Agency, flooding is the greatest hazard in New Zealand, in terms of frequency, losses and civil defence emergencies. 
-With major flood events occurring on average every 8 months [(New Zealand – FloodList)](https://floodlist.com/tag/new-zealand),
-it is necessary to produce high precision flood models and in order to do better planning, risk assessment and response to flood events.
-
-The Flood Resilience Digital Twin can provide a better understanding of the degree of impact flood events can have on physical assets like buildings, roads, railways, transmission lines, etc.
-The digital twin not only represents the current status of the visualised assets but also how they will perform/react to future situations. 
-The digital twin, when used to run flood models combined with other sources of information can allow us to make predictions.
-
-Data for analysis and modelling are collected from open data portals provided by multiple organisations or data providers such as LINZ, StatsNZ, opentopography, NIWA, MFE, and more.
-
-See our [draft paper for Journal of Open Source Software](paper/paper.pdf) for more details.
+<!-- See our [draft paper for Journal of Open Source Software](paper/paper.pdf) for more details. -->
 
 ## Basic running instructions
 The following list defines the basic steps required to set up and run the digital twin.

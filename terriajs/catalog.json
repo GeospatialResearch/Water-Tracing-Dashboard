@@ -1,22 +1,1394 @@
 {
   "homeCamera": {
-    "north": -43.35,
-    "east": 172.76,
-    "south": -43.42,
-    "west": 172.55
+    "north": -41.06,
+    "east": 174.9,
+    "south": -41.15,
+    "west": 174.82
   },
+  "models": {
+    "//PHF Science Sampling/Faecal Source Tracking - February 2023": {
+      "show": false,
+      "knownContainerUniqueIds": [
+        "//PHF Science Sampling"
+      ],
+      "type": "wfs"
+    }
+  },
+  "workbench": [
+    "//Flow models/Present Day/Flow Model (Present) - Water Source Summary Map",
+    "//PHF Science Sampling/Faecal Source Tracking - February 2023"
+  ],
+  "timeline": [
+    "//Flow models/Present Day/Flow Model (Present) - Water Source Summary Map",
+    "//PHF Science Sampling/Faecal Source Tracking - February 2023"
+  ],
   "catalog": [
     {
-      "type": "wps",
-      "name": "Model a flood scenario",
-      "description": "Model a climate scenario that will impact the flood scenario",
-      "url": "$BACKEND_URL/wps",
-      "identifier": "fredt"
+      "type": "group",
+      "name": "Flow models",
+      "isOpen": true,
+      "description": "<h3>Introduction</h3><p>A flow model of the Porirua Harbour with water source tracing capability was developed to enable an assessment of where is likely to be most affected by pollutants being introduced by rivers, assess the tidal flushing of the harbour, and assess sediment flow (erosion, deposition). Two scenarios of sea level rise were run to assess potential future changes in tidal behaviour in the harbour. The model is available under open-source licensing (further details below).</p><h3>Key findings</h3><p>The flow model results indicate that the proportion of river water in the harbour increases at low tide and after rainfall events in the river catchments, and that water from each non-tidal source tends to accumulate in the harbour, particularly in the upper harbour inlets and along the shorelines, as it is pushed back by the incoming tide. Since the river water carries with it pollutants from the catchments, results indicate that the locations within the harbour most likely to be affected by this are the shorelines along the upper harbour inlets. The sea level rise scenarios suggest an increase in fluvial source depths in the upper reaches at both low and high tides, with higher source depths for higher increases in sea level, which would likely worsen the situation regarding pollutants.</p><h3>Model results provided</h3><p>For each scenario (present day, 2050 and 2080), the flowing layers are provided. Each represents the average (mean) value over a 6-month period between 1 April and 30 September 2020.<ul><li>Water source summary map – depth scaled: a visualisation of the combined water sources represented in the harbour, where blues represent tidal waters, reds are from river inputs and green is direct rainfall into the harbour. The mixing of the different colours indicates the mixing of each water source, in red-green-blue colour space, with darker shades indicating deeper water. <a href=\"https://gmd.copernicus.org/articles/16/2415/2023/#Ch1.S2.SS4\">See here for further information</a>.</li><li>Water source summary map – raw: the same summary map, but without depth-scaling.</li><li>Water sources – Streams: the proportion of water from any of the 15 streams represented in the flow model.</li><li>Water sources – Rain: the proportion of water from direct rainfall into the harbour.</li><li>Water sources – Tide: the proportion of water from tidal flow into the harbour.</li><li>Water Velocity: the speed of the water flow (faster water means more erosion, slower water means more sediment deposition).</li><li>Water Depth: the total depth of the water.</li><li>Median Sediment Size: the predicted median sediment size deposited in the top (surface) layer; smaller sediment particles (silts) are deposited where water velocity is lowest (e.g., at the slack water tide interface and in the upper harbour), while larger particles (sands) are deposited in the lower harbour where there is more tidal flow.</li></ul></p><h3>Scenarios overview</h3><p>Two scenarios presenting sea level rise were run. Scenarios were created by adjusting (increasing) the downstream tide level used in the model, with all other data inputs kept the same. This means that the scenarios do not represent climate change in full (since differences to rainfall are not accounted for, for example), but that the influence of the increasing tide level is isolated from other factors.</p><p>The sea level rise scenarios were obtained from the <a href=\"https://searise.nz/maps/\">NZ SeaRise: Te Pai Pari O Aotearoa programme</a>, under a CC-BY-4.0 open licence.  The data are available from <a href=\"https://searise.takiwa.co/map/6245144372b819001837b900/embed\">Takiwa’s visualisation platform</a>. The SSP2-4.5 projection including vertical land movement (VLM) was selected, with median values (p50) of sea level rise for 2050 and 2080 used. This provided values of 0.31 m and 0.57 m of sea level rise for each scenario, respectively, which were added to the tide level data used in the flow model. It should be noted that there is uncertainty in both the level and timing of sea level rise, as indicated in the shaded area of the plot below (source: <a href=\"https://searise.takiwa.co/map/6245144372b819001837b900/embed\">site 2567 on the Takiwa platform</a>):</p><img src=\"$BACKEND_URL/static/sea_level_rise.png\"><h3>Model setup details</h3><ul><li>The flow model was constructed using a topo-bathymetric grid created from 2023 airborne LiDAR data (<a href=\"https://portal.opentopography.org/lidarDataset?opentopoID=OTLAS.082023.2193.1\">Porirua City Council and Land Information New Zealand</a>) and 2024 surveyed bathymetry data (Greater Wellington Regional Council). These were seamlessly joined using the New Zealand Vertical Datum 2016 (<a href=\"https://www.linz.govt.nz/guidance/geodetic-system/coordinate-systems-used-new-zealand/vertical-datums/new-zealand-vertical-datum-2016-nzvd2016\">NZVD2016</a>)</li><li>The downstream boundary data (tidal) were from a gauge at <a href=\"https://graphs-beta.gw.govt.nz/envmon?view=tabular-data&collection=Tide%20Levels&site=Porirua%20Harbour%20at%20Mana%20Cruising%20Club&measurement=Stage\">Porirua Harbour at Mana Cruising Club</a>. These were converted to NZVD2016, and for each sea level scenario adjusted by the appropriate vertical level.</li><li>Rainfall data (direct to harbour) was obtained from the <a href=\"https://www.moanaproject.org/hindcast\">Moana Backbone Model</a>, developed in the Moana project by MetService, provided under open (CC BY-NC-SA 4.0). The 5 km model provided data consistency across the catchment (available gauge data are variable).</li><li>Flow data and sediment inflows were produced using the <a href=\"https://swat.tamu.edu/\">SWAT model of catchment hydrology</a>, available under open licence. Modelling was used to enable a full representation of inflows into the harbour, including ungauged streams. A total of 15 rivers were represented. The model will also enable future scenarios of land management within the catchment. Alongside rainfall data across the catchment, data representing wind speed, temperature and humidity were obtained from the Moana Backbone Model. Model elevation was produced from 2013-2014 LiDAR data (<a href=\"https://portal.opentopography.org/datasetMetadata?otCollectionID=OT.042017.2193.2\">Greater Wellington Regional Council and Land Information New Zealand</a>); soils data were obtained from the DSOLMap by <a href=\"https://doi.org/10.1016/j.catena.2023.107339\">López-Ballesteros et al. 2023</a>; land cover was obtained from the New Zealand Land Cover Database <a href=\"https://lris.scinfo.org.nz/layer/104400-lcdb-v50-land-cover-database-version-50-mainland-new-zealand/\">LCDB v5.0</a>; ground water was represented using data provided as part of the Global HYdrogeology MaPS 2.0 (GLHYMPS 2.0) developed by <a href=\"https://doi.org/10.1002/2017GL075860\">Huscroft et al. 2018</a>, and depth to bedrock provided by <a href=\"https://data.isric.org/geonetwork/srv/api/records/f36117ea-9be5-4afd-bb7d-7a3e77bf392a\">Soilgrids</a>.</li><li>Model simulations were produced for an 11 year period between 1 January 2010 and 31 December 2020.</li></ul><h3>Model limitations</h3><p>All models have limitations: there is a fundamental trade-off to be made between model complexity, computational efficiency, and the utility of the model for large, long or detailed analysis. Some key limitations are:<ol>  <li>The CAESAR-Lisflood model implements the inertial diffusive hydraulic formula (<a href=\"https://doi.org/10.1016/j.jhydrol.2010.03.027\">developed by Bates et al. 2010</a>). This means that it is suitable for generally shallow and sub-critical (low velocity) surface water flows, as occurs within Porirua Harbour. However, in common with many models of surface water flows, CAESAR-Lisflood represents flows in two-dimensions (i.e., it is a depth averaged model). This means that any vertical variation in the water column is not accounted for, as it is assumed to be fully mixed. Therefore, it is currently not possible to represent a saltwater wedge in the model (where river water sits top of tidal water and there is a thin mixing layer), and to do so would require a significant increase in model complexity. However, for most of Porirua Habour, the depths are generally very shallow and it is likely that this is not an issue, with the possible exception at the harbour entrance. Salinity measurements can be collected to test this assumption.</li>  <li>As discussed by <a href=\"https://doi.org/10.5194/gmd-16-2415-2023\">Wilson & Coulthard (2023)</a>, for water tracing, the sources of water in each cell in the model are assumed to be fully mixed. This is a limitation of the model structure, but is only likely to be an issue for very small source proportions. Consequently, low source values, or small changes between scenarios, should be treated with caution.</li>  <li>The data topography and bathymetry data available for the analysis was at a high quality, but with the limitation that there is a gap between the shoreline and bathymetry observations that required interpolation, meaning that it is possible that these important areas may have lower accuracy. The accuracy of other source data (e.g., rainfall, river flows) will depend on the accuracy of the respective models used to produce them.</li></ol></p><h3>Flow model details and availability</h3><p>For detailed technical information about the flow model, please see the following scientific paper (open access):</p><p>Wilson, M. D., & Coulthard, T. J. (2023). Tracing and visualisation of contributing water sources in the LISFLOOD-FP model of flood inundation (within CAESAR-Lisflood version 1.9 j-WS). <i>Geoscientific Model Development, 16(9)</i>, 2415-2436. <a href=\"https://doi.org/10.5194/gmd-16-2415-2023\">https://doi.org/10.5194/gmd-16-2415-2023</a></p><p>The latest version of the CAESAR-Lisflood 2.0 flow model software is available under open-source licencing from:<a href=\"https://sourceforge.net/p/caesar-lisflood/wiki/Home/\">https://sourceforge.net/p/caesar-lisflood/wiki/Home/</a></p><h3>Contact</h3><p>  <strong>Data owner and custodian:</strong> Te Rūnanga O Toa Rangatira, https://www.ngatitoa.iwi.nz/. Email: communications@ngatitoa.iwi.nz.</p><p>  <strong>Model developer and technical contact:</strong> Geospatial Research Institute Toi Hangarau, University of Canterbury, https://geospatial.ac.nz/. Email: gri-enquiries@canterbury.ac.nz.</p><h3>Disclaimer</h3><p>The data provided is for informational purposes only. It is provided \"as is\" without warranty of any kind, express or implied, regarding its accuracy, completeness, or suitability for any purpose.</p>",
+      "dataCustodian": "Te Rūnanga O Toa Rangatira, https://www.ngatitoa.iwi.nz/. Email: communications@ngatitoa.iwi.nz.",
+      "members": [
+        {
+          "type": "group",
+          "name": "Present Day",
+          "description": "Please click the parent 'Flow Models' folder for a detailed description.",
+          "members": [
+            {
+              "type": "wms",
+              "name": "Flow Model (Present) - Water Source Summary Map",
+              "url": "$GEOSERVER_URL/geoserver/model_outputs/wms",
+              "layers": "2026_watersourceRGB_10m_depth_255nan",
+              "styles": "RGB",
+              "getFeatureInfoUrl": "$BACKEND_URL/api/normalise",
+              "isOpenInWorkbench": true,
+              "description": "Please click the parent 'Flow Models' folder for a detailed description.",
+              "legends": [
+                {
+                  "title": "Water Sources",
+                  "items": [
+                    {
+                      "title": "Streams",
+                      "color": "#FF0000"
+                    },
+                    {
+                      "title": "Rain",
+                      "color": "#00FF00"
+                    },
+                    {
+                      "title": "Tide",
+                      "color": "#0000FF"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "wms",
+              "name": "Flow Model (Present) - Water Sources - Streams",
+              "url": "$GEOSERVER_URL/geoserver/static_files/wms",
+              "layers": "2026_watersource_hydros_10m",
+              "styles": "reds_percent",
+              "isOpenInWorkbench": true,
+              "supportsGetTimeseries": true,
+              "description": "Please click the parent 'Flow Models' folder for a detailed description.",
+              "getFeatureInfoUrl": "$BACKEND_URL/api/query",
+              "getFeatureInfoParameters": {
+                "epoch": "2020s",
+                "variable": "hydro"
+              }
+            },
+            {
+              "type": "wms",
+              "name": "Flow Model (Present) - Water Sources - Rain",
+              "url": "$GEOSERVER_URL/geoserver/static_files/wms",
+              "layers": "2026_watersource_rain_10m",
+              "styles": "greens_percent",
+              "isOpenInWorkbench": true,
+              "supportsGetTimeseries": true,
+              "description": "Please click the parent 'Flow Models' folder for a detailed description.",
+              "getFeatureInfoUrl": "$BACKEND_URL/api/query",
+              "getFeatureInfoParameters": {
+                "epoch": "2020s",
+                "variable": "rain"
+              }
+            },
+            {
+              "type": "wms",
+              "name": "Flow Model (Present) - Water Sources - Tide",
+              "url": "$GEOSERVER_URL/geoserver/static_files/wms",
+              "layers": "2026_watersource_stage_10m",
+              "styles": "blues_percent",
+              "isOpenInWorkbench": true,
+              "description": "Please click the parent 'Flow Models' folder for a detailed description.",
+              "supportsGetTimeseries": true,
+              "getFeatureInfoUrl": "$BACKEND_URL/api/query",
+              "getFeatureInfoParameters": {
+                "epoch": "2020s",
+                "variable": "stage"
+              }
+            },
+            {
+              "type": "wms",
+              "name": "Flow Model (Present) - Water Velocity",
+              "url": "$GEOSERVER_URL/geoserver/static_files/wms",
+              "layers": "2026_velocity_10m",
+              "styles": "viridis_raster_0p5max",
+              "isOpenInWorkbench": true,
+              "description": "Please click the parent 'Flow Models' folder for a detailed description.",
+              "supportsGetTimeseries": true,
+              "getFeatureInfoUrl": "$BACKEND_URL/api/query",
+              "getFeatureInfoParameters": {
+                "epoch": "2020s",
+                "variable": "velocity"
+              }
+            },
+            {
+              "type": "wms",
+              "name": "Flow Model (Present) - Water Depth",
+              "url": "$GEOSERVER_URL/geoserver/static_files/wms",
+              "layers": "2026_waterdepth_10m",
+              "styles": "viridis_raster_20max",
+              "isOpenInWorkbench": true,
+              "description": "Please click the parent 'Flow Models' folder for a detailed description.",
+              "supportsGetTimeseries": true,
+              "getFeatureInfoUrl": "$BACKEND_URL/api/query",
+              "getFeatureInfoParameters": {
+                "epoch": "2020s",
+                "variable": "waterdepth"
+              }
+            },
+            {
+              "type": "wms",
+              "name": "Flow Model (Present) - Median Sediment Size",
+              "url": "$GEOSERVER_URL/geoserver/static_files/wms",
+              "layers": "2026_d50top_10m",
+              "styles": "viridis_raster_0p0005max",
+              "isOpenInWorkbench": true,
+              "description": "Please click the parent 'Flow Models' folder for a detailed description.",
+              "supportsGetTimeseries": true,
+              "getFeatureInfoUrl": "$BACKEND_URL/api/query",
+              "getFeatureInfoParameters": {
+                "epoch": "2020s",
+                "variable": "sedimentdepth"
+              }
+            }
+          ]
+        },
+        {
+          "type": "group",
+          "name": "Sea Level Rise 2050",
+          "isOpen": false,
+          "description": "Please click the parent 'Flow Models' folder for a detailed description.",
+          "members": [
+            {
+              "type": "wms",
+              "name": "Flow Model (2050) - Water Source Summary Map",
+              "url": "$GEOSERVER_URL/geoserver/model_outputs/wms",
+              "layers": "2050_watersourceRGB_10m_depth_255nan",
+              "styles": "RGB",
+              "description": "Please click the parent 'Flow Models' folder for a detailed description.",
+              "getFeatureInfoUrl": "$BACKEND_URL/api/normalise",
+              "isOpenInWorkbench": true,
+              "legends": [
+                {
+                  "title": "Water Sources",
+                  "items": [
+                    {
+                      "title": "Streams",
+                      "color": "#FF0000"
+                    },
+                    {
+                      "title": "Rain",
+                      "color": "#00FF00"
+                    },
+                    {
+                      "title": "Tide",
+                      "color": "#0000FF"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "wms",
+              "name": "Flow Model (2050) - Water Sources - Streams",
+              "url": "$GEOSERVER_URL/geoserver/static_files/wms",
+              "layers": "2050_watersource_hydros_10m",
+              "styles": "reds_percent",
+              "isOpenInWorkbench": true,
+              "description": "Please click the parent 'Flow Models' folder for a detailed description.",
+              "supportsGetTimeseries": true,
+              "getFeatureInfoUrl": "$BACKEND_URL/api/query",
+              "getFeatureInfoParameters": {
+                "epoch": "2050s",
+                "variable": "hydro"
+              }
+            },
+            {
+              "type": "wms",
+              "name": "Flow Model (2050) - Water Sources - Rain",
+              "url": "$GEOSERVER_URL/geoserver/static_files/wms",
+              "layers": "2050_watersource_rain_10m",
+              "styles": "greens_percent",
+              "isOpenInWorkbench": true,
+              "description": "Please click the parent 'Flow Models' folder for a detailed description.",
+              "supportsGetTimeseries": true,
+              "getFeatureInfoUrl": "$BACKEND_URL/api/query",
+              "getFeatureInfoParameters": {
+                "epoch": "2050s",
+                "variable": "rain"
+              }
+            },
+            {
+              "type": "wms",
+              "name": "Flow Model (2050) - Water Sources - Tide",
+              "url": "$GEOSERVER_URL/geoserver/static_files/wms",
+              "layers": "2050_watersource_stage_10m",
+              "styles": "blues_percent",
+              "isOpenInWorkbench": true,
+              "description": "Please click the parent 'Flow Models' folder for a detailed description.",
+              "supportsGetTimeseries": true,
+              "getFeatureInfoUrl": "$BACKEND_URL/api/query",
+              "getFeatureInfoParameters": {
+                "epoch": "2050s",
+                "variable": "stage"
+              }
+            },
+            {
+              "type": "wms",
+              "name": "Flow Model (2050) - Water Velocity",
+              "url": "$GEOSERVER_URL/geoserver/static_files/wms",
+              "layers": "2050_velocity_10m",
+              "styles": "viridis_raster_0p5max",
+              "isOpenInWorkbench": true,
+              "supportsGetTimeseries": true,
+              "description": "Please click the parent 'Flow Models' folder for a detailed description.",
+              "getFeatureInfoUrl": "$BACKEND_URL/api/query",
+              "getFeatureInfoParameters": {
+                "epoch": "2050s",
+                "variable": "velocity"
+              }
+            },
+            {
+              "type": "wms",
+              "name": "Flow Model (2050) - Water Depth",
+              "url": "$GEOSERVER_URL/geoserver/static_files/wms",
+              "layers": "2050_waterdepth_10m",
+              "styles": "viridis_raster_20max",
+              "isOpenInWorkbench": true,
+              "supportsGetTimeseries": true,
+              "description": "Please click the parent 'Flow Models' folder for a detailed description.",
+              "getFeatureInfoUrl": "$BACKEND_URL/api/query",
+              "getFeatureInfoParameters": {
+                "epoch": "2050s",
+                "variable": "waterdepth"
+              }
+            },
+            {
+              "type": "wms",
+              "name": "Flow Model (2050) - Median Sediment Size",
+              "url": "$GEOSERVER_URL/geoserver/static_files/wms",
+              "layers": "2050_d50top_10m",
+              "styles": "viridis_raster_0p0005max",
+              "isOpenInWorkbench": true,
+              "description": "Please click the parent 'Flow Models' folder for a detailed description.",
+              "supportsGetTimeseries": true,
+              "getFeatureInfoUrl": "$BACKEND_URL/api/query",
+              "getFeatureInfoParameters": {
+                "epoch": "2050s",
+                "variable": "sedimentdepth"
+              }
+            }
+          ]
+        },
+        {
+          "type": "group",
+          "name": "Sea Level Rise 2080",
+          "description": "Please click the parent 'Flow Models' folder for a detailed description.",
+          "isOpen": false,
+          "members": [
+            {
+              "type": "wms",
+              "name": "Flow Model (2080) - Water Source Summary Map",
+              "description": "Please click the parent 'Flow Models' folder for a detailed description.",
+              "url": "$GEOSERVER_URL/geoserver/model_outputs/wms",
+              "layers": "2080_watersourceRGB_10m_depth_255nan",
+              "styles": "RGB",
+              "getFeatureInfoUrl": "$BACKEND_URL/api/normalise",
+              "isOpenInWorkbench": true,
+              "legends": [
+                {
+                  "title": "Water Sources",
+                  "items": [
+                    {
+                      "title": "Streams",
+                      "color": "#FF0000"
+                    },
+                    {
+                      "title": "Rain",
+                      "color": "#00FF00"
+                    },
+                    {
+                      "title": "Tide",
+                      "color": "#0000FF"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "wms",
+              "name": "Flow Model (2080) - Water Sources - Streams",
+              "url": "$GEOSERVER_URL/geoserver/static_files/wms",
+              "layers": "2080_watersource_hydros_10m",
+              "styles": "reds_percent",
+              "isOpenInWorkbench": true,
+              "supportsGetTimeseries": true,
+              "description": "Please click the parent 'Flow Models' folder for a detailed description.",
+              "getFeatureInfoUrl": "$BACKEND_URL/api/query",
+              "getFeatureInfoParameters": {
+                "epoch": "2080s",
+                "variable": "hydro"
+              }
+            },
+            {
+              "type": "wms",
+              "name": "Flow Model (2080) - Water Sources - Rain",
+              "url": "$GEOSERVER_URL/geoserver/static_files/wms",
+              "layers": "2080_watersource_rain_10m",
+              "styles": "greens_percent",
+              "isOpenInWorkbench": true,
+              "description": "Please click the parent 'Flow Models' folder for a detailed description.",
+              "supportsGetTimeseries": true,
+              "getFeatureInfoUrl": "$BACKEND_URL/api/query",
+              "getFeatureInfoParameters": {
+                "epoch": "2080s",
+                "variable": "rain"
+              }
+            },
+            {
+              "type": "wms",
+              "name": "Flow Model (2080) - Water Sources - Tide",
+              "url": "$GEOSERVER_URL/geoserver/static_files/wms",
+              "layers": "2080_watersource_stage_10m",
+              "styles": "blues_percent",
+              "isOpenInWorkbench": true,
+              "supportsGetTimeseries": true,
+              "getFeatureInfoUrl": "$BACKEND_URL/api/query",
+              "description": "Please click the parent 'Flow Models' folder for a detailed description.",
+              "getFeatureInfoParameters": {
+                "epoch": "2080s",
+                "variable": "stage"
+              }
+            },
+            {
+              "type": "wms",
+              "name": "Flow Model (2080) - Flow Model - Water Velocity",
+              "url": "$GEOSERVER_URL/geoserver/static_files/wms",
+              "layers": "2080_velocity_10m",
+              "styles": "viridis_raster_0p5max",
+              "isOpenInWorkbench": true,
+              "supportsGetTimeseries": true,
+              "description": "Please click the parent 'Flow Models' folder for a detailed description.",
+              "getFeatureInfoUrl": "$BACKEND_URL/api/query",
+              "getFeatureInfoParameters": {
+                "epoch": "2080s",
+                "variable": "velocity"
+              }
+            },
+            {
+              "type": "wms",
+              "name": "Flow Model (2080) - Water Depth",
+              "url": "$GEOSERVER_URL/geoserver/static_files/wms",
+              "layers": "2050_waterdepth_10m",
+              "styles": "viridis_raster_20max",
+              "isOpenInWorkbench": true,
+              "supportsGetTimeseries": true,
+              "description": "Please click the parent 'Flow Models' folder for a detailed description.",
+              "getFeatureInfoUrl": "$BACKEND_URL/api/query",
+              "getFeatureInfoParameters": {
+                "epoch": "2080s",
+                "variable": "waterdepth"
+              }
+            },
+            {
+              "type": "wms",
+              "name": "Flow Model (2080) - Median Sediment Size",
+              "url": "$GEOSERVER_URL/geoserver/static_files/wms",
+              "layers": "2080_d50top_10m",
+              "styles": "viridis_raster_0p0005max",
+              "description": "Please click the parent 'Flow Models' folder for a detailed description.",
+              "isOpenInWorkbench": true,
+              "supportsGetTimeseries": true,
+              "getFeatureInfoUrl": "$BACKEND_URL/api/query",
+              "getFeatureInfoParameters": {
+                "epoch": "2080s",
+                "variable": "sedimentdepth"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "PHF Science Sampling",
+      "type": "group",
+      "description": "A selection of sampling data and reports for Te Awarua o Porirua from PHF Science.",
+      "isOpen": true,
+      "members": [
+        {
+          "type": "wfs",
+          "name": "Faecal Source Tracking - February 2023",
+          "url": "$GEOSERVER_URL/geoserver/static_files/ows",
+          "typeNames": "static_files:fecal_sampling",
+          "description": "<h1>Health Assessment of Shellfish and Water</h1><h2>Te Awarua o Porirua</h2><h3>Monitoring Event 3 (ME3) February 2023</h3><strong>Ngāti Toa Rangatira, the community of Te Awarua and ESR’s He Wai Māpuna</strong><p><strong>Disclaimer:</strong></p><p><i>The work carried out in this report is from a single sampling event and therefore represents a snapshot in measurement  of contaminants from the environment that may not be representative of baseline observations. The document is not to  be assumed to be representative of the health of the environment over all the sites tested and should not be used as  such.</i></p><p>This layer presents the results of a monitoring wānanga along five historic sites significant to Ngāti Toa Rangatira  in Te Awarua o Porirua (Te Onepoto Bay, Kaiaua Bay, Paremata Railway Station, Motukaraka Point and Te Hiko Street).  This mahi is a collaborative research project that includes Ngāti Toa Rangatira, the community of Te Awarua and ESR’s  He Wai Māpuna. This third monitoring event (ME3) that builds on the first (ME1) in November 2021 and second (ME2) in  June 2022 continues a journey to understand the presence and levels of contaminants in Te Awarua o Porirua.  Understanding contaminant impacts and implications, whilst building opportunities to develop capability, and reliable  and efficient monitoring methodologies for everyone involved is key to the success of this study.</p><h4>Acknowledgements</h4><p>Kāore e ārikakira ngā mihi e rere ana ki a koutou, ko Ngāti Toa Rangatira, rātou ko ngā kaimahi o te Rūnanga me te  hapori whānui o Te Awarua. Nō mātou ko ngā kaimahi o He Waimāpuna te whiwhi ki te mahi tahi i waenganui o koutou. ‘Mā  pango, mā whero, ka oti ai te mahi.’</p><p>He Wai Māpuna would like to thank Ngāti Toa Rangatira and those that were part of the wānanga and this project. We are  grateful for the opportunity to work and wānanga together on this kaupapa for Te Awarua.</p>",
+          "styles": [
+            {
+              "id": "name",
+              "hidden": true
+            },
+            {
+              "id": "ESR Number",
+              "hidden": true
+            },
+            {
+              "id": "Client Reference",
+              "hidden": true
+            },
+            {
+              "id": "Description / Site ID",
+              "label": {
+                "enabled": true,
+                "mapType": "constant",
+                "null": {
+                  "labelColumn": "Description / Site ID",
+                  "pixelOffset": [
+                    15,
+                    0
+                  ]
+                }
+              },
+              "pointSize": {
+                "sizeFactor": 22,
+                "sizeOffset": 8
+              }
+            },
+            {
+              "id": "General GenBac / 100 ml",
+              "color": {
+                "mapType": "bin",
+                "minimumValue": 0,
+                "maximumValue": 512000,
+                "numberOfBins": 6,
+                "binMaximums": [
+                  2000,
+                  8000,
+                  32000,
+                  128000,
+                  512000
+                ],
+                "colorPalette": "Reds"
+              },
+              "label": {
+                "enabled": true,
+                "mapType": "constant",
+                "null": {
+                  "labelColumn": "General GenBac / 100 ml",
+                  "pixelOffset": [
+                    15,
+                    0
+                  ]
+                }
+              },
+              "pointSize": {
+                "sizeFactor": 22,
+                "sizeOffset": 8
+              }
+            },
+            {
+              "id": "Human BiADO / 100 ml",
+              "label": {
+                "enabled": true,
+                "mapType": "constant",
+                "null": {
+                  "labelColumn": "Human BiADO / 100 ml",
+                  "pixelOffset": [
+                    15,
+                    0
+                  ]
+                }
+              },
+              "pointSize": {
+                "sizeFactor": 22,
+                "sizeOffset": 8
+              }
+            },
+            {
+              "id": "Human HF183 / 100 ml",
+              "label": {
+                "enabled": true,
+                "mapType": "constant",
+                "null": {
+                  "labelColumn": "Human HF183 / 100 ml",
+                  "pixelOffset": [
+                    15,
+                    0
+                  ]
+                }
+              },
+              "pointSize": {
+                "sizeFactor": 22,
+                "sizeOffset": 8
+              }
+            },
+            {
+              "id": "Human crAssphage / 100 ml",
+              "label": {
+                "enabled": true,
+                "mapType": "constant",
+                "null": {
+                  "labelColumn": "Human crAssphage / 100 ml",
+                  "pixelOffset": [
+                    15,
+                    0
+                  ]
+                }
+              },
+              "pointSize": {
+                "sizeFactor": 22,
+                "sizeOffset": 8
+              }
+            },
+            {
+              "id": "Ruminant BacR / 100 ml",
+              "label": {
+                "enabled": true,
+                "mapType": "constant",
+                "null": {
+                  "labelColumn": "Ruminant BacR / 100 ml",
+                  "pixelOffset": [
+                    15,
+                    0
+                  ]
+                }
+              },
+              "pointSize": {
+                "sizeFactor": 22,
+                "sizeOffset": 8
+              }
+            },
+            {
+              "id": "Proportion Ruminant",
+              "label": {
+                "enabled": true,
+                "mapType": "constant",
+                "null": {
+                  "labelColumn": "Proportion Ruminant",
+                  "pixelOffset": [
+                    15,
+                    0
+                  ]
+                }
+              },
+              "pointSize": {
+                "sizeFactor": 22,
+                "sizeOffset": 8
+              }
+            },
+            {
+              "id": "Dog DogBac / 100 ml",
+              "label": {
+                "enabled": true,
+                "mapType": "constant",
+                "null": {
+                  "labelColumn": "Dog DogBac / 100 ml",
+                  "pixelOffset": [
+                    15,
+                    0
+                  ]
+                }
+              },
+              "pointSize": {
+                "sizeFactor": 22,
+                "sizeOffset": 8
+              }
+            },
+            {
+              "id": "Avian GFD / 100 ml",
+              "label": {
+                "enabled": true,
+                "mapType": "constant",
+                "null": {
+                  "labelColumn": "Avian GFD / 100 ml",
+                  "pixelOffset": [
+                    15,
+                    0
+                  ]
+                }
+              },
+              "pointSize": {
+                "sizeFactor": 22,
+                "sizeOffset": 8
+              }
+            },
+            {
+              "id": "Cultural Health Survey Score Summary %",
+              "label": {
+                "enabled": true,
+                "mapType": "constant",
+                "null": {
+                  "labelColumn": "Cultural Health Survey Score Summary %",
+                  "pixelOffset": [
+                    15,
+                    0
+                  ]
+                }
+              },
+              "pointSize": {
+                "sizeFactor": 22,
+                "sizeOffset": 8
+              }
+            },
+            {
+              "id": "Cultural Health Survey Score Description",
+              "label": {
+                "enabled": true,
+                "mapType": "constant",
+                "null": {
+                  "labelColumn": "Cultural Health Survey Score Description",
+                  "pixelOffset": [
+                    15,
+                    0
+                  ]
+                }
+              },
+              "pointSize": {
+                "sizeFactor": 22,
+                "sizeOffset": 8
+              }
+            }
+          ],
+          "activeStyle": "Human crAssphage / 100 ml",
+          "dataCustodian": "PHF Science"
+        },
+        {
+          "type": "wfs",
+          "name": "Investigating the Presence of Microplastics in Te Awarua o Porirua - October 2024",
+          "url": "$GEOSERVER_URL/geoserver/static_files/ows",
+          "typeNames": "static_files:Microplastics_2023_by_site",
+          "styles": [
+            {
+              "id": "SITE",
+              "label": {
+                "enabled": true,
+                "mapType": "constant",
+                "null": {
+                  "labelColumn": "SITE",
+                  "pixelOffset": [
+                    15,
+                    0
+                  ]
+                }
+              },
+              "pointSize": {
+                "sizeFactor": 22,
+                "sizeOffset": 8
+              }
+            },
+            {
+              "id": "particles_per_kg",
+              "label": {
+                "enabled": true,
+                "mapType": "constant",
+                "null": {
+                  "labelColumn": "particles_per_kg",
+                  "pixelOffset": [
+                    15,
+                    0
+                  ]
+                }
+              },
+              "pointSize": {
+                "sizeFactor": 22,
+                "sizeOffset": 8
+              }
+            },
+            {
+              "id": "total_particles",
+              "label": {
+                "enabled": true,
+                "mapType": "constant",
+                "null": {
+                  "labelColumn": "total_particles",
+                  "pixelOffset": [
+                    15,
+                    0
+                  ]
+                }
+              },
+              "pointSize": {
+                "sizeFactor": 22,
+                "sizeOffset": 8
+              }
+            },
+            {
+              "id": "polyester",
+              "label": {
+                "enabled": true,
+                "mapType": "constant",
+                "null": {
+                  "labelColumn": "polyester",
+                  "pixelOffset": [
+                    15,
+                    0
+                  ]
+                }
+              },
+              "pointSize": {
+                "sizeFactor": 22,
+                "sizeOffset": 8
+              }
+            },
+            {
+              "id": "polyethylene",
+              "label": {
+                "enabled": true,
+                "mapType": "constant",
+                "null": {
+                  "labelColumn": "polyethylene",
+                  "pixelOffset": [
+                    15,
+                    0
+                  ]
+                }
+              },
+              "pointSize": {
+                "sizeFactor": 22,
+                "sizeOffset": 8
+              }
+            },
+            {
+              "id": "acrylic",
+              "label": {
+                "enabled": true,
+                "mapType": "constant",
+                "null": {
+                  "labelColumn": "acrylic",
+                  "pixelOffset": [
+                    15,
+                    0
+                  ]
+                }
+              },
+              "pointSize": {
+                "sizeFactor": 22,
+                "sizeOffset": 8
+              }
+            },
+            {
+              "id": "polypropylene",
+              "label": {
+                "enabled": true,
+                "mapType": "constant",
+                "null": {
+                  "labelColumn": "polypropylene",
+                  "pixelOffset": [
+                    15,
+                    0
+                  ]
+                }
+              },
+              "pointSize": {
+                "sizeFactor": 22,
+                "sizeOffset": 8
+              }
+            },
+            {
+              "id": "polystyrene",
+              "label": {
+                "enabled": true,
+                "mapType": "constant",
+                "null": {
+                  "labelColumn": "polystyrene",
+                  "pixelOffset": [
+                    15,
+                    0
+                  ]
+                }
+              },
+              "pointSize": {
+                "sizeFactor": 22,
+                "sizeOffset": 8
+              }
+            },
+            {
+              "id": "unknown",
+              "label": {
+                "enabled": true,
+                "mapType": "constant",
+                "null": {
+                  "labelColumn": "unknown",
+                  "pixelOffset": [
+                    15,
+                    0
+                  ]
+                }
+              },
+              "pointSize": {
+                "sizeFactor": 22,
+                "sizeOffset": 8
+              }
+            },
+            {
+              "id": "fibre",
+              "label": {
+                "enabled": true,
+                "mapType": "constant",
+                "null": {
+                  "labelColumn": "fibre",
+                  "pixelOffset": [
+                    15,
+                    0
+                  ]
+                }
+              },
+              "pointSize": {
+                "sizeFactor": 22,
+                "sizeOffset": 8
+              }
+            },
+            {
+              "id": "fragment",
+              "label": {
+                "enabled": true,
+                "mapType": "constant",
+                "null": {
+                  "labelColumn": "fragment",
+                  "pixelOffset": [
+                    15,
+                    0
+                  ]
+                }
+              },
+              "pointSize": {
+                "sizeFactor": 22,
+                "sizeOffset": 8
+              }
+            },
+            {
+              "id": "film",
+              "label": {
+                "enabled": true,
+                "mapType": "constant",
+                "null": {
+                  "labelColumn": "film",
+                  "pixelOffset": [
+                    15,
+                    0
+                  ]
+                }
+              },
+              "pointSize": {
+                "sizeFactor": 22,
+                "sizeOffset": 8
+              }
+            },
+            {
+              "id": "other",
+              "label": {
+                "enabled": true,
+                "mapType": "constant",
+                "null": {
+                  "labelColumn": "other",
+                  "pixelOffset": [
+                    15,
+                    0
+                  ]
+                }
+              },
+              "pointSize": {
+                "sizeFactor": 22,
+                "sizeOffset": 8
+              }
+            },
+            {
+              "id": "blue",
+              "label": {
+                "enabled": true,
+                "mapType": "constant",
+                "null": {
+                  "labelColumn": "blue",
+                  "pixelOffset": [
+                    15,
+                    0
+                  ]
+                }
+              },
+              "pointSize": {
+                "sizeFactor": 22,
+                "sizeOffset": 8
+              }
+            },
+            {
+              "id": "clear",
+              "label": {
+                "enabled": true,
+                "mapType": "constant",
+                "null": {
+                  "labelColumn": "clear",
+                  "pixelOffset": [
+                    15,
+                    0
+                  ]
+                }
+              },
+              "pointSize": {
+                "sizeFactor": 22,
+                "sizeOffset": 8
+              }
+            },
+            {
+              "id": "black",
+              "label": {
+                "enabled": true,
+                "mapType": "constant",
+                "null": {
+                  "labelColumn": "black",
+                  "pixelOffset": [
+                    15,
+                    0
+                  ]
+                }
+              },
+              "pointSize": {
+                "sizeFactor": 22,
+                "sizeOffset": 8
+              }
+            },
+            {
+              "id": "yellow",
+              "label": {
+                "enabled": true,
+                "mapType": "constant",
+                "null": {
+                  "labelColumn": "yellow",
+                  "pixelOffset": [
+                    15,
+                    0
+                  ]
+                }
+              },
+              "pointSize": {
+                "sizeFactor": 22,
+                "sizeOffset": 8
+              }
+            },
+            {
+              "id": "orange",
+              "label": {
+                "enabled": true,
+                "mapType": "constant",
+                "null": {
+                  "labelColumn": "orange",
+                  "pixelOffset": [
+                    15,
+                    0
+                  ]
+                }
+              },
+              "pointSize": {
+                "sizeFactor": 22,
+                "sizeOffset": 8
+              }
+            },
+            {
+              "id": "white",
+              "label": {
+                "enabled": true,
+                "mapType": "constant",
+                "null": {
+                  "labelColumn": "white",
+                  "pixelOffset": [
+                    15,
+                    0
+                  ]
+                }
+              },
+              "pointSize": {
+                "sizeFactor": 22,
+                "sizeOffset": 8
+              }
+            },
+            {
+              "id": "red",
+              "label": {
+                "enabled": true,
+                "mapType": "constant",
+                "null": {
+                  "labelColumn": "red",
+                  "pixelOffset": [
+                    15,
+                    0
+                  ]
+                }
+              },
+              "pointSize": {
+                "sizeFactor": 22,
+                "sizeOffset": 8
+              }
+            },
+            {
+              "id": "green",
+              "label": {
+                "enabled": true,
+                "mapType": "constant",
+                "null": {
+                  "labelColumn": "green",
+                  "pixelOffset": [
+                    15,
+                    0
+                  ]
+                }
+              },
+              "pointSize": {
+                "sizeFactor": 22,
+                "sizeOffset": 8
+              }
+            },
+            {
+              "id": "pink",
+              "label": {
+                "enabled": true,
+                "mapType": "constant",
+                "null": {
+                  "labelColumn": "pink",
+                  "pixelOffset": [
+                    15,
+                    0
+                  ]
+                }
+              },
+              "pointSize": {
+                "sizeFactor": 22,
+                "sizeOffset": 8
+              }
+            }
+          ],
+          "description": "<h1>Executive Summary</h1><p>The aim of this study was to investigate the presence and types of microplastics in Te Awarua o Porirua. This study was conducted as part of a broad collaboration between Ngāti Toa Rangatira and ESR Māori Impact Team to understand and enhance the mauri of Te Awarua o Porirua, particularly focused on the ongoing issue of human faecal contamination.</p><p>Microplastics are pieces of plastic which are less than 5 mm in size and have a broad range of negative environmental and health impacts. Wastewater treatment plants are considered “hotspots” of microplastics pollution due to the large number of microplastics which enter through household and industrial waste and the inability of treatment plants to completely remove microplastics. In New Zealand wastewater treatment plants have been shown to be a key way that microplastics enter the ocean. Microplastics are lightweight and subject to tidal movements, meaning they can be found in the surface waters and also wash up on the shore.</p><p>Sampling for microplastics was carried out at sites of significance around the harbour.  These sites were chosen due to a combination of factors including cultural and historical significance, proximity to urban and/or industrial activities, and observation of visible plastic pollution. Site types included beach sand, freshwater (streams), and a waka trawl of Porirua Harbour.</p><p>Some key findings from the study were as follows:<ul><li>Microplastics were identified in beach sand at all sites, with the highest concentrations of plastics at Titahi Bay Beach surf club, Kaiaua and Te Neke</li><li>The majority (63%) of microplastics were fibres, meaning that <strong>fabrics (e.g. clothing) may be a key contributor of plastics</strong></li><li>Most microplastics found were <strong>less than 1 mm</strong> in length</li><li>The concentration, types, and sizes of microplastics found were similar to those found in other studies of microplastics in New Zealand.</li></ul></p><p>This project was the first to document microplastics pollution in Te Awarua o Porirua. Our results confirmed the knowledge of Ngāti Toa Rangatira and the Porirua community that plastics pollution is a key issue, and provides the quantitative evidence to support community action to reduce plastics pollution in Porirua.</p>",
+          "dataCustodian": "PHF Science"
+        }
+      ]
+    },
+    {
+      "name": "Greater Wellington Regional Council - Our Environment",
+      "type": "esri-group",
+      "url": "https://mapping.gw.govt.nz/arcgis/rest/services/GW/Our_Environment_P/MapServer/",
+      "isOpen": true
+    },
+    {
+      "name": "Greater Wellington Regional Council - Natural Resources Plan",
+      "type": "esri-group",
+      "url": "https://mapping.gw.govt.nz/arcgis/rest/services/GW/NRPMap_P_operative/MapServer/",
+      "isOpen": true,
+      "excludeMembers": [
+        "Ngā Hapū o Ōtaki",
+        "Taranaki Whānui ki te Upoko o te Ika a Maui",
+        "Te Ātiawa ki Whakarongotai",
+        "Wairarapa Iwi",
+        "Schedule F1c - Lakes with Significant Aquatic Plants",
+        "Castlepoint Basin Lagoon permitted driving area",
+        "Commercial Port Areas",
+        "Cable Protection Zone Coordinates",
+        "Cook Strait Cable Protection Zone",
+        "Groundwater Zones",
+        "Hutt Aquifer Protection Zone",
+        "Kapiti Airport",
+        "Category 2 Surface Waterbodies",
+        "Lowland Areas For Category 2 Surface Water Bodies",
+        "Wairarapa Water Races",
+        "Masterton urban airshed",
+        "Wellington Harbour Navigation",
+        "Wellington Airport Height Restriction Areas",
+        "Rule 202A Harbour Bathymetry",
+        "Rule 202A Harbour depth"
+      ]
     }
   ],
-  "viewerMode": "3dSmooth",
   "baseMaps": {
-    "defaultBaseMapId": "basemap-openstreetmap",
+    "items": [
+      {
+        "item": {
+          "id": "basemap-linz-aerial",
+          "type": "wmts",
+          "url": "https://basemaps.linz.govt.nz/v1/tiles/aerial/WebMercatorQuad/WMTSCapabilities.xml?api=$LINZ_BASEMAPS_API_KEY",
+          "attribution": "© <a href=\"//www.linz.govt.nz/linz-copyright\">LINZ CC BY 4.0</a> © <a href=\"//www.linz.govt.nz/data/linz-data/linz-basemaps/data-attribution\">Imagery Basemap contributors</a>",
+          "layer": "aerial"
+        },
+        "image": "https://basemaps.linz.govt.nz/favicon-32x32.png"
+      }
+    ],
+    "enabledBaseMaps": [
+      "basemap-linz-aerial",
+      "basemap-openstreetmap"
+    ],
+    "defaultBaseMapId": "basemap-linz-aerial",
     "previewBaseMapId": "basemap-openstreetmap"
-  }
+  },
+  "stories": [
+    {
+      "title": "Te Hiko Street Mahinga Kai",
+      "text": "Te Hiko Street was once a traditional mahinga kai site for Ngāti Toa Rangatira following the arrival of Te Rauparaha and iwi in the 1820s. Over recent decades, manawhenua have raised concerns about wastewater overflows and ageing infrastructure affecting this wāhi tapu.",
+      "id": "5acbc9a9-76bc-426e-a949-d87f47c57cfa",
+      "shareData": {
+        "version": "8.0.0",
+        "initSources": [
+          {
+            "stratum": "user",
+            "workbench": [
+              "//Greater Wellington Regional Council - Our Environment/0/4"
+            ],
+            "timeline": [
+              "//Greater Wellington Regional Council - Our Environment/0/4"
+            ],
+            "initialCamera": {
+              "west": 174.82314405916387,
+              "south": -41.13083027948777,
+              "east": 174.85048804702862,
+              "north": -41.11895535137032,
+              "position": {
+                "x": -4793336.010866512,
+                "y": 433121.9885199243,
+                "z": -4174333.6097096577
+              },
+              "direction": {
+                "x": 0.6865808940189274,
+                "y": -0.06182744041694711,
+                "z": 0.7244197978932239
+              },
+              "up": {
+                "x": -0.72132819310031,
+                "y": 0.06686856413244105,
+                "z": 0.6893578410154683
+              }
+            },
+            "viewerMode": "3d",
+            "showSplitter": false,
+            "settings": {
+              "alwaysShowTimeline": false,
+              "baseMapId": "basemap-linz-aerial"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "title": "Te Hiko St and Faecal Source Tracking",
+      "text": "Molecular analyses targeting human-associated faecal markers — crAssphage and HF183 — detected elevated human-derived signals at this site. crAssphage is widely used as a robust indicator of human wastewater contamination, while HF183 is associated with more recent human faecal inputs in water. Together, these markers support iwi observations of ongoing contamination pressure. While single-event sampling limits formal statistical comparison, human-marker levels at Te Hiko Street were higher than those recorded at other monitoring locations during the same period.",
+      "id": "36a2bb08-c64e-4aa3-b712-b754f94c949a",
+      "shareData": {
+        "version": "8.0.0",
+        "initSources": [
+          {
+            "models": {
+              "//PHF Science Sampling/Faecal Source Tracking - February 2023": {
+                "show": true,
+                "knownContainerUniqueIds": [
+                  "//PHF Science Sampling"
+                ],
+                "type": "wfs"
+              }
+            },
+            "stratum": "user",
+            "workbench": [
+              "//Flow models/Present Day/Flow Model (Present) - Water Source Summary Map",
+              "//PHF Science Sampling/Faecal Source Tracking - February 2023"
+            ],
+            "timeline": [
+              "//Flow models/Present Day/Flow Model (Present) - Water Source Summary Map",
+              "//PHF Science Sampling/Faecal Source Tracking - February 2023"
+            ],
+            "initialCamera": {
+              "west": 174.8011863593205,
+              "south": -41.136073111874715,
+              "east": 174.87225044777594,
+              "north": -41.10521388661897,
+              "position": {
+                "x": -4791452.716516837,
+                "y": 436152.1114694373,
+                "z": -4176582.0786920413
+              },
+              "direction": {
+                "x": -0.16152340881734487,
+                "y": -0.6030639940899236,
+                "z": 0.7811683604936477
+              },
+              "up": {
+                "x": -0.910196986624834,
+                "y": -0.21486745816610964,
+                "z": -0.3540810937628653
+              }
+            },
+            "viewerMode": "3d",
+            "showSplitter": false,
+            "settings": {
+              "baseMapId": "basemap-linz-aerial",
+              "terrainSplitDirection": 0,
+              "depthTestAgainstTerrainEnabled": false
+            }
+          }
+        ]
+      }
+    },
+    {
+      "title": "High proportion of stream inflow",
+      "text": "Hydrodynamic modelling indicates that a substantial proportion of water near Te Hiko Street originates from stream inflows rather than open-harbour exchange. This helps explain how catchment-derived contaminants may influence local water quality. Click on the red and white shading in the harbour to explore stream water contributions in more detail.",
+      "id": "224841ec-2a20-4ad7-887a-9ba59b798b08",
+      "shareData": {
+        "version": "8.0.0",
+        "initSources": [
+          {
+            "stratum": "user",
+            "workbench": [
+              "//Flow models/Present Day/Flow Model (Present) - Water Sources - Streams",
+              "//PHF Science Sampling/Faecal Source Tracking - February 2023"
+            ],
+            "timeline": [
+              "//Flow models/Present Day/Flow Model (Present) - Water Sources - Streams",
+              "//PHF Science Sampling/Faecal Source Tracking - February 2023"
+            ],
+            "initialCamera": {
+              "west": 174.82038803925147,
+              "south": -41.130988887948654,
+              "east": 174.85260092525476,
+              "north": -41.11699952972317,
+              "position": {
+                "x": -4793688.936097652,
+                "y": 433324.28557570104,
+                "z": -4174448.5242611724
+              },
+              "direction": {
+                "x": 0.706840856244073,
+                "y": -0.12486105026924442,
+                "z": 0.6962655542749526
+              },
+              "up": {
+                "x": -0.5621295824969162,
+                "y": -0.6966557914461944,
+                "z": 0.4457365149124752
+              }
+            },
+            "homeCamera": {
+              "west": 174.82,
+              "south": -41.15,
+              "east": 174.9,
+              "north": -41.06
+            },
+            "viewerMode": "3d",
+            "showSplitter": false,
+            "settings": {
+              "baseMapId": "basemap-linz-aerial",
+              "terrainSplitDirection": 0,
+              "depthTestAgainstTerrainEnabled": false
+            }
+          }
+        ]
+      }
+    },
+    {
+      "title": "Comparatively high avian fecal markers at Motukaraka",
+      "text": "In the Pauatahanui arm, Motukaraka shows comparatively higher avian-associated faecal signals. This area was historically an important mahinga kai site, with visible midden layers remaining today. Contemporary bird populations likely contribute to these signals, and continued monitoring will help clarify long-term patterns.",
+      "id": "90f3d693-9b18-42f3-814f-13e57664e74d",
+      "shareData": {
+        "version": "8.0.0",
+        "initSources": [
+          {
+            "models": {
+              "//PHF Science Sampling": {
+                "knownContainerUniqueIds": [
+                  "/"
+                ],
+                "type": "group"
+              },
+              "//PHF Science Sampling/Faecal Source Tracking - February 2023": {
+                "show": true,
+                "activeStyle": "Avian GFD / 100 ml",
+                "knownContainerUniqueIds": [
+                  "//PHF Science Sampling"
+                ],
+                "type": "wfs"
+              },
+              "/": {
+                "type": "group"
+              }
+            },
+            "stratum": "user",
+            "workbench": [
+              "//PHF Science Sampling/Faecal Source Tracking - February 2023"
+            ],
+            "timeline": [
+              "//PHF Science Sampling/Faecal Source Tracking - February 2023"
+            ],
+            "initialCamera": {
+              "west": 174.80151199175722,
+              "south": -41.13363221828541,
+              "east": 174.92672177416716,
+              "north": -41.07925836108302,
+              "position": {
+                "x": -4791189.042575178,
+                "y": 432517.2076053785,
+                "z": -4179988.547604616
+              },
+              "direction": {
+                "x": -0.2552575768546467,
+                "y": -0.18467323842681377,
+                "z": 0.9490728973410038
+              },
+              "up": {
+                "x": -0.9647306819655614,
+                "y": -0.016662340913459556,
+                "z": -0.26271101550857445
+              }
+            },
+            "viewerMode": "3d",
+            "showSplitter": false,
+            "settings": {
+              "baseMapId": "basemap-linz-aerial",
+              "depthTestAgainstTerrainEnabled": false
+            }
+          }
+        ]
+      }
+    },
+    {
+      "title": "Complementary insights",
+      "text": "Together, molecular tools, modelling, and mātauranga Māori provide complementary insight into contamination pathways and harbour health.",
+      "id": "d5321084-7b54-4ecc-abd6-38172f2077cc",
+      "shareData": {
+        "version": "8.0.0",
+        "initSources": [
+          {
+            "stratum": "user",
+            "workbench": [
+              "//Flow models/Present Day/Flow Model (Present) - Water Source Summary Map",
+              "//PHF Science Sampling/Faecal Source Tracking - February 2023"
+            ],
+            "timeline": [
+              "//Flow models/Present Day/Flow Model (Present) - Water Source Summary Map",
+              "//PHF Science Sampling/Faecal Source Tracking - February 2023"
+            ],
+            "initialCamera": {
+              "west": 174.7858949822167,
+              "south": -41.14987026075068,
+              "east": 174.9470232333279,
+              "north": -41.07740455296619,
+              "position": {
+                "x": -4801814.956256786,
+                "y": 431384.0837660849,
+                "z": -4179668.781739207
+              },
+              "direction": {
+                "x": 0.7503805348325572,
+                "y": -0.06741247266783199,
+                "z": 0.6575595877737732
+              },
+              "up": {
+                "x": -0.6549220216530995,
+                "y": 0.05883669796165838,
+                "z": 0.7534025408284641
+              }
+            },
+            "viewerMode": "3d",
+            "showSpliiter": false,
+            "settings": {
+              "baseMapId": "basemap-linz-aerial",
+              "terrainSplitDirection": 0,
+              "depthTestAgainstTerrainEnabled": false
+            }
+          }
+        ]
+      }
+    }
+  ]
 }

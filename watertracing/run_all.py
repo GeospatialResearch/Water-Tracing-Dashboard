@@ -15,24 +15,28 @@
 # You should have received a copy of the GNU Affero General Public License
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-"""
-Functions and utilities for loading and serving data with geoserver.
-Imports here are accessible directly by `from src import geoserver`.
-"""
-from .database_layers import create_datastore_layer, create_db_store_if_not_exists, create_main_db_store
-from .geoserver_common import create_workspace_if_not_exists
-from .terria_catalogs import get_terria_catalog, Workspaces
-from .raster_layers import add_gtiff_to_geoserver, add_style, CoverageDimension, create_viridis_style_if_not_exists
+"""This script runs each module in the Porirua Explorer using a Sample Polygon."""
+import pathlib
 
-__all__ = [
-    "add_gtiff_to_geoserver",
-    "add_style",
-    "CoverageDimension",
-    "create_datastore_layer",
-    "create_db_store_if_not_exists",
-    "create_main_db_store",
-    "create_viridis_style_if_not_exists",
-    "create_workspace_if_not_exists",
-    "get_terria_catalog",
-    "Workspaces",
-]
+from src.digitaltwin import retrieve_from_instructions
+from src.digitaltwin.utils import LogLevel
+from src.run_all import create_sample_polygon, main
+
+from watertracing import serve_outputs
+
+DEFAULT_MODULES_TO_PARAMETERS = {
+    retrieve_from_instructions: {
+        "log_level": LogLevel.INFO,
+        "instruction_json_path": None
+    },
+    serve_outputs: {
+        "log_level": LogLevel.INFO,
+        "rgb_model_output_path": pathlib.Path("watertracing/static/watersourceRGB_8bit_1m.tif"),
+    }
+}
+
+if __name__ == '__main__':
+    sample_polygon = create_sample_polygon()
+
+    # Run all modules with sample polygon that intentionally contains slight rounding errors.
+    main(sample_polygon, DEFAULT_MODULES_TO_PARAMETERS)

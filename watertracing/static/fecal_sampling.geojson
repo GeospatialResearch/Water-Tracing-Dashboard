@@ -1,0 +1,147 @@
+{
+  "type": "FeatureCollection",
+  "name": "sampling_locations",
+  "crs": {
+    "type": "name",
+    "properties": {
+      "name": "urn:ogc:def:crs:EPSG::2193"
+    }
+  },
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Te Onepoto",
+        "Description / Site ID": "Te Onepoto Bay",
+        "ESR Number": "CMB230155",
+        "Client Reference": "2/23TOB5",
+        "General GenBac / 100 ml": 8800,
+        "Human BiADO / 100 ml": "<21",
+        "Human HF183 / 100 ml": 52,
+        "Human crAssphage / 100 ml": 190,
+        "Ruminant BacR / 100 ml": "Detected, <LOQ",
+        "Proportion Ruminant": "NC",
+        "Dog DogBac / 100 ml": "<16",
+        "Avian GFD / 100 ml": "<14",
+        "Conclusion": "Faecal source – human + low level\nruminant",
+        "Cultural Health Survey Score Summary %": "67.6",
+        "Cultural Health Survey Score Description": "Ahua Pai"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          1755661.948333212174475,
+          5447720.797060797922313
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Te Hiko Street (THS)",
+        "Description / Site ID": "Te Hiko Street",
+        "ESR Number": "CMB230154",
+        "Client Reference": "2/23THS89",
+        "General GenBac / 100 ml": 250000,
+        "Human BiADO / 100 ml": 130,
+        "Human HF183 / 100 ml": 570,
+        "Human crAssphage / 100 ml": 4300,
+        "Ruminant BacR / 100 ml": 66,
+        "Proportion Ruminant": "1% or less",
+        "Dog DogBac / 100 ml": "<16",
+        "Avian GFD / 100 ml": 2800,
+        "Conclusion": "Faecal source – human + ruminant (< 1%) + avian",
+        "Cultural Health Survey Score Summary %": "27.1",
+        "Cultural Health Survey Score Description": "E Kino Ana"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          1754227.620764203369617,
+          5445812.201442003250122
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Paremata",
+        "Description / Site ID": "Paremata Railway Station",
+        "ESR Number": "CMB230153 ",
+        "Client Reference": "2/23PRS47",
+        "General GenBac / 100 ml": 18000,
+        "Human BiADO / 100 ml": 38,
+        "Human HF183 / 100 ml": "<15",
+        "Human crAssphage / 100 ml": 210,
+        "Ruminant BacR / 100 ml": 57,
+        "Proportion Ruminant": "1-10%",
+        "Dog DogBac / 100 ml": "<16",
+        "Avian GFD / 100 ml": 780,
+        "Conclusion": "Faecal source – human + ruminant (1-10%) + avian",
+        "Cultural Health Survey Score Summary %": "20.9",
+        "Cultural Health Survey Score Description": "Mauri Mate"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          1756645.366708284709603,
+          5447760.039862127043307
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Kaiaua",
+        "Description / Site ID": "Kaiaua",
+        "ESR Number": "CMB230151",
+        "Client Reference": "2/23KAI26",
+        "General GenBac / 100 ml": 2300,
+        "Human BiADO / 100 ml": "<21",
+        "Human HF183 / 100 ml": "<15",
+        "Human crAssphage / 100 ml": 94,
+        "Ruminant BacR / 100 ml": 26,
+        "Proportion Ruminant": "1-10%",
+        "Dog DogBac / 100 ml": "<16",
+        "Avian GFD / 100 ml": 61,
+        "Conclusion": "Faecal source – ruminant (1-10%) + avian",
+        "Cultural Health Survey Score Summary %": "59.0",
+        "Cultural Health Survey Score Description": "Ahua Pai"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          1756313.410925350617617,
+          5448784.535675467923284
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Motukaraka",
+        "Description / Site ID": "Motu Karaka",
+        "ESR Number": "CMB230152",
+        "Client Reference": "2/23MOT68",
+        "General GenBac / 100 ml": 15000,
+        "Human BiADO / 100 ml": "<21",
+        "Human HF183 / 100 ml": "<15",
+        "Human crAssphage / 100 ml": 96,
+        "Ruminant BacR / 100 ml": 87,
+        "Proportion Ruminant": "1-10%",
+        "Dog DogBac / 100 ml": "<16",
+        "Avian GFD / 100 ml": 13000,
+        "Conclusion": "Faecal source – ruminant (1-10%) + avian",
+        "Cultural Health Survey Score Summary %": "52.3",
+        "Cultural Health Survey Score Description": "Ahua Pai"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          1760291.865244657965377,
+          5448702.928534183651209
+        ]
+      }
+    }
+  ]
+}

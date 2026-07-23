@@ -1,9 +1,25 @@
 # -*- coding: utf-8 -*-
+# Copyright © 2021-2025 Geospatial Research Institute Toi Hangarau
+# LICENSE: https://github.com/GeospatialResearch/Digital-Twins/blob/master/LICENSE
+#
+# This program is free software: you can redistribute it and/or modify
+# it under the terms of the GNU Affero General Public License as
+# published by the Free Software Foundation, either version 3 of the
+# License, or (at your option) any later version.
+#
+# This program is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU Affero General Public License for more details.
+#
+# You should have received a copy of the GNU Affero General Public License
+# along with this program.  If not, see <http://www.gnu.org/licenses/>.
+
 """Core functions for serving data and working with workspaces in geoserver."""
 
+from http import HTTPStatus
 import logging
 import os
-from http import HTTPStatus
 
 import requests
 
@@ -97,3 +113,27 @@ def style_exists(style_name: str) -> bool:
     # If it does not meet the expected results then raise an error
     # Raise error manually, so we can configure the text
     raise requests.HTTPError(response.text, response=response)
+
+
+def set_default_layer_style(workspace_name: str, layer_name: str, default_style_name: str) -> None:
+    log.info(f"Setting default style for '{workspace_name}:{layer_name}' to '{default_style_name}'")
+    layer_json_url = f'{get_geoserver_url()}/workspaces/{workspace_name}/layers/{layer_name}.json'
+    get_layer_request = requests.get(
+        layer_json_url,
+        auth=(EnvVariable.GEOSERVER_ADMIN_NAME, EnvVariable.GEOSERVER_ADMIN_PASSWORD)
+    )
+    get_layer_request.raise_for_status()
+    response_data = get_layer_request.json()
+
+    external_gs_url = f"{EnvVariable.GEOSERVER_HOST}:{EnvVariable.GEOSERVER_PORT}/geoserver/rest"
+    response_data["layer"]["defaultStyle"] = {
+        "name": default_style_name,
+        "href": f"{external_gs_url}/styles/{default_style_name}.json"
+    }
+
+    set_default_style_request = requests.put(
+        layer_json_url,
+        auth=(EnvVariable.GEOSERVER_ADMIN_NAME, EnvVariable.GEOSERVER_ADMIN_PASSWORD),
+        json=response_data
+    )
+    set_default_style_request.raise_for_status()

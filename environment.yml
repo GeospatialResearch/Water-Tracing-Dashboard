@@ -25,6 +25,7 @@ dependencies:
   - conda-pack==0.7.1 # Versions past this have bugs with scrapy dependencies not being packaged
   - python==3.11  # 11 for StrEnum
   - pip
+  - setuptools<82  # Beginning Feb 8th, 2026 with setuptools>=82, pkg_resources has been removed.
   - python-dotenv==1.0.0
   - lxml==4.9.2
   - pandas==1.5.3
@@ -46,6 +47,8 @@ dependencies:
   - botocore>=1.33.10 # Minimum version that is compatible with python >= 3.10 is botocore>=1.13.0
   - scrapy==2.11.1
   - gevent==23.9.1
+  - natsort
+  - urllib3
   - pip:
     - flask_swagger_ui==4.11.1
     - selenium==4.16.0
